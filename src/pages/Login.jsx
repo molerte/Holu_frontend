@@ -11,8 +11,9 @@ function Login() {
           <p className="slogan">"Your Routine, Their Inspiration"</p>
 
           <div className="button-group">
-            <a href="/signin" className="btn primary">SIGN IN</a>
-            <a href="/guest" className="btn secondary">CONTINUE AS GUEST</a>
+            <a href="/signin" className="btn primary">Sign In</a>
+            <a href="/create-account" className="btn secondary">Create new account</a>
+            <a href="/guest" className="btn third">Continue as guest</a>
           </div>
         </div>
       </div>
