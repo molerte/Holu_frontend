@@ -53,13 +53,20 @@
   color: #ff8c42;
 }
 
-/* Guest button */
+/* Create Account button */
 .secondary {
   background-color: transparent;
   border: 2px solid white;
   color: white;
 }
 
+
+/* Continue as Guest button */
+.third {
+  background-color: transparent;
+  border: 3px solid white;
+  color: white;
+}
 
 /* About Us*/
 .about-section h2{

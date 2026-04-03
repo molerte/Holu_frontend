@@ -1,0 +1,82 @@
+/* Full orange background */
+.signin-wrapper {
+  height: 100vh;
+  width: 100%;
+  background-color: #ea752c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* White centered card */
+.signin-card {
+  background: white;
+  width: 380px;
+  padding: 35px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  text-align: left;
+}
+
+/* Back button */
+.back-btn {
+  color: #ea752c;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 16px;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.back-btn:hover {
+  text-decoration: underline;
+}
+
+/* Title */
+.signin-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 25px;
+  color: #ea752c;
+  font-family: "syne", sans-serif;
+}
+
+/* Labels */
+label {
+  font-weight: bold;
+  color: #ea752c;
+  margin-top: 12px;
+  display: block;
+  font-family: "inter tight", sans-serif;
+}
+
+/* Input */
+input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  background-color: white;
+  color: black;
+}
+
+/* Login button */
+.signin-btn {
+  width: 100%;
+  margin-top: 25px;
+  padding: 12px;
+  background-color: #ea752c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.signin-btn:hover {
+  background-color: #d56624;
+}
