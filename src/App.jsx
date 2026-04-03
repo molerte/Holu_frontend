@@ -1,10 +1,10 @@
-import { BrowserRouter as Router } from "react-router-dom";
-import Navbar from "./layout/Navbar";
+import { Routes, Route } from "react-router-dom";
+import Login from "./pages/Login";
 
 export default function App() {
   return (
-    <Router>
-      <Navbar />
-    </Router>
+    <Routes>
+      <Route path="/" element={<Login />} />
+    </Routes>
   );
 }
