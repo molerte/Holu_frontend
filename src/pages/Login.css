@@ -1,91 +1,107 @@
-/* Orange Background */
-.login-wrapper {
+/* Full orange background */
+.signin-wrapper {
   height: 100vh;
   width: 100%;
-  background-color: #ea752c; 
+  background-color: #ea752c;
   display: flex;
   justify-content: center;
   align-items: center;
- 
 }
 
-.login-content {
-  text-align: center;
-  color: white;
+/* White centered card */
+.signin-card {
+  background: white;
+  width: 380px;
+  padding: 35px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  text-align: left;
 }
 
-.title {
-    font-family: "syne", sans-serif;
-  font-size: 48px;
-  font-weight: 800;
-  margin-bottom: 10px;
-}
-
-
-.slogan {
-  font-size: 20px;
-  margin-bottom: 40px;
-  font-style: italic;
-   font-family: "inter tight", sans-serif;
-}
-
-/* Buttons */
-.button-group {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.btn {
-  padding: 15px 20px;
-  border-radius: 8px;
+/* Back button */
+.back-btn {
+  color: #ea752c;
+  font-weight: bold;
   text-decoration: none;
-  font-weight: bold;
-  font-size: 18px;
-  width: 250px;
-  margin: 0 auto;
-  display: block;
-}
-
-/* Sign In button */
-.primary {
-  background-color: white;
-  color: #ff8c42;
-}
-
-/* Create Account button */
-.secondary {
-  background-color: transparent;
-  border: 2px solid white;
-  color: white;
-}
-
-
-/* Continue as Guest button */
-.third {
-  background-color: transparent;
-  border: 3px solid white;
-  color: white;
-}
-
-/* About Us*/
-.about-section h2{
-  margin-top: 50px;
-  font-size: 20px;
-  color: #ff8c42;
-  font-family: "inter tight", sans-serif;
-  font-weight: bold;
-  text-decoration: underline;
-
-}
-
-/* About Us*/
-.about-section p{
   font-size: 16px;
-  color: #ff8c42;
-  font-family: "inter tight", sans-serif;
-  text-align: center;
-  max-width: 700px;
-  margin: 0 auto; 
+  margin-bottom: 10px;
+  display: inline-block;
 }
 
+.back-btn:hover {
+  text-decoration: underline;
+}
+
+/* Title */
+.signin-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 25px;
+  color: #ea752c;
+  font-family: "syne", sans-serif;
+}
+
+/* Labels */
+label {
+  font-weight: bold;
+  color: #ea752c;
+  margin-top: 12px;
+  display: block;
+  font-family: "inter tight", sans-serif;
+}
+
+/* Input */
+input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  background-color: white;
+  color: black;
+}
+
+/* Login button */
+.signin-btn {
+  width: 100%;
+  margin-top: 25px;
+  padding: 12px;
+  background-color: #ea752c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.signin-btn:disabled {
+  background-color: #f2b08a;
+  cursor: not-allowed;
+}
+
+.signin-btn:hover {
+  background-color: #d56624;
+}
+
+.Createaccount-btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-top: 15px;
+  padding: 12px;
+  background-color: white;
+  color: #ea752c;
+  border: 2px solid #ea752c;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.Createaccount-btn:hover {
+  background-color: #fff5ef;
+}

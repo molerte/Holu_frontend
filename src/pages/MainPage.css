@@ -1,0 +1,90 @@
+/* Orange Background */
+.login-wrapper {
+  min-height: 100vh;
+  width: 100%;
+  background-color: #ea752c;
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  overflow-y: auto; 
+  padding-bottom: 40px; 
+}
+
+
+.login-content {
+  text-align: center;
+  color: white;
+}
+
+.title {
+    font-family: "syne", sans-serif;
+  font-size: 48px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+
+.slogan {
+  font-size: 20px;
+  margin-bottom: 40px;
+  font-style: italic;
+   font-family: "inter tight", sans-serif;
+}
+
+/* Buttons */
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.btn {
+  padding: 15px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+  width: 250px;
+  margin: 0 auto;
+  display: block;
+}
+
+/* Sign In button */
+.primary {
+  background-color: white;
+  color: #ff8c42;
+}
+
+/* Create Account button */
+.secondary {
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+}
+
+
+
+
+
+/* About Us*/
+
+.about-section h2{
+  margin-top: 50px;
+  font-size: 20px;
+  color: #ffffff;
+  font-family: "inter tight", sans-serif;
+  font-weight: bold;
+  text-decoration: underline;
+
+}
+
+
+.about-section p{
+  font-size: 16px;
+  color: #ffffff;
+  font-family: "inter tight", sans-serif;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto; 
+}
+

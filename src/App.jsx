@@ -1,16 +1,16 @@
 import { Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
-import CreateAccount from "./pages/CreateAccount";
-import SignIn from "./pages/SignIn";
+import Register from "./pages/Register";
+import MainPage from "./pages/MainPage";
 
 
 export default function App() {
   return (
     <Routes>
-      <Route path="/" element={<Login />} />
-      <Route path="/create-account" element={<CreateAccount />} />
-      <Route path="/signin" element={<SignIn />} />
-
+      <Route path="/" element={<MainPage />} />
+      <Route path="/register-account" element={<Register />} />
+      <Route path="/mainpage" element={<MainPage />} />
+      <Route path="/login" element={<Login />} />
     </Routes>
   );
-} /*End of App.jsx */
+}

@@ -1,24 +1,37 @@
-/* Full orange background */
-.signin-wrapper {
+
+.create-wrapper {
   height: 100vh;
   width: 100%;
   background-color: #ea752c;
   display: flex;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
+  padding: 40px 0; 
 }
 
-/* White centered card */
-.signin-card {
+
+.create-card {
   background: white;
   width: 380px;
-  padding: 35px;
+  padding: 10px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   text-align: left;
 }
 
-/* Back button */
+/* Title */
+.create-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 25px;
+  color: #ea752c;
+  font-family: "syne", sans-serif;
+}
+
+
+
 .back-btn {
   color: #ea752c;
   font-weight: bold;
@@ -32,15 +45,6 @@
   text-decoration: underline;
 }
 
-/* Title */
-.signin-title {
-  text-align: center;
-  font-size: 28px;
-  font-weight: 800;
-  margin-bottom: 25px;
-  color: #ea752c;
-  font-family: "syne", sans-serif;
-}
 
 /* Labels */
 label {
@@ -51,20 +55,18 @@ label {
   font-family: "inter tight", sans-serif;
 }
 
-/* Input */
+/* Inputs */
 input {
   width: 100%;
   padding: 10px;
   margin-top: 6px;
   border-radius: 6px;
-  border: 1px solid #ccc;
+  border: 5px solid #ccc;
   font-size: 16px;
-  background-color: white;
-  color: black;
 }
 
-/* Login button */
-.signin-btn {
+/* Submit button */
+.submit-btn {
   width: 100%;
   margin-top: 25px;
   padding: 12px;
@@ -77,6 +79,35 @@ input {
   cursor: pointer;
 }
 
-.signin-btn:hover {
+.submit-btn:disabled {
+  background-color: #f2b08a;
+  cursor: not-allowed;
+}
+
+
+.submit-btn:hover {
   background-color: #d56624;
 }
+
+.already-btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-top: 15px;
+  padding: 12px;
+  background-color: white;
+  color: #ea752c;
+  border: 2px solid #ea752c;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+
+.already-btn:hover {
+  background-color: #fff5ef;
+}
+

@@ -1,37 +1,69 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Login.css";
 
 function Login() {
+  const [formData, setFormData] = useState({
+    
+    username: "",
+    password: "",
+    
+  });
+
+  const isFormValid = formData.username !== "" && formData.password !== "";
+
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Login submitted:", formData);
+  };
+
   return (
-    <>
-      {/* LOGIN PAGE */}
-      <div className="login-wrapper">
-        <div className="login-content">
-          <h1 className="title">HOLU FITNESS</h1>
-          <p className="slogan">"Your Routine, Their Inspiration"</p>
+    <div className="signin-wrapper">
+      <div className="signin-card">
 
-          <div className="button-group">
-            <a href="/signin" className="btn primary">Sign In</a>
-            <a href="/create-account" className="btn secondary">Create new account</a>
-            <a href="/guest" className="btn third">Continue as guest</a>
-          </div>
-        </div>
+        <a href="/" className="back-btn">&lt; Back</a>
+
+        <h1 className="signin-title">LOGIN</h1>
+
+        <form onSubmit={handleSubmit}>
+          <label>User Name:</label>
+          <input
+            type="text"
+            name="username"
+            value={formData.username}
+            onChange={handleChange}
+            placeholder="Enter username"
+          />
+
+          <label>Password:</label>
+          <input
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            placeholder="Enter password"
+          />
+
+          <button 
+  type="submit" 
+  className="signin-btn" 
+  disabled={!isFormValid}
+>
+  Login
+</button>
+
+
+          <a href="/register-account" className="Createaccount-btn">
+            Create new account
+          </a> 
+
+        </form>
       </div>
-
-      {/* ABOUT US SECTION */}
-      <div className="about-section">
-        <h2>About Holu Fitness</h2>
-        <p>
-          Holu is a community fitness app designed for Fitness enthusiasts, 
-          Trainers, and Beginners alike. Our goal is to connect users 
-          through shared workout routines,encouraging a supportive and 
-          engaging environment. Whether you're looking to share your fitness 
-          routine, find new workouts, or just connect with other like-minded people, 
-          Holu has something for everyone.
-
-        </p>
-      </div>
-    </>
+    </div>
   );
 }
 
