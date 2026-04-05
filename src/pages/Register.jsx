@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "./CreateAccount.css";
+import "./Register.css";
 
-function CreateAccount() {
+function Register() {
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -9,8 +9,17 @@ function CreateAccount() {
     password: "",
   });
 
+  const isFormValid =
+  formData.fullName !== "" &&
+  formData.email !== "" &&
+  formData.username !== "" &&
+  formData.password !== "";
+
+
   const handleChange = (e) => {
-    setFormData({ formData, [e.target.name]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: e.target.value 
+});
+
   };
 
   const handleSubmit = (e) => {
@@ -24,7 +33,7 @@ function CreateAccount() {
 
         <a href="/" className="back-btn">&lt; Back</a>
 
-        <h1 className="create-title">CREATE ACCOUNT</h1>
+        <h1 className="create-title">REGISTER ACCOUNT</h1>
 
         <form onSubmit={handleSubmit}>
           <label>Full Name:</label>
@@ -63,11 +72,20 @@ function CreateAccount() {
             placeholder="Enter password"
           />
 
-          <button type="submit" className="submit-btn">Submit</button>
+          <button type="submit" className="submit-btn" disabled={!isFormValid}>
+            Submit
+          </button>
+
+
+          <a href="/login" className="already-btn">
+            I already have an account
+          </a>
+
+
         </form>
       </div>
     </div>
   );
 }
 
-export default CreateAccount;
+export default Register;
