@@ -9,6 +9,7 @@ export default function Navbar() {
             <div className="container-fluid">
             <Link className="navbar-brand mx-auto" to="/">Home</Link>
             <Link className="navbar-brand mx-auto" to="/login">Login</Link>
+            <Link className="navbar-brand mx-auto" to="/MyRoutines">My Routines</Link>
             </div>
         </nav>
         </div>
