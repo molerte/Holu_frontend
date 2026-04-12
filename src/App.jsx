@@ -4,6 +4,8 @@ import Register from "./pages/Register";
 import MainPage from "./pages/MainPage";
 import Navbar from "./layout/Navbar";
 import MyRoutines from "./pages/MyRoutines";
+import Routines from "./pages/Routines";
+
 
 export default function App() {
   return (
@@ -14,7 +16,8 @@ export default function App() {
       <Route path="/register-account" element={<Register />} />
       <Route path="/mainpage" element={<MainPage />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/MyRoutines" element={<MyRoutines />} />
+      <Route path="/myroutines" element={<MyRoutines />} />
+      <Route path="/routines" element={<Routines />} />
     </Routes>
     </>
   );

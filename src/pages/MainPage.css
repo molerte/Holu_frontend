@@ -1,4 +1,4 @@
-/* Orange Background */
+
 .login-wrapper {
   min-height: 100vh;
   width: 100%;
@@ -17,7 +17,7 @@
 }
 
 .title {
-    font-family: "syne", sans-serif;
+  font-family: "syne", sans-serif;
   font-size: 48px;
   font-weight: 800;
   margin-bottom: 10px;
@@ -31,7 +31,7 @@
    font-family: "inter tight", sans-serif;
 }
 
-/* Buttons */
+
 .button-group {
   display: flex;
   flex-direction: column;
@@ -49,19 +49,23 @@
   display: block;
 }
 
-/* Sign In button */
+/* Log In button */
 .primary {
   background-color: white;
   color: #ff8c42;
 }
 
-/* Create Account button */
+/* Register Account button */
 .secondary {
-  background-color: transparent;
-  border: 2px solid white;
-  color: white;
+   background-color: white;
+  color: #ff8c42;
 }
 
+/* Explore Routines button */
+.tertiary{
+  background-color: white;
+  color: #ff8c42;
+}
 
 
 
