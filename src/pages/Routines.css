@@ -1,0 +1,101 @@
+
+.routine-title {
+  font-size: 50px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 25px;
+font-family: "syne", sans-serif;
+}
+
+.routine-divider{
+    color: white;
+}
+
+
+.routine-wrapper {
+  height: 100vh;
+  width: 100%;
+  background-color: #ea752c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 40px;
+}
+
+
+
+.routine-card {
+  background: white !important;
+  height: 220px;
+  width: 200px;
+  padding: 35px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  text-align: left;
+  outline: 3px solid #ea752c;
+
+}
+.routine-content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 95%;
+  background-color: #ffffff; 
+  border: 2px solid black;
+  padding: 30px;
+  border-radius: 12px;
+}
+
+
+.ownerUserName
+{
+  font-size: 50px;
+  font-weight: 700;
+  color: black;
+  
+}
+
+
+.routine-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
+}
+
+.routine-description-box {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  outline: 3px solid red;
+  color: black;
+   font-size: 20px;
+}
+
+
+.routine-card {
+  background: white;
+  height: 220px;
+  width: 200px;
+  padding: 35px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  outline: 3px solid red;
+}
+
+
+.like-button {
+  margin-top: 25px;
+  font-size: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: black;
+  transition: transform 0.2s ease;
+}
+
+.like-button.liked {
+  transform: scale(1.2);
+}

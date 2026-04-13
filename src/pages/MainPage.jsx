@@ -13,6 +13,7 @@ function Login() {
     <div className="button-group">
       <a href="/login" className="btn primary">Log In</a>
       <a href="/register-account" className="btn secondary">Register Account</a>
+      <a href="/routines" className="btn tertiary">Explore Routines</a>
     </div>
   </div>
 

@@ -1,0 +1,73 @@
+
+.routine-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: black;
+  margin-bottom: 25px;
+}
+
+.routine-wrapper {
+  height: 100vh;
+  width: 100%;
+  background-color: #ea752c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 40px;
+}
+
+.routine-card {
+  background: white !important;
+  height: 220px;
+  width: 200px;
+  padding: 35px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  text-align: left;
+  outline: 2px solid red;
+}
+
+.routine-grid {
+    display: grid;
+    gap: 20px;
+    height: auto;
+    width: 95%;
+    grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
+
+}
+.routine-actions {
+  margin-top: 50px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.edit-btn,
+.publish-btn {
+  padding: 14px 32px;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  transition: 0.2s ease;
+}
+
+.edit-btn:hover,
+.publish-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+}
+.routine-divider {
+  width: 100%;
+  height: 6px;
+  background: black;
+  margin-bottom: 30px;
+  border-radius: 4px;
+}
