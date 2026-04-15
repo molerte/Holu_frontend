@@ -3,14 +3,14 @@ import "./Register.css";
 
 function Register() {
   const [formData, setFormData] = useState({
-    fullName: "",
+    name: "",
     email: "",
     username: "",
     password: "",
   });
 
   const isFormValid =
-  formData.fullName !== "" &&
+  formData.name !== "" &&
   formData.email !== "" &&
   formData.username !== "" &&
   formData.password !== "";
@@ -22,10 +22,30 @@ function Register() {
 
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-  };
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  try {
+    const response = await fetch("http://localhost:8080/api/auth/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
+
+    if (response.ok) {
+      alert("Account created successfully!");
+      window.location.href = "/login";
+    } else if (response.status === 409) {
+      alert("Email or username already exists");
+    } else {
+      alert("Registration failed");
+    }
+  } catch (error) {
+    console.error(error);
+    alert("Server error");
+  }
+};
+
 
   return (
     <div className="create-wrapper">
@@ -39,8 +59,8 @@ function Register() {
           <label>Full Name:</label>
           <input
             type="text"
-            name="fullName"
-            value={formData.fullName}
+            name="name"
+            value={formData.name}
             onChange={handleChange}
             placeholder="Enter full name"
           />
