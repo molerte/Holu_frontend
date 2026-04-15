@@ -1,25 +1,47 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./MyRoutines.css";
 
 function MyRoutines() {
+  const [routines, setRoutines] = useState([]);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      window.location.href = "/login";
+      return;
+    }
+
+    fetch("http://localhost:8080/api/routines", {
+      headers: {
+        "Authorization": `Bearer ${token}`,
+        "Content-Type": "application/json"
+      }
+    })
+      .then(res => res.json())
+      .then(data => setRoutines(data))
+      .catch(err => console.error(err));
+  }, []);
+
   return (
-    
     <div className="routine-wrapper">
       <h1 className="routine-title">My Routine</h1>
       <div className="routine-divider"></div>
-        <div className="routine-grid">
-            <div className="routine-card">Monday</div>
-            <div className="routine-card">Tuesday</div>
-            <div className="routine-card">Wedensday</div>
-            <div className="routine-card">Thursday</div>
-            <div className="routine-card">Friday</div>
-            <div className="routine-card">Saturday</div>
-            <div className="routine-card">Sunday</div>
-         </div>
+
+      <div className="routine-grid">
+        <div className="routine-card">Monday</div>
+        <div className="routine-card">Tuesday</div>
+        <div className="routine-card">Wednesday</div>
+        <div className="routine-card">Thursday</div>
+        <div className="routine-card">Friday</div>
+        <div className="routine-card">Saturday</div>
+        <div className="routine-card">Sunday</div>
+      </div>
+
       <div className="routine-actions">
         <button className="edit-btn">Edit</button>
         <button className="publish-btn">Publish</button>
-  </div>
+      </div>
     </div>
   );
 }
