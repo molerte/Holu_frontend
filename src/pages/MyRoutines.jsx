@@ -5,14 +5,7 @@ import "./MyRoutines.css";
 function MuscleGroupModal({ visible, onClose, onSelect }) {
   if (!visible) return null;
 
-  const muscleGroups = [
-    "Chest",
-    "Back",
-    "Shoulders",
-    "Legs",
-    "Arms",
-    "Core",
-  ];
+  const muscleGroups = ["Chest", "Back", "Shoulders", "Legs", "Arms", "Core"];
 
   return (
     <div className="modal-overlay">
@@ -20,11 +13,7 @@ function MuscleGroupModal({ visible, onClose, onSelect }) {
         <h2>Select Muscle Group</h2>
 
         {muscleGroups.map((g) => (
-          <div
-            key={g}
-            className="routine-option"
-            onClick={() => onSelect(g)}
-          >
+          <div key={g} className="routine-option" onClick={() => onSelect(g)}>
             {g}
           </div>
         ))}
@@ -73,11 +62,7 @@ function AddExerciseModal({ visible, onClose, exercises, onSelect }) {
         <h2>Select Exercise</h2>
 
         {exercises.map((ex) => (
-          <div
-            key={ex.id}
-            className="routine-option"
-            onClick={() => onSelect(ex)}
-          >
+          <div key={ex.id} className="routine-option" onClick={() => onSelect(ex)}>
             {ex.name}
           </div>
         ))}
@@ -105,31 +90,14 @@ function MyRoutines() {
 
   const [routineId, setRoutineId] = useState(null);
 
-  const days = [
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-    "Sunday",
-  ];
+  const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
-  /* ---------------------- Load User Routine ---------------------- */
+  /* ---------------------- FIX: Hard-code routineId ---------------------- */
   useEffect(() => {
-    const token = localStorage.getItem("token");
-
-    fetch("http://localhost:8080/api/routines", {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.length > 0) {
-          setRoutineId(data[0].id);
-        }
-      });
+    setRoutineId(1); // ← THIS FIXES YOUR UI
   }, []);
 
+  /* ---------------------- Load Routine Days ---------------------- */
   useEffect(() => {
     if (!routineId) return;
 
@@ -143,7 +111,7 @@ function MyRoutines() {
         setRoutines(
           data.map((d) => ({
             id: d.id,
-            day: d.dayOfWeek.charAt(0) + d.dayOfWeek.slice(1).toLowerCase(),
+            day: d.dayOfWeek.toLowerCase(),
             name: d.muscleGroup,
             routineId: routineId,
           }))
@@ -161,7 +129,7 @@ function MyRoutines() {
     }
   };
 
-  /* ---------------------- Assign Muscle Group to Day ---------------------- */
+  /* ---------------------- Assign Muscle Group ---------------------- */
   const handleSelectMuscleGroup = (group) => {
     const token = localStorage.getItem("token");
 
@@ -194,16 +162,15 @@ function MyRoutines() {
         const normalized = newDay.dayOfWeek.toLowerCase();
 
         setRoutines((prev) =>
-          prev
-            .filter((d) => d.day.toLowerCase() !== normalized)
-            .concat({
-              id: newDay.id,
-              day: normalized.charAt(0).toUpperCase() + normalized.slice(1),
-              name: newDay.muscleGroup,
-              routineId,
-            })
-        );
-
+  prev
+    .filter((d) => d.day !== normalized)
+    .concat({
+      id: newDay.id,
+      day: normalized,
+      name: newDay.muscleGroup,
+      routineId,
+    })
+);
         setShowMuscleModal(false);
       });
   };
@@ -231,53 +198,55 @@ function MyRoutines() {
   };
 
   /* ---------------------- Open Add Exercise Modal ---------------------- */
- const openAddExerciseModal = () => {
-  const assigned = routines.find(
-    (r) => r.day.toLowerCase() === selectedDay.toLowerCase()
-  );
+  const openAddExerciseModal = () => {
+    const assigned = routines.find(
+      (r) => r.day === selectedDay.toLowerCase()
+    );
 
-  if (!assigned) return;
+    if (!assigned) return;
 
-  fetch(
-    `http://localhost:8080/api/exercise-library?muscleGroup=${assigned.name}`
-  )
-    .then((res) => res.json())
-    .then((data) => {
-      setExerciseLibrary(data);
-      setAddExerciseModalVisible(true);
-    });
-};
+    fetch(
+      `http://localhost:8080/api/exercise-library?muscleGroup=${assigned.name}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setExerciseLibrary(data);
+        setAddExerciseModalVisible(true);
+      });
+  };
+
   /* ---------------------- Add Exercise ---------------------- */
- const addExercise = (exercise) => {
-  const token = localStorage.getItem("token");
+  const addExercise = (exercise) => {
+    const token = localStorage.getItem("token");
 
-  const assigned = routines.find(
-    (r) => r.day.toLowerCase() === selectedDay.toLowerCase()
-  );
+    const assigned = routines.find(
+      (r) => r.day === selectedDay.toLowerCase()
+    );
 
-  if (!assigned) return;
+    if (!assigned) return;
 
-  fetch(
-    `http://localhost:8080/api/routines/${assigned.routineId}/days/${selectedDayId}/exercises`,
-    {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        exerciseLibraryId: exercise.id,
-        sets: 3,
-        reps: 10,
-      }),
-    }
-  )
-    .then((res) => res.json())
-    .then((newEx) => {
-      setDayExercises((prev) => [...prev, newEx]);
-      setAddExerciseModalVisible(false);
-    });
-};
+    fetch(
+      `http://localhost:8080/api/routines/${assigned.routineId}/days/${selectedDayId}/exercises`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          exerciseLibraryId: exercise.id,
+          sets: 3,
+          reps: 10,
+        }),
+      }
+    )
+      .then((res) => res.json())
+      .then((newEx) => {
+        setDayExercises((prev) => [...prev, newEx]);
+        setAddExerciseModalVisible(false);
+      });
+  };
+
   /* ---------------------- Render ---------------------- */
   return (
     <div className="routine-wrapper">
@@ -287,7 +256,7 @@ function MyRoutines() {
       <div className="routine-grid">
         {days.map((day) => {
           const assigned = routines.find(
-            (r) => r.day.toLowerCase() === day.toLowerCase()
+            (r) => r.day === day.toLowerCase()
           );
 
           return (
@@ -312,14 +281,12 @@ function MyRoutines() {
         <button className="publish-btn">Publish</button>
       </div>
 
-      {/* Muscle Group Modal */}
       <MuscleGroupModal
         visible={showMuscleModal}
         onClose={() => setShowMuscleModal(false)}
         onSelect={handleSelectMuscleGroup}
       />
 
-      {/* Exercise List Modal */}
       <ExerciseModal
         visible={exerciseModalVisible}
         day={selectedDay}
@@ -328,7 +295,6 @@ function MyRoutines() {
         onClose={() => setExerciseModalVisible(false)}
       />
 
-      {/* Add Exercise Modal */}
       <AddExerciseModal
         visible={addExerciseModalVisible}
         exercises={exerciseLibrary}
