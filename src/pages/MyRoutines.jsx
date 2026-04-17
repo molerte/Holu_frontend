@@ -63,7 +63,7 @@ function ExerciseModal({ visible, onClose, day, exercises, onAddExercise }) {
   );
 }
 
-/* -------------------- 3. Add Exercise Modal ---------------------- */
+/* ---------------------- 3. Add Exercise Modal ---------------------- */
 function AddExerciseModal({ visible, onClose, exercises, onSelect }) {
   if (!visible) return null;
 
@@ -88,7 +88,7 @@ function AddExerciseModal({ visible, onClose, exercises, onSelect }) {
   );
 }
 
-/* ---------------------- MAIN ROUTINES ---------------------- */
+/* ---------------------- MAIN COMPONENT ---------------------- */
 function MyRoutines() {
   const [routines, setRoutines] = useState([]);
   const [editMode, setEditMode] = useState(false);
@@ -312,14 +312,14 @@ function MyRoutines() {
         <button className="publish-btn">Publish</button>
       </div>
 
-      /* Muscle Group Modal */
+      {/* Muscle Group Modal */}
       <MuscleGroupModal
         visible={showMuscleModal}
         onClose={() => setShowMuscleModal(false)}
         onSelect={handleSelectMuscleGroup}
       />
 
-      /* Exercise List Modal */
+      {/* Exercise List Modal */}
       <ExerciseModal
         visible={exerciseModalVisible}
         day={selectedDay}
@@ -328,7 +328,7 @@ function MyRoutines() {
         onClose={() => setExerciseModalVisible(false)}
       />
 
-      /* Add Exercise Modal */
+      {/* Add Exercise Modal */}
       <AddExerciseModal
         visible={addExerciseModalVisible}
         exercises={exerciseLibrary}
