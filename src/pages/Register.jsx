@@ -48,12 +48,12 @@ const handleSubmit = async (e) => {
 
 
   return (
-    <div className="create-wrapper">
-      <div className="create-card">
+<div className="create-wrapper">
+  <div className="create-card">
 
-        <a href="/" className="back-btn">&lt; Back</a>
+    <a href="/" className="register-back-btn">&lt; Back</a>
 
-        <h1 className="create-title">REGISTER ACCOUNT</h1>
+    <h1 className="create-title">REGISTER ACCOUNT</h1>
 
         <form onSubmit={handleSubmit}>
           <label>Full Name:</label>

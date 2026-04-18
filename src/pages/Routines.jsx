@@ -6,6 +6,7 @@ function Routines() {
 
   return (
     <div className="routine-wrapper">
+      <a href="/" className="routine-back-btn">&lt; Back</a>
       <h1 className="routine-title"> Explore Routines</h1>
       <div className="routine-divider"></div>
 

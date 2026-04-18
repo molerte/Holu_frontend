@@ -45,7 +45,8 @@ function Login() {
   return (
     <div className="signin-wrapper">
       <div className="signin-card">
-        <a href="/" className="back-btn">&lt; Back</a>
+       <a href="/" className="login-back-btn">&lt; Back</a>
+
 
         <h1 className="signin-title">LOGIN</h1>
 
