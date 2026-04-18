@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 export default function Navbar() {
   const token = localStorage.getItem("token");
 
+  if (!token) return null
+
   const logout = () => {
     localStorage.removeItem("token");
     window.location.href = "/login";
@@ -13,7 +15,6 @@ export default function Navbar() {
     <div className="nav-wrapper">
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark rounded-4 px-4 py-2">
         <div className="container-fluid">
-          <Link className="navbar-brand mx-auto" to="/">Home</Link>
 
           {!token && (
             <Link className="navbar-brand mx-auto" to="/login">Login</Link>
@@ -26,6 +27,9 @@ export default function Navbar() {
           )}
 
           <Link className="navbar-brand mx-auto" to="/myroutines">My Routines</Link>
+
+          <Link className="navbar-brand mx-auto" to="/routines">Explore Routines</Link>
+
         </div>
       </nav>
     </div>

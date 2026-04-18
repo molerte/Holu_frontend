@@ -14,13 +14,14 @@
 .create-card {
   background: white;
   width: 380px;
-  padding: 10px;
+  padding: 20px;
+  padding-top: 25px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   text-align: left;
 }
 
-/* Title */
+
 .create-title {
   text-align: center;
   font-size: 28px;
@@ -32,18 +33,20 @@
 
 
 
-.back-btn {
+.register-back-btn {
   color: #ea752c;
   font-weight: bold;
   text-decoration: none;
   font-size: 16px;
   margin-bottom: 10px;
+  margin-left: 5px;
   display: inline-block;
 }
 
-.back-btn:hover {
+.register-back-btn:hover {
   text-decoration: underline;
 }
+
 
 
 /* Labels */
@@ -65,7 +68,7 @@ input {
   font-size: 16px;
 }
 
-/* Submit button */
+
 .submit-btn {
   width: 100%;
   margin-top: 25px;
