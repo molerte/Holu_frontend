@@ -1,16 +1,17 @@
 import React, { useState } from "react";
+import { API_BASE_URL } from "../api/api";
 import "./Register.css";
 
 function Register() {
   const [formData, setFormData] = useState({
-    fullName: "",
+    name: "",
     email: "",
     username: "",
     password: "",
   });
 
   const isFormValid =
-  formData.fullName !== "" &&
+  formData.name !== "" &&
   formData.email !== "" &&
   formData.username !== "" &&
   formData.password !== "";
@@ -22,25 +23,45 @@ function Register() {
 
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-  };
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/auth/register`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
+
+    if (response.ok) {
+      alert("Account created successfully!");
+      window.location.href = "/login";
+    } else if (response.status === 409) {
+      alert("Email or username already exists");
+    } else {
+      alert("Registration failed");
+    }
+  } catch (error) {
+    console.error(error);
+    alert("Server error");
+  }
+};
+
 
   return (
-    <div className="create-wrapper">
-      <div className="create-card">
+<div className="create-wrapper">
+  <div className="create-card">
 
-        <a href="/" className="back-btn">&lt; Back</a>
+    <a href="/" className="register-back-btn">&lt; Back</a>
 
-        <h1 className="create-title">REGISTER ACCOUNT</h1>
+    <h1 className="create-title">REGISTER ACCOUNT</h1>
 
         <form onSubmit={handleSubmit}>
           <label>Full Name:</label>
           <input
             type="text"
-            name="fullName"
-            value={formData.fullName}
+            name="name"
+            value={formData.name}
             onChange={handleChange}
             placeholder="Enter full name"
           />
