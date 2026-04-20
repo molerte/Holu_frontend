@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { API_BASE_URL } from "../api/api";
 import "./MyRoutines.css";
 
 /* ---------------------- 1. Muscle Group Modal ---------------------- */
@@ -103,7 +104,7 @@ function MyRoutines() {
 
     const token = localStorage.getItem("token");
 
-    fetch(`http://localhost:8080/api/routines/${routineId}/days`, {
+    fetch(`${API_BASE_URL}/api/routines/${routineId}/days`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
@@ -144,8 +145,8 @@ function MyRoutines() {
     };
 
     const url = existing
-      ? `http://localhost:8080/api/routines/${routineId}/days/${existing.id}`
-      : `http://localhost:8080/api/routines/${routineId}/days`;
+      ? `${API_BASE_URL}/api/routines/${routineId}/days/${existing.id}`
+      : `${API_BASE_URL}/api/routines/${routineId}/days`;
 
     const method = existing ? "PUT" : "POST";
 
@@ -185,7 +186,7 @@ function MyRoutines() {
     if (!dayObj) return;
 
     fetch(
-      `http://localhost:8080/api/routines/${dayObj.routineId}/days/${dayObj.id}/exercises`,
+      `${API_BASE_URL}/api/routines/${dayObj.routineId}/days/${dayObj.id}/exercises`,
       { headers: { Authorization: `Bearer ${token}` } }
     )
       .then((res) => res.json())
@@ -206,7 +207,7 @@ function MyRoutines() {
     if (!assigned) return;
 
     fetch(
-      `http://localhost:8080/api/exercise-library?muscleGroup=${assigned.name}`
+      `${API_BASE_URL}/api/exercise-library?muscleGroup=${assigned.name}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -226,7 +227,7 @@ function MyRoutines() {
     if (!assigned) return;
 
     fetch(
-      `http://localhost:8080/api/routines/${assigned.routineId}/days/${selectedDayId}/exercises`,
+      `${API_BASE_URL}/api/routines/${assigned.routineId}/days/${selectedDayId}/exercises`,
       {
         method: "POST",
         headers: {
