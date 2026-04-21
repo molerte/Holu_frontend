@@ -3,7 +3,7 @@ import { getDaysByRoutine, addDay, updateDay, deleteDay } from '../api/workoutDa
 import { useAuth } from '../context/AuthContext';
 
 export const useWorkoutDays = (routineId) => {
-    const { token } = useAuth();    
+    const { token } = useAuth();
     const [days, setDays] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);

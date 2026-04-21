@@ -3,12 +3,12 @@ import { getByMuscleGroup } from '../api/exerciseLibraryApi';
 import { useAuth } from '../context/AuthContext';
 
 export const useExerciseLibrary = (muscleGroup) => {
-    const { token } = useAuth();
-    const [library, setLibrary] = useState([]);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
+  const { token } = useAuth();
+  const [library, setLibrary] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-    useEffect(() => {
+  useEffect(() => {
     if (!muscleGroup || muscleGroup === 'REST') {
       setLibrary([]);
       setError(null);

@@ -2,12 +2,12 @@ import { useState, useEffect, useCallback } from 'react';
 import { searchRoutines } from '../api/routineApi';
 
 export const useSearch = (delay = 400) => {
-    const [query, setQuery] = useState('');
-    const [results, setResults] = useState([]);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
+  const [query, setQuery] = useState('');
+  const [results, setResults] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-    useEffect(() => {
+  useEffect(() => {
     if (!query.trim()) {
       setResults([]);
       return;
@@ -23,9 +23,9 @@ export const useSearch = (delay = 400) => {
         setLoading(false);
       }
     }, delay);
- 
+
     return () => clearTimeout(timer);
   }, [query, delay]);
- 
+
   return { query, setQuery, results, loading, error };
 };

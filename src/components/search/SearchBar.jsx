@@ -16,7 +16,7 @@ const SearchBar = ({ onSearch, placeholder = 'Search by routine, tag, or exercis
                 <path d="M21 21l-4.35-4.35" />
             </svg>
             <input
-                
+
                 className="searchbar-input"
                 type="text"
                 placeholder={placeholder}
