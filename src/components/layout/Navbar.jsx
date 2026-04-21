@@ -17,10 +17,10 @@ const Navbar = () => {
         Holu<span>.</span>
       </Link>
 
-        <div className="navbar-links">
-          <Link to="/routines" className="navbar-link">
-            Routines
-          </Link>
+      <div className="navbar-links">
+        <Link to="/routines" className="navbar-link">
+          Routines
+        </Link>
         {isAuthenticated ? (
           <>
             <Link to="/myroutines" className="navbar-link">
@@ -33,7 +33,7 @@ const Navbar = () => {
           </>
         ) : (
           <div className="navbar-auth-actions">
-            <Link to ="/login" className="navbar-link navbar-link-login">Login</Link>
+            <Link to="/login" className="navbar-link navbar-link-login">Login</Link>
             <Link to="/register-account" className="navbar-link navbar-link-create">Register</Link>
           </div>
         )}

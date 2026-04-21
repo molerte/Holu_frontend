@@ -24,7 +24,6 @@ export const publishRoutine = (id, token) =>
 export const unpublishRoutine = (id, token) =>
   client(`/api/routines/${id}/unpublish`, { method: 'POST', token });
 
-// Single toggle endpoint — backend handles like/unlike logic
 export const toggleLike = (id, token) =>
   client(`/api/routines/${id}/like`, { method: 'POST', token });
 
