@@ -93,11 +93,39 @@ function MyRoutines() {
 
   const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
-  /* ---------------------- FIX: Hard-code routineId ---------------------- */
-  useEffect(() => {
-    setRoutineId(1); // ← THIS FIXES YOUR UI
-  }, []);
+  /* ---------------------- Routines Now have Individual Users ---------------------- */
+ useEffect(() => {
+  const userId = localStorage.getItem("userId");
+  const username = localStorage.getItem("username");
+  const token = localStorage.getItem("token");
 
+  fetch(`${API_BASE_URL}/api/routines/user/${userId}`, {
+    headers: { Authorization: `Bearer ${token}` }
+  })
+    .then(res => res.json())
+    .then(async (userRoutines) => {
+      let myRoutine = userRoutines.find(r => r.ownerUsername === username);
+
+      // If user has no routine -> create one
+      if (!myRoutine) {
+        const response = await fetch(`${API_BASE_URL}/api/routines`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+          },
+          body: JSON.stringify({
+            title: "My Routine",
+            description: "Auto-created routine"
+          })
+        });
+
+        myRoutine = await response.json();
+      }
+
+      setRoutineId(myRoutine.id);
+    });
+}, []);
   /* ---------------------- Load Routine Days ---------------------- */
   useEffect(() => {
     if (!routineId) return;
