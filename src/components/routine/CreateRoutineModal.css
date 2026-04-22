@@ -1,0 +1,227 @@
+.create-routine-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.create-routine-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.create-routine-textarea {
+    background-color: var(--bg-input);
+    border: 1.5px solid transparent;
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    resize: vertical;
+    font-family: var(--font-body);
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+    width: 100%;
+    outline: none;
+    line-height: 1.5;
+}
+
+.create-routine-textarea:focus {
+    border-color: var(--brand-black);
+    background-color: var(--bg-card);
+}
+
+.create-routine-textarea::placeholder {
+    color: var(--text-muted);
+}
+
+.create-routine-tags-input {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    align-items: center;
+    background-color: var(--bg-input);
+    border: 1.5px solid transparent;
+    border-radius: var(--radius-md);
+    padding: var(--space-sm) var(--space-md);
+    min-height: 46px;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.create-routine-tags-input:focus-within {
+    border-color: var(--brand-black);
+    background-color: var(--bg-card);
+}
+
+.create-routine-tag-field {
+    border: none;
+    background: none;
+    font-size: 0.875rem;
+    color: var(--text-primary);
+    flex: 1;
+    min-width: 120px;
+    outline: none;
+    font-family: var(--font-body);
+}
+
+.create-routine-tag-field::placeholder {
+    color: var(--text-muted);
+}
+
+.create-routine-days-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.create-routine-day-count {
+    font-size: 0.8rem;
+    font-weight: 600;
+    border-radius: var(--radius-full);
+    padding: 2px var(--space-sm);
+}
+
+.create-routine-day-count--invalid {
+    background-color: rgba(255, 59, 48, 0.08);
+    color: var(--error);
+}
+
+.create-routine-day-count--valid {
+    background-color: rgba(52, 199, 89, 0.1);
+    color: var(--success);
+}
+
+.create-routine-days {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    background-color: var(--bg-input);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+}
+
+.create-routine-day-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.create-routine-day-toggle {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    cursor: pointer;
+    min-width: 110px;
+}
+
+.create-routine-day-checkbox {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--brand-black);
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.create-routine-day-name {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.create-routine-day-muscle {
+    flex: 1;
+    background-color: var(--bg-card);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 6px var(--space-sm);
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.create-routine-day-muscle:focus {
+    border-color: var(--brand-black);
+}
+
+.create-routine-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-sm);
+    padding-top: var(--space-sm);
+    border-top: 1px solid var(--border);
+}
+
+.create-routine-input {
+    background-color: var(--bg-input);
+    border: 1.5px solid transparent;
+    border-radius: var(--radius-md);
+    padding: 10px var(--space-md);
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    width: 100%;
+    font-family: var(--font-body);
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+    outline: none;
+}
+
+.create-routine-input:focus {
+    border-color: var(--brand-black);
+    background-color: var(--bg-card);
+}
+
+.create-routine-input::placeholder {
+    color: var(--text-muted);
+}
+
+.create-routine-tag-error {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background-color: rgba(255, 59, 48, 0.08);
+    border: 1px solid rgba(255, 59, 48, 0.25);
+    border-radius: var(--radius-sm);
+    padding: 6px var(--space-md);
+    font-size: 0.8rem;
+    color: var(--error);
+    font-weight: 500;
+    margin-top: 4px;
+    animation: fadeInSlide 0.2s ease forwards;
+}
+
+.create-routine-tag-error::before {
+    font-size: 0.75rem;
+    flex-shrink: 0;
+}
+
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.create-routine-char-count {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-align: right;
+    margin-top: 2px;
+}
+
+.create-routine-char-count--warn {
+    color: var(--error);
+    font-weight: 600;
+}
+
+.create-routine-tags-input--error {
+    border-color: rgba(255, 59, 48, 0.5) !important;
+    background-color: rgba(255, 59, 48, 0.03);
+}
