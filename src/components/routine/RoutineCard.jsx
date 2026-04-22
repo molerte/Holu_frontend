@@ -230,3 +230,5 @@ const RoutineCard = memo(({ routine, isOwner = false, onDelete, onUpdated }) => 
         </article>
     );
 });
+
+export default RoutineCard;
