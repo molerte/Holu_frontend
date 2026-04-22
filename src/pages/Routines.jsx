@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { getAllRoutines, searchRoutines } from '../api/routineApi';
 import { useAuth } from '../context/AuthContext';
-//import RoutineCard from '../components/routine/RoutineCard';
+/*import RoutineCard from '../components/routine/RoutineCard';*/
 import SearchBar from '../components/search/SearchBar';
 import './Routines.css';
 

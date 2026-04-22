@@ -27,7 +27,7 @@ const SearchBar = ({ onSearch, placeholder = 'Search by routine, tag, or exercis
                 <button className="searchbar-clear" onClick={() => setQuery('')}>×</button>
             )}
         </div>
-    )
+    );
 };
 
 export default SearchBar;
