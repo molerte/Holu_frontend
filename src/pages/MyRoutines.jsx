@@ -282,7 +282,7 @@ function MyRoutines() {
       <h1 className="routine-title">My Routine</h1>
       <div className="routine-divider"></div>
 
-      <div className="routine-grid">
+      <div className="myroutine-routine-grid">
         {days.map((day) => {
           const assigned = routines.find(
             (r) => r.day === day.toLowerCase()
@@ -291,7 +291,7 @@ function MyRoutines() {
           return (
             <div
               key={day}
-              className={`routine-card ${editMode ? "editable" : ""}`}
+              className={`myroutine-routine-card ${editMode ? "editable" : ""}`}
               onClick={() => handleDayClick(day)}
             >
               <strong>{day}</strong>

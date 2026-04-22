@@ -3,12 +3,12 @@ import { getExercisesByDay, addExercise, updateExercise, deleteExercise } from '
 import { useAuth } from '../context/AuthContext';
 
 export const useExercises = (routineId, dayId) => {
-    const { token } = useAuth();
-    const [exercises, setExercises] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+  const { token } = useAuth();
+  const [exercises, setExercises] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-    const fetch = async () => {
+  const fetch = async () => {
     if (!routineId || !dayId) return;
     setLoading(true);
     try {
@@ -22,7 +22,7 @@ export const useExercises = (routineId, dayId) => {
   };
 
   useEffect(() => { fetch(); }, [routineId, dayId, token]);
- 
+
   const add = async (data) => {
     const newEx = await addExercise(routineId, dayId, data, token);
     setExercises((prev) => [...prev, newEx]);

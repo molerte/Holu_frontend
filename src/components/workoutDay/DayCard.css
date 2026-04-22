@@ -112,6 +112,15 @@
     font-weight: var(--font-display-weight-exercise);
 }
 
+.day-card-exercise {
+    font-size: 0.79rem;
+    color: rgba(255, 255, 255, 0.85);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: var(--font-display-weight-exercise);
+}
+
 .day-card-more {
     font-size: 0.68rem;
     color: rgba(255, 255, 255, 0,5);
@@ -180,7 +189,7 @@
         padding: var(--space-sm);
     }
 
-    .day-card__muscle {
+    .day-card-muscle {
         font-size: 1.2rem;
     }
 
