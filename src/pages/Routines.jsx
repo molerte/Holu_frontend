@@ -1,50 +1,107 @@
-import React, { useState } from "react";
-import "./Routines.css";
+import { useState, useEffect, useCallback } from 'react';
+import { getAllRoutines, searchRoutines } from '../api/routineApi';
+import { useAuth } from '../context/AuthContext';
+//import RoutineCard from '../components/routine/RoutineCard';
+import SearchBar from '../components/search/SearchBar';
+import './Routines.css';
 
-function Routines() {
-  const [liked, setLiked] = useState(false);
+const RoutineCardSkeleton = () => (
+  <div className="feed-skeleton">
+    <div className="feed-skeleton-title" />
+    <div className="feed-skeleton-days">
+      {[...Array(5)].map((_, i) => (
+        <div key={i} className="feed-skeleton-day" />
+      ))}
+    </div>
+  </div>
+);
+
+const Routines = () => {
+  const { token } = useAuth();
+  const [routines, setRoutines] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [isSearching, setIsSearching] = useState(false);
+
+  const fetchAll = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const data = await getAllRoutines(token);
+      setRoutines(data);
+    } catch {
+      setError('Failed to load routines');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => { fetchAll(); }, [token]);
+
+  const handleSearch = useCallback(async (query) => {
+    setLoading(true);
+    setError(null);
+    try {
+      if (!query.trim()) {
+        setIsSearching(false);
+        const data = await getAllRoutines(token);
+        setRoutines(data);
+      } else {
+        setIsSearching(true);
+        const data = await searchRoutines(query);
+        setRoutines(data);
+      }
+    } catch {
+      setError('Search failed.');
+    } finally {
+      setLoading(false);
+    }
+  }, [token]);
 
   return (
-    <div className="routine-wrapper">
-      <a href="/" className="routine-back-btn">&lt; Back</a>
-      <h1 className="routine-title"> Explore Routines</h1>
-      <div className="routine-divider"></div>
-
-      <div className="routine-content">
-
-        <div className="ownerUserName"> Jeff's Routine</div>
-        <div className="routine-grid">
-          <div className="routine-card">Monday</div>
-          <div className="routine-card">Tuesday</div>
-          <div className="routine-card">Wednesday</div>
-          <div className="routine-card">Thursday</div>
-          <div className="routine-card">Friday</div>
-          <div className="routine-card">Saturday</div>
-          <div className="routine-card">Sunday</div>
-        </div>
-
-  
-        <div className="routine-description-box">
-          <p>
-            I made this routine in college with hopes to build
-            a strong and active body in the gym. There are 3 days
-            of intense weightlifting, 2 days of calisthenics exercise
-            and 2 days of ACTIVE rest. The intensity of the exercises
-            can be altered to fit your level of fitness but you should
-            always be pushing your body with each day.
+    <div className="feed-page">
+      <div className="feed-page-header">
+        <div className="feed-page-hero">
+          <h1 className="feed-page-heading">
+            Discover<br />Routines
+          </h1>
+          <p className="feed-page-subheading">
+            Explore workout routines built by the community.
           </p>
-
-          <button
-            className={`like-button ${liked ? "liked" : ""}`}
-            onClick={() => setLiked(!liked)}
-          >
-            {liked ? "Unlike" : "Like"}
-          </button>
         </div>
+        <SearchBar onSearch={handleSearch} />
+      </div>
 
+      <div className="feed-page-content">
+        {error && <div className="feed-page-error">{error}</div>}
+
+        {loading ? (
+          <div className="feed-page-list">
+            {[...Array(3)].map((_, i) => <RoutineCardSkeleton key={i} />)}
+          </div>
+        ) : routines.length === 0 ? (
+          <div className="feed-page-empty">
+            <p>
+              {isSearching
+                ? 'No routines found for that search.'
+                : 'No routines yet. Be the first to create one!'}
+            </p>
+          </div>
+        ) : (
+          <div className="feed-page-list">
+            {routines.map((routine) => (
+              <RoutineCard
+                key={routine.id}
+                routine={routine}
+                isOwner={false}  
+                onDelete={undefined}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
-}
+};
 
 export default Routines;
