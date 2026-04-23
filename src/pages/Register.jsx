@@ -57,8 +57,9 @@ const handleSubmit = async (e) => {
     <h1 className="create-title">REGISTER ACCOUNT</h1>
 
         <form onSubmit={handleSubmit}>
-          <label>Full Name:</label>
+          <label className="register-label">Full Name:</label>
           <input
+            className="register-input"
             type="text"
             name="name"
             value={formData.name}
@@ -66,8 +67,9 @@ const handleSubmit = async (e) => {
             placeholder="Enter full name"
           />
 
-          <label>Email:</label>
+          <label className="register-label">Email:</label>
           <input
+            className="register-input"
             type="email"
             name="email"
             value={formData.email}
@@ -75,8 +77,9 @@ const handleSubmit = async (e) => {
             placeholder="Enter email"
           />
 
-          <label>Username:</label>
+          <label className="register-label">Username:</label>
           <input
+            className="register-input"
             type="text"
             name="username"
             value={formData.username}
@@ -84,8 +87,8 @@ const handleSubmit = async (e) => {
             placeholder="Enter username"
           />
 
-          <label>Password:</label>
-          <input
+          <label className="register-label">Password:</label>
+          <input className="register-input"
             type="password"
             name="password"
             value={formData.password}

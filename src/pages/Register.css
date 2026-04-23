@@ -49,8 +49,7 @@
 
 
 
-/* Labels */
-label {
+.register-label {
   font-weight: bold;
   color: #ea752c;
   margin-top: 12px;
@@ -58,8 +57,7 @@ label {
   font-family: "inter tight", sans-serif;
 }
 
-/* Inputs */
-input {
+.register-input {
   width: 100%;
   padding: 10px;
   margin-top: 6px;

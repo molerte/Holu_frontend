@@ -63,7 +63,7 @@ const Routines = () => {
       <div className="feed-page-header">
         <div className="feed-page-hero">
           <h1 className="feed-page-heading">
-            Discover<br />Routines
+            Explore<br />Routines
           </h1>
           <p className="feed-page-subheading">
             Explore workout routines built by the community.
@@ -93,7 +93,7 @@ const Routines = () => {
               <RoutineCard
                 key={routine.id}
                 routine={routine}
-                isOwner={false}  
+                isOwner={false}
                 onDelete={undefined}
               />
             ))}
