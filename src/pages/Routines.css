@@ -1,3 +1,13 @@
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
 .feed-page {
     max-width: 1100px;
     margin: 0 auto;
@@ -85,7 +95,6 @@
 
 .routine-card:hover {
     box-shadow: var(--shadow-md);
-    /*transform: translateY(-2px);*/
 }
 
 .routine-card-title {
@@ -134,7 +143,6 @@
 .routine-card-description {
     font-size: 0.9rem;
     color: var(--text-secondary);
-    /*font-style: italic;*/
     margin-bottom: var(--space-md);
     border-top: 1px solid var(--border);
     padding-top: var(--space-md);
@@ -173,16 +181,16 @@
     font-size: 1rem;
 }
 
-.routine-skeleton {
+.feed-skeleton {
     background-color: var(--bg-card);
     border-radius: var(--radius-lg);
     padding: var(--space-xl);
     border: 1px solid var(--border);
 }
 
-.routine-skeleton-title {
-    height: 36px;
-    width: 280px;
+.feed-skeleton-title {
+    height: 40px;
+    width: 260px;
     background: linear-gradient(90deg, var(--bg-input) 25%, #e8e8e6 50%, var(--bg-input) 75%);
     background-size: 200% 100%;
     animation: shimmer 1.4s infinite;
@@ -190,44 +198,34 @@
     margin-bottom: var(--space-lg);
 }
 
-.routine-skeleton-days {
+.feed-skeleton-days {
     display: flex;
     gap: var(--space-sm);
 }
 
-.routine-skeleton-day {
-    height: 70px;
-    width: 80px;
+.feed-skeleton-day {
+    height: 180px;
+    flex: 1;
     background: linear-gradient(90deg, var(--bg-input) 25%, #e8e8e6 50%, var(--bg-input) 75%);
     background-size: 200% 100%;
     animation: shimmer 1.4s infinite;
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-lg);
 }
 
-.routine-skeleton-day:nth-child(2) {
+.feed-skeleton-day:nth-child(2) {
     animation-delay: 0.1s;
 }
 
-.routine-skeleton-day:nth-child(3) {
+.feed-skeleton-day:nth-child(3) {
     animation-delay: 0.2s;
 }
 
-.routine-skeleton-day:nth-child(4) {
+.feed-skeleton-day:nth-child(4) {
     animation-delay: 0.3s;
 }
 
-.routine-skeleton-day:nth-child(5) {
+.feed-skeleton-day:nth-child(5) {
     animation-delay: 0.4s;
-}
-
-@keyframes shimmer {
-    0% {
-      background-position: 200% 0;
-    }
-
-    100% {
-      background-position: -200% 0;
-    }
 }
 
 .feed-page-empty,
@@ -244,23 +242,23 @@
 
 @media (max-width: 768px) {
     .feed-page {
-      padding: var(--space-xl) var(--space-md);
+        padding: var(--space-xl) var(--space-md);
     }
 
     .feed-page-header {
-      flex-direction: column;
-      align-items: flex-start;
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     .searchbar {
-      min-width: 100%;
+        min-width: 100%;
     }
 
     .routine-card-days {
-      gap: var(--space-xs);
+        gap: var(--space-xs);
     }
 
     .day-chip {
-      min-width: 64px;
+        min-width: 64px;
     }
 }

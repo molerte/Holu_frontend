@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
-import { getExercisesByDay, addExercise, updateExercise, deleteExercise } from '../api/exerciseApi';
+import {
+  getExercisesByDay, addExercise, updateExercise, deleteExercise,
+} from '../api/exerciseApi';
 import { useAuth } from '../context/AuthContext';
 
 export const useExercises = (routineId, dayId) => {
@@ -31,7 +33,7 @@ export const useExercises = (routineId, dayId) => {
 
   const update = async (exerciseId, data) => {
     const updated = await updateExercise(routineId, dayId, exerciseId, data, token);
-    setExercises((prev) => prev.map((e) => e.id === exerciseId ? updated : e))
+    setExercises((prev) => prev.map((e) => e.id === exerciseId ? updated : e));
     return updated;
   };
 

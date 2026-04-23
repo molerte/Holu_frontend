@@ -55,8 +55,9 @@ function Login() {
         <h1 className="signin-title">LOGIN</h1>
 
         <form onSubmit={handleSubmit}>
-          <label>User Name:</label>
+          <label className="signin-label">User Name:</label>
           <input
+            className="signin-input"
             type="text"
             name="username"
             value={formData.username}
@@ -64,8 +65,9 @@ function Login() {
             placeholder="Enter username"
           />
 
-          <label>Password:</label>
+          <label className="signin-label">Password:</label>
           <input
+            className="signin-input"
             type="password"
             name="password"
             value={formData.password}

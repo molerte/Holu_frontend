@@ -8,8 +8,8 @@ const Navbar = () => {
 
   const handleLogout = () => {
     logout();
-    navigate("/login");
-  }
+    navigate('/login');
+  };
 
   return (
     <nav className="navbar">
@@ -33,8 +33,12 @@ const Navbar = () => {
           </>
         ) : (
           <div className="navbar-auth-actions">
-            <Link to="/login" className="navbar-link navbar-link-login">Login</Link>
-            <Link to="/register-account" className="navbar-link navbar-link-create">Register</Link>
+            <Link to="/login" className="navbar-link navbar-link--login">
+              Login
+            </Link>
+            <Link to="/register" className="navbar-link navbar-link--create">
+              Sign Up
+            </Link>
           </div>
         )}
       </div>

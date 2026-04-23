@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import './Modal.css';
+
 export const Modal = ({ isOpen, onClose, title, badge, children }) => {
   useEffect(() => {
     if (!isOpen) return undefined;
@@ -18,7 +19,9 @@ export const Modal = ({ isOpen, onClose, title, badge, children }) => {
       document.body.style.paddingRight = originalPaddingRight;
     };
   }, [isOpen]);
+
   if (!isOpen) return null;
+
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal" onClick={(e) => e.stopPropagation()}>
@@ -34,4 +37,3 @@ export const Modal = ({ isOpen, onClose, title, badge, children }) => {
     </div>
   );
 };
-

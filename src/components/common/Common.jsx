@@ -23,6 +23,7 @@ export const Modal = ({ isOpen, onClose, title, badge, children }) => {
       delete document.body.dataset.scrollY;
       window.scrollTo(0, scrollY);
     }
+
     return () => {
       document.body.style.position = '';
       document.body.style.top = '';
@@ -106,4 +107,3 @@ export const ErrorMessage = ({ message }) => {
   if (!message) return null;
   return <div className="error-message">{message}</div>;
 };
-

@@ -4,7 +4,6 @@ import { BsCheckLg } from "react-icons/bs";
 import { BsTrash3 } from "react-icons/bs";
 import './ExerciseRow.css';
 
-
 const ExerciseRow = ({
   exercise,
   library,
@@ -19,7 +18,6 @@ const ExerciseRow = ({
   const [success, setSuccess] = useState(false);
   const [saving, setSaving] = useState(false);
 
-
   useEffect(() => {
     setLibraryId(exercise?.exerciseLibraryId ?? '');
     setSets(exercise?.sets ?? '');
@@ -27,7 +25,6 @@ const ExerciseRow = ({
     setError(null);
     setSuccess(false);
   }, [exercise?.id]);
-
 
   const validate = () => {
     if (!libraryId) return 'Please select an exercise.';
@@ -40,7 +37,6 @@ const ExerciseRow = ({
     return null;
   };
 
-
   const handleSave = async () => {
     const validationError = validate();
     if (validationError) {
@@ -49,11 +45,9 @@ const ExerciseRow = ({
       return;
     }
 
-
     setSaving(true);
     setError(null);
     setSuccess(false);
-
 
     try {
       await onSave({
@@ -62,10 +56,8 @@ const ExerciseRow = ({
         reps: Number(reps),
       });
 
-
       setSuccess(true);
       setTimeout(() => setSuccess(false), 2500);
-
 
     } catch (err) {
       setError(err.message || 'Failed to save exercise.');
@@ -74,16 +66,13 @@ const ExerciseRow = ({
     }
   };
 
-
   const libraryOptions = library.map((ex) => ({
     value: ex.id,
     label: ex.name,
   }));
 
-
   const setsOver = Number(sets) > 100;
   const repsOver = Number(reps) > 100;
-
 
   return (
     <div className="exercise-row">
@@ -95,7 +84,6 @@ const ExerciseRow = ({
           placeholder="Select exercise..."
           disabled={disabled || saving}
         />
-
 
         <div className="exercise-row-sets-reps">
           <input
@@ -121,7 +109,6 @@ const ExerciseRow = ({
           />
         </div>
 
-
         <div className="exercise-row-actions">
           <button
             className="exercise-row-save"
@@ -144,13 +131,11 @@ const ExerciseRow = ({
         </div>
       </div>
 
-
       {success && (
         <div className="exercise-row-success">
           Exercise updated successfully!
         </div>
       )}
-
 
       {error && (
         <div className="exercise-row-error">
@@ -161,6 +146,4 @@ const ExerciseRow = ({
   );
 };
 
-
 export default ExerciseRow;
-
