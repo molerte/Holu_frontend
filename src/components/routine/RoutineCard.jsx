@@ -4,6 +4,7 @@ import LikeButton from './LikeButton';
 import EditDayModal from '../workoutDay/EditDayModal';
 import EditRoutineModal from './EditRoutineModal';
 import AddDayModal from '../workoutDay/AddDayModal';
+import DayDetailModal from '../workoutDay/DayDetailModal';
 import { publishRoutine, unpublishRoutine } from '../../api/routineApi';
 import { deleteDay } from '../../api/workoutDayApi';
 import { useAuth } from '../../context/AuthContext';
@@ -21,6 +22,8 @@ const RoutineCard = memo(({ routine, isOwner = false, onDelete, onUpdated }) => 
 
   const [editingDay, setEditingDay] = useState(null);
   const [dayModalOpen, setDayModalOpen] = useState(false);
+  const [detailDay, setDetailDay] = useState(null);
+  const [detailModalOpen, setDetailModalOpen] = useState(false);
   const [addDayModalOpen, setAddDayModalOpen] = useState(false);
   const [routineModalOpen, setRoutineModalOpen] = useState(false);
 
@@ -63,6 +66,17 @@ const RoutineCard = memo(({ routine, isOwner = false, onDelete, onUpdated }) => 
       console.error("[RoutineCard] deleteDay error:", err);
     }
   }, [currentRoutine.id, currentRoutine.published, token]);
+
+  const handleDayDetail = useCallback((day) => {
+    setDetailDay(day);
+    setDetailModalOpen(true);
+  }, []);
+
+  const handleDetailClose = useCallback(() => {
+    setDetailModalOpen(false);
+    setTimeout(() => setDetailDay(null), 200);
+  }, []);
+
   const handleRoutineUpdated = useCallback((updated) => {
     setCurrentRoutine(updated);
     if (onUpdated) onUpdated(updated);
@@ -144,7 +158,7 @@ const RoutineCard = memo(({ routine, isOwner = false, onDelete, onUpdated }) => 
         days={days}
         routineId={currentRoutine.id}
         isOwner={isOwner}
-        onEdit={isOwner ? handleEdit : undefined}
+        onEdit={isOwner ? handleEdit : handleDayDetail}
         onDelete={isOwner ? handleDayDelete : undefined}
         onAddDay={isOwner ? () => setAddDayModalOpen(true) : undefined}
       />
@@ -227,6 +241,12 @@ const RoutineCard = memo(({ routine, isOwner = false, onDelete, onUpdated }) => 
           onUpdated={handleRoutineUpdated}
         />
       )}
+
+      <DayDetailModal
+        isOpen={detailModalOpen}
+        onClose={handleDetailClose}
+        day={detailDay}
+      />
     </article>
   );
 });

@@ -1,0 +1,210 @@
+@keyframes ddSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes ddFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.day-detail-blur {
+    position: fixed;
+    inset: 0;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 9998;
+    pointer-events: none;
+}
+
+.day-detail-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: var(--space-md);
+    animation: ddFadeIn 0.15s ease forwards;
+}
+
+.day-detail-modal {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    width: 100%;
+    max-width: 420px;
+    max-height: 85vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.25);
+    animation: ddSlideUp 0.2s ease forwards;
+}
+
+.day-detail-modal-header {
+    position: relative;
+    padding: var(--space-xl);
+    min-height: 160px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-shrink: 0;
+}
+
+.day-detail-modal-header-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.day-detail-modal-header-day-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.65);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.day-detail-modal-header-muscle {
+    font-family: var(--font-display);
+    font-size: 2.8rem;
+    color: white;
+    letter-spacing: 1px;
+    line-height: 1;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+}
+
+.day-detail-modal-rest-label {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.3);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.day-detail-modal-close {
+    position: absolute;
+    top: var(--space-md);
+    right: var(--space-md);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.2);
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+    flex-shrink: 0;
+}
+
+.day-detail-modal-close:hover {
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+}
+
+.day-detail-modal-body {
+    padding: var(--space-xl);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.day-detail-modal-exercises {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.day-detail-modal-exercises-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.day-detail-modal-exercise-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.day-detail-modal-exercise-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--bg-input);
+    border-radius: var(--radius-md);
+    padding: var(--space-sm) var(--space-md);
+    transition: background-color 0.2s ease;
+}
+
+/*.day-detail-modal-exercise-row:hover {
+    background-color: var(--border);
+}*/
+
+.day-detail-modal-exercise-name {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.day-detail-modal-exercise-sets {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    background-color: var(--bg-card);
+    border-radius: var(--radius-sm);
+    padding: 3px 10px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.day-detail-modal-exercise-x {
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+.day-detail-modal-empty {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    font-style: italic;
+    text-align: center;
+    padding: var(--space-md) 0;
+}
+
+.day-detail-modal-rest-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-lg) 0;
+    text-align: center;
+}
+
+.day-detail-modal-rest-icon {
+    font-size: 2.5rem;
+}
+
+.day-detail-modal-rest-message p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    max-width: 260px;
+    line-height: 1.5;
+}
