@@ -19,15 +19,18 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.day-card--editable {
+.day-card--editable,
+.day-card--clickable {
+   cursor: pointer;
   cursor: pointer;
   transition: 0.5s ease;
 }
 
-.day-card--editable:hover {
+.day-card--editable:hover,
+.day-card--clickable:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-lg);
-  filter: sepia(0.8) grayscale(0.2);
+  /*filter: sepia(0.8) grayscale(0.2);*/
   transition: 0.5s ease;
 }
 

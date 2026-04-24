@@ -36,9 +36,9 @@ const DayCard = ({ day, isOwner = false, onEdit, onDelete }) => {
 
   return (
     <div
-      className={`day-card ${isRest ? 'day-card--rest' : ''} ${isOwner ? 'day-card--editable' : ''}`}
+      className={`day-card ${isRest ? 'day-card--rest' : ''} ${isOwner ? 'day-card--editable' : ''} ${!isOwner && onEdit ? 'day-card--clickable' : ''}`}
       style={{ background: isRest ? MUSCLE_COLORS.rest : getBackground(day.muscleGroup) }}
-      onClick={() => isOwner && onEdit && onEdit(day)}
+      onClick={() => onEdit && onEdit(day)}
     >
       <div className="day-card-day-label">{dayLabel}</div>
 

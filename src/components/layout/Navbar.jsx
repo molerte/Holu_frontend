@@ -1,5 +1,9 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
+import { FaStudiovinari } from "react-icons/fa";
+import { TbActivity } from "react-icons/tb";
+import { CgEditUnmask } from "react-icons/cg";
+
 import './Navbar.css';
 
 const Navbar = () => {
