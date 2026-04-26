@@ -2,11 +2,11 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import Navbar from './components/layout/Navbar';
 import ProtectedRoute from './components/layout/ProtectedRoute';
-
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import MainPage from "./pages/MainPage";
 import MyRoutines from "./pages/MyRoutines";
+import SavedRoutines from "./pages/SavedRoutines";
 import Routines from "./pages/Routines";
 import './index.css';
 import './components/common/Common.css';
@@ -27,6 +27,15 @@ const App = () => {
             element={
               <ProtectedRoute>
                 <MyRoutines />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/saved"
+            element={
+              <ProtectedRoute>
+                <SavedRoutines />
               </ProtectedRoute>
             }
           />

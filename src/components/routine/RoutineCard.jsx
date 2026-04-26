@@ -1,6 +1,7 @@
 import { useState, memo, useCallback } from 'react';
 import { DayCardGrid } from '../workoutDay/DayCard';
 import LikeButton from './LikeButton';
+import SaveButton from './SaveButton';
 import EditDayModal from '../workoutDay/EditDayModal';
 import EditRoutineModal from './EditRoutineModal';
 import AddDayModal from '../workoutDay/AddDayModal';
@@ -12,7 +13,7 @@ import { BsPencilSquare } from "react-icons/bs";
 import { BsTrash3 } from "react-icons/bs";
 import './RoutineCard.css';
 
-const RoutineCard = memo(({ routine, isOwner = false, onDelete, onUpdated }) => {
+const RoutineCard = memo(({ routine, isOwner = false, onDelete, onUpdated, onUnsave }) => {
   const { token } = useAuth();
   const [days, setDays] = useState(routine.workoutDays ?? []);
   const [currentRoutine, setCurrentRoutine] = useState(routine);
@@ -119,6 +120,12 @@ const RoutineCard = memo(({ routine, isOwner = false, onDelete, onUpdated }) => 
     }
   };
 
+  const handleSaveToggle = useCallback((updatedRoutine) => {
+    if (onUnsave && !updatedRoutine?.savedByCurrentUser) {
+      onUnsave(currentRoutine.id);
+    }
+  }, [onUnsave, currentRoutine.id]);
+
   return (
     <article className="routine-card">
       <div className="routine-card-header">
@@ -204,6 +211,16 @@ const RoutineCard = memo(({ routine, isOwner = false, onDelete, onUpdated }) => 
               </button>
             )
           )}
+
+          {!isOwner && (
+            <SaveButton
+              routineId={currentRoutine.id}
+              initialSaved={currentRoutine.savedByCurrentUser ?? false}
+              disabled={!currentRoutine.published}
+              onToggle={handleSaveToggle}
+            />
+          )}
+
           <LikeButton
             routineId={currentRoutine.id}
             initialCount={currentRoutine.likeCount ?? 0}

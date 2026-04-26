@@ -169,7 +169,7 @@
     font-size: 0.85rem;
     font-weight: 600;
     color: var(--text-secondary);
-    background-color: var(--bg-card);
+    /*background-color: var(--bg-card);*/
     border-radius: var(--radius-sm);
     padding: 3px 10px;
     white-space: nowrap;

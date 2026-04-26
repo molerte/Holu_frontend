@@ -15,6 +15,8 @@ const Navbar = () => {
     navigate('/login');
   };
 
+  const isActive = (path) => location.pathname === path;
+
   return (
     <nav className="navbar">
       <Link to="/" className="navbar-logo">
@@ -27,6 +29,12 @@ const Navbar = () => {
         </Link>
         {isAuthenticated ? (
           <>
+            <Link
+              to="/saved"
+              className={`navbar-link ${isActive('/saved') ? 'navbar-link--active' : ''}`}
+            > Saved
+            </Link>
+
             <Link to="/myroutines" className="navbar-link">
               My Routines
             </Link>
