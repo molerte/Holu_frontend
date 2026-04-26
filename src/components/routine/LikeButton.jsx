@@ -46,7 +46,6 @@ const LikeButton = ({
         setCount(updated.likeCount);
       }
     } catch (err) {
-      console.error('[LikeButton] toggle error:', err);
       setLiked(prevLiked);
       setCount(prevCount);
     } finally {

@@ -39,19 +39,15 @@ export const useMyRoutines = () => {
 
   const fetchMine = useCallback(async () => {
     if (!userId) {
-      console.warn('[useMyRoutines] userId is null — skipping fetch');
       setLoading(false);
       return;
     }
-    console.log('[useMyRoutines] fetching for userId:', userId);
     setLoading(true);
     setError(null);
     try {
       const data = await getMyRoutines(userId, token);
-      console.log('[useMyRoutines] fetched:', data.length, 'routines');
       setRoutines(data);
     } catch (err) {
-      console.error('[useMyRoutines] error:', err);
       setError(err.message || 'Failed to load your routines.');
     } finally {
       setLoading(false);
