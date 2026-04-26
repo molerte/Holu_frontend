@@ -2,7 +2,7 @@
 .login-wrapper {
   min-height: 100vh;
   width: 100%;
-  background-color: #ea752c;
+  background-color: linear-gradient(90deg, var(--bg-input) 25%, #e8e8e6 50%, var(--bg-input) 75%);
   display: flex;
   flex-direction: column; 
   align-items: center;
@@ -13,7 +13,7 @@
 
 .login-content {
   text-align: center;
-  color: white;
+  color: #000000;
 }
 
 .title {
@@ -51,20 +51,20 @@
 
 /* Log In button */
 .primary {
-  background-color: white;
-  color: #ff8c42;
+  background-color: #000000;
+  color: white;
 }
 
 /* Register Account button */
 .secondary {
-   background-color: white;
-  color: #ff8c42;
+   background-color: #000000;
+  color: white;
 }
 
 /* Explore Routines button */
 .tertiary{
-  background-color: white;
-  color: #ff8c42;
+  background-color: #000000;
+  color: white;
 }
 
 
@@ -75,7 +75,7 @@
 .about-section h2{
   margin-top: 50px;
   font-size: 20px;
-  color: #ffffff;
+  color: #000000;
   font-family: "inter tight", sans-serif;
   font-weight: bold;
   text-decoration: underline;
@@ -85,7 +85,7 @@
 
 .about-section p{
   font-size: 16px;
-  color: #ffffff;
+  color: #000000;
   font-family: "inter tight", sans-serif;
   text-align: center;
   max-width: 700px;
