@@ -19,8 +19,8 @@
 }
 
 .like-btn--liked {
-  background-color: rgba(255, 59, 48, 0.1);
-  color: #ff3b30;
+  background: linear-gradient(25deg,rgb(247, 233, 233) 0%, rgb(247, 176, 176) 100%);
+  color: #ec0303;
 }
 
 .like-btn--liked:hover:not(:disabled) {

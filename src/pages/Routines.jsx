@@ -48,7 +48,7 @@ const Routines = () => {
         setRoutines(data);
       } else {
         setIsSearching(true);
-        const data = await searchRoutines(query);
+        const data = await searchRoutines(query, token);
         setRoutines(data);
       }
     } catch {

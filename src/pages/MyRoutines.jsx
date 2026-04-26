@@ -280,8 +280,6 @@ function MyRoutines() {
   return (
     <div className="routine-wrapper">
       <h1 className="routine-title">My Routine</h1>
-      <p className="rountine-subtitle">Plan your weekly workouts</p>
-      <div className="routine-divider"></div>
       <div className="routine-divider"></div>
 
       <div className="myroutine-routine-grid">

@@ -9,6 +9,9 @@ export const getRoutineById = (id, token) =>
 export const getMyRoutines = (userId, token) =>
   client(`/api/routines/user/${userId}`, { token });
 
+export const getSavedRoutines = (userId, token) =>
+  client(`/api/routines/user/${userId}/saved`, { token });
+
 export const createRoutine = (data, token) =>
   client('/api/routines', { method: 'POST', body: data, token });
 
@@ -27,5 +30,8 @@ export const unpublishRoutine = (id, token) =>
 export const toggleLike = (id, token) =>
   client(`/api/routines/${id}/like`, { method: 'POST', token });
 
-export const searchRoutines = (q) =>
-  client(`/api/search?q=${encodeURIComponent(q)}`);
+export const toggleSave = (id, token) =>
+  client(`/api/routines/${id}/save`, { method: 'POST', token });
+
+export const searchRoutines = (q, token) =>
+  client(`/api/search?q=${encodeURIComponent(q)}`, { token });
