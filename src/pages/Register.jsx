@@ -42,7 +42,6 @@ const handleSubmit = async (e) => {
       alert("Registration failed");
     }
   } catch (error) {
-    console.error(error);
     alert("Server error");
   }
 };
