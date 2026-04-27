@@ -1,0 +1,156 @@
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.edit-routine-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.edit-routine-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.edit-routine-textarea {
+  background-color: var(--bg-input);
+  border: 1.5px solid transparent;
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  resize: vertical;
+  font-family: var(--font-body);
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+  width: 100%;
+  outline: none;
+  line-height: 1.5;
+  min-height: 100px;
+}
+
+.edit-routine-textarea:focus {
+  border-color: var(--brand-black);
+  background-color: var(--bg-card);
+}
+
+.edit-routine-textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.edit-routine-tags-input {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  align-items: center;
+  background-color: var(--bg-input);
+  border: 1.5px solid transparent;
+  border-radius: var(--radius-md);
+  padding: var(--space-sm) var(--space-md);
+  min-height: 46px;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.edit-routine-tags-input:focus-within {
+  border-color: var(--brand-black);
+  background-color: var(--bg-card);
+}
+
+.edit-routine-tag-field {
+  border: none;
+  background: none;
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  flex: 1;
+  min-width: 120px;
+  outline: none;
+  font-family: var(--font-body);
+}
+
+.edit-routine-tag-field::placeholder {
+  color: var(--text-muted);
+}
+
+.edit-routine-hint {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.edit-routine-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-sm);
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--border);
+}
+
+.edit-routine-input {
+  background-color: var(--bg-input);
+  border: 1.5px solid transparent;
+  border-radius: var(--radius-md);
+  padding: 10px var(--space-md);
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  width: 100%;
+  font-family: var(--font-body);
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+  outline: none;
+}
+
+.edit-routine-input:focus {
+  border-color: var(--brand-black);
+  background-color: var(--bg-card);
+}
+
+.edit-routine-input::placeholder {
+  color: var(--text-muted);
+}
+
+.edit-routine-tag-error {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: rgba(255, 59, 48, 0.08);
+  border: 1px solid rgba(255, 59, 48, 0.25);
+  border-radius: var(--radius-sm);
+  padding: 6px var(--space-md);
+  font-size: 0.8rem;
+  color: var(--error);
+  font-weight: 500;
+  margin-top: 4px;
+  animation: fadeInSlide 0.2s ease forwards;
+}
+
+.edit-routine-tag-error::before {
+  font-size: 0.75rem;
+  flex-shrink: 0;
+}
+
+.edit-routine-char-count {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-align: right;
+  margin-top: 2px;
+}
+
+.edit-routine-char-count--warn {
+  color: var(--error);
+  font-weight: 600;
+}
+
+.edit-routine-tags-input--error {
+  border-color: rgba(255, 59, 48, 0.5) !important;
+  background-color: rgba(255, 59, 48, 0.03);
+}

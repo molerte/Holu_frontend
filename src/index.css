@@ -1,120 +1,106 @@
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  --color-back: linear-gradient(135deg, #6B48FF, #9B6BFF);
+  --color-chest: linear-gradient(135deg, #FF6B35, #FF9B6B);
+  --color-legs: linear-gradient(135deg, #00C9FF, #00E5FF);
+  --color-arms: linear-gradient(135deg, #00C853, #69F0AE);
+  --color-shoulders: linear-gradient(135deg, #FF4081, #FF80AB);
+  --color-core: linear-gradient(135deg, #FFD600, #FFEA00);
+  --color-rest: #2A2A2A;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  --brand-yellow: #d7f542;
+  --brand-black: #000000;
+  --brand-white: #FAFAFA;
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --bg-page: #f3f3f385;
+  --bg-card: #ffffff;
+  --bg-input: #F0F0EE;
+  --text-primary: #0A0A0A;
+  --text-secondary: #6B6B6B;
+  --text-muted: #ABABAB;
+  --border: #E8E8E6;
+  --error: #FF3B30;
+  --success: #34C759;
 
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'Inter Tight', sans-serif;
+  --font-display-weight: 800;
+  --font-display-weight-exercise: 600;
+
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 40px;
+  --space-2xl: 64px;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 999px;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.10);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.14);
+
+  --transition: all 0.8s ease;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
 }
 
 body {
-  margin: 0;
-}
-
-#root {
-  width: 100%;
-  max-width: 100%;
-  margin: 0;
-  padding: 0;
+  font-family: var(--font-body);
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  line-height: 1.6;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  background-color: #ea752c; 
 }
-
 
 h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
+h2,
+h3,
+.navbar-logo,
+.auth-page-logo,
+.auth-card-title,
+.my-routines-page-heading,
+.feed-page-heading {
+  font-weight: var(--font-display-weight);
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
-
-
-
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: var(--font-body);
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+input,
+select,
+textarea {
+  font-family: var(--font-body);
+  outline: none;
 }
 
-.nav-wrapper {
-  width: 600px;
-  margin: 10px auto;
+img {
+  display: block;
+  max-width: 100%;
+}
+
+ul {
+  list-style: none;
 }

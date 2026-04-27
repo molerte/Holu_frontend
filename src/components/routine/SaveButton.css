@@ -1,0 +1,91 @@
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.save-btn-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+    position: relative;
+}
+
+.save-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 12px;
+    border-radius: var(--radius-full);
+    background-color: var(--bg-input);
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+}
+
+.save-btn:hover:not(:disabled) {
+    background-color: rgba(173, 118, 7, 0.12);
+    color: #7b5600;
+
+}
+
+.save-btn--saved {
+    background: linear-gradient(25deg, rgb(247, 226, 178) 0%, rgb(215, 172, 54) 100%);
+    color: #443600;
+}
+
+.save-btn--saved:hover:not(:disabled) {
+    background-color: rgba(207, 157, 8, 0.437);
+}
+
+.save-btn--disabled,
+.save-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.save-btn-icon {
+    font-size: 0.9rem;
+    line-height: 1;
+}
+
+.save-btn-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.save-btn-message {
+    position: absolute;
+    top: calc(100% + 2px);
+    right: 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    border-radius: var(--radius-sm);
+    /* padding: 5px 10px; */
+    animation: fadeInSlide 0.8s ease forwards;
+    white-space: nowrap;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.save-btn-message--saved {
+    color: #b36b00;
+}
+
+.save-btn-message--unsaved {
+    color: var(--text-muted);
+}

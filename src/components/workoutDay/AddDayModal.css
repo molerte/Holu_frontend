@@ -1,0 +1,55 @@
+.add-day-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.add-day-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.add-day-rest-toggle {
+  display: flex;
+  align-items: center;
+}
+
+.add-day-toggle-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  cursor: pointer;
+}
+
+.add-day-checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--brand-black);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.add-day-toggle-text {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.add-day-full {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  text-align: center;
+  padding: var(--space-lg) 0;
+  font-style: italic;
+}
+
+.add-day-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-sm);
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--border);
+}
