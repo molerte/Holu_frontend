@@ -1,114 +1,150 @@
-import React, { useState } from "react";
-import { API_BASE_URL } from "../api/api";
+import { useState } from "react";
+import { Link, useNavigate } from 'react-router-dom'
+import { register as registerApi } from '../api/authApi';
+import { BsEye } from "react-icons/bs";
+import { BsEyeSlash } from "react-icons/bs";
 import "./Register.css";
 
-function Register() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    username: "",
-    password: "",
+const Register = () => {
+  const navigate = useNavigate();
+
+  const [form, setForm] = useState({
+    username: '',
+    name: '',
+    email: '',
+    password: '',
   });
-
-  const isFormValid =
-  formData.name !== "" &&
-  formData.email !== "" &&
-  formData.username !== "" &&
-  formData.password !== "";
-
+  const [error, setError] = useState(null);
+  const [fieldErrors, setFieldErrors] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value 
-});
-
+    setForm({ ...form, [e.target.name]: e.target.value });
+    setError(null);
+    setFieldErrors({ ...fieldErrors, [e.target.name]: null });
   };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
+    setFieldErrors({});
 
-  try {
-    const response = await fetch(`${API_BASE_URL}/api/auth/register`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    });
-
-    if (response.ok) {
-      alert("Account created successfully!");
-      window.location.href = "/login";
-    } else if (response.status === 409) {
-      alert("Email or username already exists");
-    } else {
-      alert("Registration failed");
+    try {
+      await registerApi(form);
+      navigate('/login');
+    } catch (err) {
+      if (err.username || err.name || err.email || err.password) {
+        setFieldErrors(err);
+      } else {
+        setError(err.message || 'Registration failed. Please try again.');
+      }
+    } finally {
+      setLoading(false);
     }
-  } catch (error) {
-    alert("Server error");
-  }
-};
-
+  };
 
   return (
-<div className="create-wrapper">
-  <div className="create-card">
+    <div className="register-page">
+      <div className="register-card">
+        <div className="register-card-logo">
+          Holu<span>.</span>
+        </div>
 
-    <a href="/" className="register-back-btn">&lt; Back</a>
+        <h1 className="register-card-title">Create Account</h1>
+        <form className="register-form" onSubmit={handleSubmit}>
+          <div className="register-form-group">
+            <label className="register-form-label">Username</label>
+            <input className={`register-form-input ${fieldErrors.username ? 'register-form-input--error' : ''}`}
+              type="text"
+              name="username"
+              placeholder="Enter your username"
+              value={form.username}
+              onChange={handleChange}
+              required
+              autoFocus
+            />
+            {fieldErrors.username && (
+              <span className="register-form-field-error">{fieldErrors.username}</span>
+            )}
+          </div>
 
-    <h1 className="create-title">REGISTER ACCOUNT</h1>
+          <div className="register-form-group">
+            <label className="register-form-label">Name</label>
+            <input
+              className={`register-form-input ${fieldErrors.name ? 'register-form-input--error' : ''}`}
+              type="text"
+              name="name"
+              placeholder="Enter your name"
+              value={form.name}
+              onChange={handleChange}
+              required
+            />
+            {fieldErrors.name && (
+              <span className="register-form-field-error">{fieldErrors.name}</span>
+            )}
+          </div>
 
-        <form onSubmit={handleSubmit}>
-          <label className="register-label">Full Name:</label>
-          <input
-            className="register-input"
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            placeholder="Enter full name"
-          />
+          <div className="register-form-group">
+            <label className="register-form-label">Email</label>
+            <input
+              className={`register-form-input ${fieldErrors.email ? 'register-form-input--error' : ''}`}
+              type="email"
+              name="email"
+              placeholder="example@email.com"
+              value={form.email}
+              onChange={handleChange}
+              required
+            />
+            {fieldErrors.email && (
+              <span className="register-form-field-error">{fieldErrors.email}</span>
+            )}
+          </div>
 
-          <label className="register-label">Email:</label>
-          <input
-            className="register-input"
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="Enter email"
-          />
+          <div className="register-form-group">
+            <label className="register-form-label">Password</label>
+            <div className="register-form-input-wrapper">
+              <input
+                className={`register-form-input ${fieldErrors.password ? 'register-form-input--error' : ''}`}
+                type={showPassword ? 'text' : 'password'}
+                name="password"
+                placeholder="••••••••"
+                value={form.password}
+                onChange={handleChange}
+                required
+              />
+              <button
+                type="button"
+                className="register-form-password-toggle"
+                onClick={() => setShowPassword(!showPassword)}
+                tabIndex={-1}
+                title={showPassword ? 'Hide password' : 'Show password'}
+              >
+                {showPassword ? <BsEyeSlash /> : <BsEye />}
+              </button>
+            </div>
+          </div>
 
-          <label className="register-label">Username:</label>
-          <input
-            className="register-input"
-            type="text"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-            placeholder="Enter username"
-          />
+          {error && <div className="register-form-error">{error}</div>}
 
-          <label className="register-label">Password:</label>
-          <input className="register-input"
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            placeholder="Enter password"
-          />
-
-          <button type="submit" className="submit-btn" disabled={!isFormValid}>
-            Submit
+          <button
+            className="register-form-submit"
+            type="submit"
+            disabled={loading}
+          >
+            {loading ? 'Creating account...' : 'Register'}
           </button>
 
-
-          <a href="/login" className="already-btn">
-            I already have an account
-          </a>
-
-
         </form>
+
+        <p className="register-card-footer">
+          Already have an account?{' '}
+          <Link to="/login" className="register-card-link">Login here</Link>
+        </p>
       </div>
     </div>
   );
-}
+};
 
 export default Register;
