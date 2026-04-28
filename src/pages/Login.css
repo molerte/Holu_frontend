@@ -21,19 +21,13 @@
 }
 
 .login-card-logo {
-  font-family: var(--font-display);
-  font-size: 1.6rem;
-  font-weight: 800;
-  color: var(--text-primary);
-  letter-spacing: 0.5px;
   text-align: center;
-}
-
-.login-card-logo span {
-  color: var(--brand-yellow);
+  color: #444f2b;
 }
 
 .login-card-title {
+  font-family: var(--font-display);
+  font-weight: var(--font-display-weight-exercise);
   font-size: 1.6rem;
   font-weight: 700;
   color: var(--text-primary);
@@ -90,7 +84,6 @@
 
 .login-form-error {
   background-color: rgba(255, 59, 48, 0.08);
-  border: 1px solid rgba(255, 59, 48, 0.25);
   border-radius: 8px;
   padding: 10px 14px;
   font-size: 0.85rem;
@@ -163,7 +156,7 @@
 }
 
 .login-card-link {
-  color: #c31411;
+  color: #7a7a7a;
   text-decoration: underline;
   font-weight: 600;
   transition: opacity 0.2s ease;
