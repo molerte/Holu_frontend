@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { register as registerApi } from '../api/authApi';
 import { BsEye } from "react-icons/bs";
 import { BsEyeSlash } from "react-icons/bs";
+import { LuSquareActivity } from "react-icons/lu";
 import "./Register.css";
 
 const Register = () => {
@@ -46,10 +47,10 @@ const Register = () => {
   };
 
   return (
-    <div className="register-page">
+    <div className="register-container">
       <div className="register-card">
         <div className="register-card-logo">
-          Holu<span>.</span>
+          <LuSquareActivity size={48} />
         </div>
 
         <h1 className="register-card-title">Create Account</h1>

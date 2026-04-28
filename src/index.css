@@ -11,7 +11,8 @@
   --brand-black: #000000;
   --brand-white: #FAFAFA;
 
-  --bg-page: #f3f3f385;
+  --bg-page: linear-gradient(25deg,rgb(235, 248, 251) 0%, rgb(248, 241, 250) 100%);
+  --bg-auth: linear-gradient(25deg,rgb(248, 230, 245) 0%, rgb(233, 246, 233) 100%);
   --bg-card: #ffffff;
   --bg-input: #F0F0EE;
   --text-primary: #0A0A0A;
@@ -60,7 +61,7 @@ html {
 
 body {
   font-family: var(--font-body);
-  background-color: var(--bg-page);
+  background: var(--bg-page);
   color: var(--text-primary);
   line-height: 1.6;
   min-height: 100vh;

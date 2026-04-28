@@ -3,7 +3,7 @@ import { useAuth } from '../../context/AuthContext';
 import { FaStudiovinari } from "react-icons/fa";
 import { TbActivity } from "react-icons/tb";
 import { CgEditUnmask } from "react-icons/cg";
-
+import { LuSquareActivity } from "react-icons/lu";
 import { useState } from 'react';
 import { FaBars, FaTimes } from "react-icons/fa";
 
@@ -27,11 +27,11 @@ const Navbar = () => {
         Holu<span>.</span>
       </Link>
 
-    <button
-      className="navbar-hamburger"
-      onClick={() => setMenuOpen(!menuOpen)}
+      <button
+        className="navbar-hamburger"
+        onClick={() => setMenuOpen(!menuOpen)}
       >
-      {menuOpen ? <FaTimes /> : <FaBars />}
+        {menuOpen ? <FaTimes /> : <FaBars />}
       </button>
 
 
