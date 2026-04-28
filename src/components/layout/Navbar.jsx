@@ -4,11 +4,15 @@ import { FaStudiovinari } from "react-icons/fa";
 import { TbActivity } from "react-icons/tb";
 import { CgEditUnmask } from "react-icons/cg";
 
+import { useState } from 'react';
+import { FaBars, FaTimes } from "react-icons/fa";
+
 import './Navbar.css';
 
 const Navbar = () => {
   const { isAuthenticated, username, logout } = useAuth();
   const navigate = useNavigate();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const handleLogout = () => {
     logout();
@@ -23,7 +27,17 @@ const Navbar = () => {
         Holu<span>.</span>
       </Link>
 
-      <div className="navbar-links">
+    <button
+      className="navbar-hamburger"
+      onClick={() => setMenuOpen(!menuOpen)}
+      >
+      {menuOpen ? <FaTimes /> : <FaBars />}
+      </button>
+
+
+
+
+      <div className={`navbar-links ${menuOpen ? "open" : ""}`}>
         <Link to="/routines" className="navbar-link">
           Routines
         </Link>
