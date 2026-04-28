@@ -8,10 +8,25 @@
     }
 }
 
+@keyframes slide-right {
+    from {
+        transform: translateX(1%);
+        filter: blur(4px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        filter: none;
+        opacity: 1;
+    }
+}
+
 .feed-page {
     max-width: 1100px;
     margin: 0 auto;
     padding: var(--space-2xl) var(--space-xl);
+    animation: slide-right 0.7s ease;
 }
 
 .feed-page-header {

@@ -1,24 +1,22 @@
-@keyframes slide-right {
+@keyframes auth-slide-right {
   from {
-    transform: translateX(50%);
     filter: blur(4px);
     opacity: 0;
   }
 
   to {
-    transform: translateX(0);
     filter: none;
     opacity: 1;
   }
 }
 
-.register-page {
+.register-container {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: var(--space-xl);
-  background: var(--bg-page);
+  background: var(--bg-auth);
 }
 
 .register-card {
@@ -31,7 +29,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-lg);
-  animation: slide-right 0.7s ease;
+  animation: auth-slide-right 0.7s ease;
 }
 
 .register-card-logo {
@@ -71,9 +69,9 @@
   width: 100%;
   padding: 12px 16px;
   border: 1.5px solid #e0e0e0;
-  border-radius: 10px;
+  border-radius: var(--radius-md);
   font-size: 0.95rem;
-  font-weight: 500;
+  font-weight: 400;
   font-family: var(--font-body);
   color: var(--text-primary);
   background: #ffffff;
@@ -116,11 +114,11 @@
 .register-form-submit {
   width: 100%;
   padding: 13px;
-  background-color: #4655c4;
+  background-color: #000000;
   color: #ffffff;
   font-size: 0.95rem;
   font-weight: 700;
-  border-radius: 10px;
+  border-radius: var(--radius-md);
   cursor: pointer;
   transition: background-color 0.2s ease, transform 0.1s ease;
   margin-top: var(--space-sm);
@@ -128,7 +126,7 @@
 }
 
 .register-form-submit:hover:not(:disabled) {
-  background-color: #3a47a8;
+  background-color: #404040;
 }
 
 .register-form-submit:active:not(:disabled) {
