@@ -133,9 +133,11 @@ const RoutineCard = memo(({ routine, isOwner = false, onDelete, onUpdated, onUns
           <h2 className="routine-card-title">
             {currentRoutine.title || 'My Routine'}
           </h2>
-          <p className="routine-card-creator">
-            by <span>{currentRoutine.ownerUsername}</span>
-          </p>
+          {!isOwner && (
+            <p className="routine-card-creator">
+              by <span>{currentRoutine.ownerUsername}</span>
+            </p>
+          )}
           {isOwner && !currentRoutine.published && (
             <span className="routine-card-draft-badge">Draft</span>
           )}
