@@ -5,7 +5,7 @@ import { useAuth } from '../context/AuthContext';
 import { BsEye } from "react-icons/bs";
 import { BsEyeSlash } from "react-icons/bs";
 import { LuSquareActivity } from "react-icons/lu";
-import "./Login.css";
+import "./AuthPages.css";
 
 const Login = () => {
   const { login } = useAuth();
@@ -38,19 +38,18 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
-      <div className="login-card">
-        <div className="login-card-logo">
+    <div className="auth-container">
+      <div className="auth-card">
+        <div className="auth-card-logo">
           <LuSquareActivity size={48} />
         </div>
 
-        <h1 className="login-card-title">Welcome Back</h1>
-
-        <form className="login-form" onSubmit={handleSubmit}>
-          <div className="login-form-group">
-            <label className="login-form-label">Username</label>
+        <h1 className="auth-card-title">Welcome Back</h1>
+        <form className="auth-form" onSubmit={handleSubmit}>
+          <div className="auth-form-group">
+            <label className="auth-form-label">Username</label>
             <input
-              className="login-form-input"
+              className="auth-form-input"
               type="text"
               name="username"
               placeholder="Enter your username"
@@ -61,11 +60,11 @@ const Login = () => {
             />
           </div>
 
-          <div className="login-form-group">
-            <label className="login-form-label">Password</label>
-            <div className="login-form-input-wrapper">
+          <div className="auth-form-group">
+            <label className="auth-form-label">Password</label>
+            <div className="auth-form-input-wrapper">
               <input
-                className="login-form-input"
+                className="auth-form-input"
                 type={showPassword ? "text" : "password"}
                 name="password"
                 placeholder="••••••••"
@@ -75,7 +74,7 @@ const Login = () => {
               />
               <button
                 type="button"
-                className="login-form-password-toggle"
+                className="auth-form-password-toggle"
                 onClick={() => setShowPassword(!showPassword)}
                 tabIndex={-1}
                 title={showPassword ? "Hide password" : "Show password"}
@@ -85,10 +84,10 @@ const Login = () => {
             </div>
           </div>
 
-          {error && <div className="login-form-error">{error}</div>}
+          {error && <div className="auth-form-error">{error}</div>}
 
           <button
-            className="login-form-submit"
+            className="auth-form-submit"
             type="submit"
             disabled={loading}
           >
@@ -96,9 +95,9 @@ const Login = () => {
           </button>
         </form>
 
-        <p className="login-card-footer">
+        <p className="auth-card-footer">
           Don't have an account?{' '}
-          <Link to="/register-account" className="login-card-link">Sign up here</Link>
+          <Link to="/register-account" className="auth-card-link">Sign up here</Link>
         </p>
       </div>
     </div>

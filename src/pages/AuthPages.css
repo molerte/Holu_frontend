@@ -10,7 +10,7 @@
   }
 }
 
-.register-container {
+.auth-container {
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -19,7 +19,7 @@
   background: var(--bg-auth);
 }
 
-.register-card {
+.auth-card {
   background: #ffffff;
   border-radius: 20px;
   padding: 40px 36px;
@@ -32,12 +32,18 @@
   animation: auth-slide-right 0.7s ease;
 }
 
-.register-card-logo {
+.auth-card-logo {
   text-align: center;
   color: #444f2b;
+  transition: color 0.3s ease;
 }
 
-.register-card-title {
+.auth-card-logo:hover {
+    color: #c4c93a;
+    transition: 0.3s ease;
+}
+
+.auth-card-title {
   font-family: var(--font-display);
   font-weight: var(--font-display-weight-exercise);
   font-size: 1.6rem;
@@ -46,19 +52,19 @@
   line-height: 1.2;
 }
 
-.register-form {
+.auth-form {
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
 }
 
-.register-form-label {
+.auth-form-label {
   font-size: 0.875rem;
   font-weight: 600;
   color: #3d3d5c;
 }
 
-.register-form-input {
+.auth-form-input {
   width: 100%;
   padding: 12px 16px;
   border: 1.5px solid #e0e0e0;
@@ -73,28 +79,29 @@
   box-sizing: border-box;
 }
 
-.register-form-input::placeholder {
+.auth-form-input::placeholder {
   color: #9b9b9b;
 }
 
-.register-form-input:focus {
+.auth-form-input:focus {
   border-color: #4655c4;
   box-shadow: 0 0 0 3px rgba(70, 85, 196, 0.1);
 }
 
-.register-form-input--error {
+.auth-form-input--error {
   border-color: var(--error) !important;
   box-shadow: 0 0 0 3px rgba(255, 59, 48, 0.08) !important;
 }
 
-.register-form-field--error {
+.auth-form-field--error {
   font-size: 0.78rem;
   color: var(--error);
   font-weight: 500;
 }
 
-.register-form-error {
+.auth-form-error {
   background-color: rgba(255, 59, 48, 0.08);
+  border: 1px solid rgba(255, 59, 48, 0.2);
   border-radius: 8px;
   padding: 10px 14px;
   font-size: 0.85rem;
@@ -103,7 +110,7 @@
   text-align: center;
 }
 
-.register-form-submit {
+.auth-form-submit {
   width: 100%;
   padding: 13px;
   background-color: #000000;
@@ -117,30 +124,30 @@
   font-family: var(--font-body);
 }
 
-.register-form-submit:hover:not(:disabled) {
+.auth-form-submit:hover:not(:disabled) {
   background-color: #404040;
 }
 
-.register-form-submit:active:not(:disabled) {
+.auth-form-submit:active:not(:disabled) {
   transform: scale(0.99);
 }
 
-.register-form-submit:disabled {
+.auth-form-submit:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
 
-.register-form-input-wrapper {
+.auth-form-input-wrapper {
   position: relative;
   display: flex;
   align-items: center;
 }
 
-.register-form-input-wrapper .register-form-input {
+.auth-form-input-wrapper .auth-form-input {
   padding-right: 44px;
 }
 
-.register-form-password-toggle {
+.auth-form-password-toggle {
   position: absolute;
   right: 12px;
   background: none;
@@ -156,29 +163,29 @@
   justify-content: center;
 }
 
-.register-form-password-toggle:hover {
+.auth-form-password-toggle:hover {
   opacity: 0.7;
 }
 
-.register-card-footer {
+.auth-card-footer {
   font-size: 0.875rem;
   color: var(--text-secondary);
   text-align: center;
 }
 
-.register-card-link {
-  color: #7a7a7a;
+.auth-card-link {
+  color: #5b5b5b;
   text-decoration: underline;
   font-weight: 600;
   transition: opacity 0.2s ease;
 }
 
-.register-card-link:hover {
+.auth-card-link:hover {
   opacity: 0.75;
 }
 
 @media (max-width: 480px) {
-  .register-card {
+  .auth-card {
     padding: 32px 24px;
     border-radius: 16px;
   }

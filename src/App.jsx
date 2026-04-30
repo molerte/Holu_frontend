@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import Navbar from './components/layout/Navbar';
 import ProtectedRoute from './components/layout/ProtectedRoute';
+import ScrollToTop from './components/layout/ScrollToTop';
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import MainPage from "./pages/MainPage";
@@ -15,6 +16,7 @@ const App = () => {
   return (
     <AuthProvider>
       <BrowserRouter>
+        <ScrollToTop />
         <Navbar />
         <Routes>
           <Route path="/" element={<MainPage />} />
