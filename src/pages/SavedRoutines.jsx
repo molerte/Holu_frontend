@@ -49,7 +49,7 @@ const SavedRoutines = () => {
         <div className="saved-page">
             <div className="saved-page-header">
                 <div className="saved-page-hero">
-                    <h1 className="saved-page-heading">Saved<br />Routines</h1>
+                    <h1 className="saved-page-heading">Saved<br /> Routines</h1>
                     <p className="saved-page-subheading">
                         Routines you've bookmarked for later.
                     </p>

@@ -4,7 +4,7 @@ import { register as registerApi } from '../api/authApi';
 import { BsEye } from "react-icons/bs";
 import { BsEyeSlash } from "react-icons/bs";
 import { LuSquareActivity } from "react-icons/lu";
-import "./Register.css";
+import "./AuthPages.css";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -47,17 +47,17 @@ const Register = () => {
   };
 
   return (
-    <div className="register-container">
-      <div className="register-card">
-        <div className="register-card-logo">
+    <div className="auth-container">
+      <div className="auth-card">
+        <div className="auth-card-logo">
           <LuSquareActivity size={48} />
         </div>
 
-        <h1 className="register-card-title">Create Account</h1>
-        <form className="register-form" onSubmit={handleSubmit}>
-          <div className="register-form-group">
-            <label className="register-form-label">Username</label>
-            <input className={`register-form-input ${fieldErrors.username ? 'register-form-input--error' : ''}`}
+        <h1 className="auth-card-title">Create Account</h1>
+        <form className="auth-form" onSubmit={handleSubmit}>
+          <div className="auth-form-group">
+            <label className="auth-form-label">Username</label>
+            <input className={`auth-form-input ${fieldErrors.username ? 'auth-form-input--error' : ''}`}
               type="text"
               name="username"
               placeholder="Enter your username"
@@ -67,14 +67,14 @@ const Register = () => {
               autoFocus
             />
             {fieldErrors.username && (
-              <span className="register-form-field-error">{fieldErrors.username}</span>
+              <span className="auth-form-field--error">{fieldErrors.username}</span>
             )}
           </div>
 
-          <div className="register-form-group">
-            <label className="register-form-label">Name</label>
+          <div className="auth-form-group">
+            <label className="auth-form-label">Name</label>
             <input
-              className={`register-form-input ${fieldErrors.name ? 'register-form-input--error' : ''}`}
+              className={`auth-form-input ${fieldErrors.name ? 'auth-form-input--error' : ''}`}
               type="text"
               name="name"
               placeholder="Enter your name"
@@ -83,14 +83,14 @@ const Register = () => {
               required
             />
             {fieldErrors.name && (
-              <span className="register-form-field-error">{fieldErrors.name}</span>
+              <span className="auth-form-field--error">{fieldErrors.name}</span>
             )}
           </div>
 
-          <div className="register-form-group">
-            <label className="register-form-label">Email</label>
+          <div className="auth-form-group">
+            <label className="auth-form-label">Email</label>
             <input
-              className={`register-form-input ${fieldErrors.email ? 'register-form-input--error' : ''}`}
+              className={`auth-form-input ${fieldErrors.email ? 'auth-form-input--error' : ''}`}
               type="email"
               name="email"
               placeholder="example@email.com"
@@ -99,15 +99,15 @@ const Register = () => {
               required
             />
             {fieldErrors.email && (
-              <span className="register-form-field-error">{fieldErrors.email}</span>
+              <span className="auth-form-field--error">{fieldErrors.email}</span>
             )}
           </div>
 
-          <div className="register-form-group">
-            <label className="register-form-label">Password</label>
-            <div className="register-form-input-wrapper">
+          <div className="auth-form-group">
+            <label className="auth-form-label">Password</label>
+            <div className="auth-form-input-wrapper">
               <input
-                className={`register-form-input ${fieldErrors.password ? 'register-form-input--error' : ''}`}
+                className={`auth-form-input ${fieldErrors.password ? 'auth-form-input--error' : ''}`}
                 type={showPassword ? 'text' : 'password'}
                 name="password"
                 placeholder="••••••••"
@@ -117,7 +117,7 @@ const Register = () => {
               />
               <button
                 type="button"
-                className="register-form-password-toggle"
+                className="auth-form-password-toggle"
                 onClick={() => setShowPassword(!showPassword)}
                 tabIndex={-1}
                 title={showPassword ? 'Hide password' : 'Show password'}
@@ -127,10 +127,10 @@ const Register = () => {
             </div>
           </div>
 
-          {error && <div className="register-form-error">{error}</div>}
+          {error && <div className="auth-form-error">{error}</div>}
 
           <button
-            className="register-form-submit"
+            className="auth-form-submit"
             type="submit"
             disabled={loading}
           >
@@ -139,9 +139,9 @@ const Register = () => {
 
         </form>
 
-        <p className="register-card-footer">
+        <p className="auth-card-footer">
           Already have an account?{' '}
-          <Link to="/login" className="register-card-link">Login here</Link>
+          <Link to="/login" className="auth-card-link">Login here</Link>
         </p>
       </div>
     </div>

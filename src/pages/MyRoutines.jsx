@@ -5,6 +5,7 @@ import RoutineCard from '../components/routine/RoutineCard';
 import CreateRoutineModal from '../components/routine/CreateRoutineModal';
 import { createRoutine } from '../api/routineApi';
 import { addDay } from '../api/workoutDayApi';
+import { GiWeightLiftingUp } from "react-icons/gi";
 import './MyRoutines.css';
 
 
@@ -89,7 +90,7 @@ const MyRoutinesPage = () => {
    if (routines.length === 0) {
      return (
        <div className="my-routines-page-empty">
-         <div className="my-routines-page-empty-icon">🏋️</div>
+         <div className="my-routines-page-empty-icon"><GiWeightLiftingUp /></div>
          <p>You haven't created any routines yet.</p>
          <button
            className="my-routines-page-empty-btn"
@@ -121,7 +122,7 @@ const MyRoutinesPage = () => {
    <div className="my-routines-page">
      <div className="my-routines-page-header">
        <div>
-         <h1 className="my-routines-page-heading">My Routines</h1>
+         <h1 className="my-routines-page-heading">My<br /> Routines</h1>
          <p className="my-routines-page-sub">
            {loading
              ? 'Loading...'
