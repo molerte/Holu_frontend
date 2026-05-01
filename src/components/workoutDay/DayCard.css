@@ -1,13 +1,12 @@
 .day-card-grid {
-  display: flex;
+  display: grid;
   gap: var(--space-sm);
-  flex-wrap: wrap;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
   align-items: stretch;
 }
 
 .day-card {
   border-radius: var(--radius-lg);
-  padding: var(--space-md);
   min-height: 200px;
   flex: 1;
   min-width: 190px;
@@ -17,6 +16,7 @@
   position: relative;
   overflow: hidden;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+   padding: calc(var(--space-md) * 1.2);
 }
 
 .day-card--editable,
@@ -94,7 +94,7 @@
 
 .day-card-muscle {
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   color: white;
   letter-spacing: 1px;
   line-height: 1;
@@ -117,8 +117,9 @@
   font-size: 0.79rem;
   color: rgba(255, 255, 255, 0.85);
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  overflow-x: auto;
+  overflow-y: hidden;
+  text-overflow: clip;
   font-weight: var(--font-display-weight-exercise);
 }
 
@@ -183,19 +184,33 @@
   letter-spacing: 0.8px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 640px) {
+
+.day-card-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
   .day-card {
     min-width: 90px;
     min-height: 160px;
-    padding: var(--space-sm);
+    padding: var(--space-md);
   }
 
   .day-card-muscle {
-    font-size: 1.2rem;
+    font-size: 1.0rem;
   }
 
   .day-card-add {
     min-height: 160px;
     width: 70px;
   }
+}
+
+.day-card {
+  overflow-x: auto;
+}
+
+
+
+.day-card-exercise::-webkit-scrollbar {
+  display: none;
 }
