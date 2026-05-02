@@ -1,175 +1,197 @@
-.my-routines-page {
- max-width: 1100px;
- margin: 0 auto;
- padding: var(--space-2xl) var(--space-xl);
- animation: slide-right 0.7s ease;
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
 }
 
+.my-routines-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: var(--space-2xl) var(--space-xl);
+  animation: slide-right 0.7s ease;
+}
 
 .my-routines-page-header {
- display: flex;
- align-items: flex-end;
- justify-content: space-between;
- margin-bottom: var(--space-2xl);
- gap: var(--space-lg);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: var(--space-2xl);
+  gap: var(--space-lg);
 }
-
 
 .my-routines-page-heading {
- font-family: var(--font-display);
- font-size: clamp(2.5rem, 5vw, 4rem);
- letter-spacing: 1px;
- line-height: 1;
- color: var(--text-primary);
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  letter-spacing: 1px;
+  line-height: 1;
+  color: var(--text-primary);
 }
-
 
 .my-routines-page-sub {
- font-size: 0.9rem;
- color: var(--text-secondary);
- margin-top: var(--space-xs);
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-top: var(--space-xs);
 }
-
 
 .my-routines-page-create-btn {
- background-color: var(--brand-black);
- color: var(--brand-white);
- border-radius: var(--radius-full);
- padding: 12px var(--space-xl);
- font-size: 0.9rem;
- font-weight: 700;
- letter-spacing: 0.3px;
- transition: var(--transition);
- white-space: nowrap;
- flex-shrink: 0;
+  background-color: var(--brand-black);
+  color: var(--brand-white);
+  border-radius: var(--radius-full);
+  padding: 12px var(--space-xl);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  transition: var(--transition);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
-
 
 .my-routines-page-create-btn:hover {
- background-color: #1a1a1a;
- transform: translateY(-1px);
- box-shadow: var(--shadow-md);
+  background-color: #1a1a1a;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
 }
-
 
 .my-routines-page-list {
- display: flex;
- flex-direction: column;
- gap: var(--space-2xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
 }
-
 
 .my-routines-page-error {
- background-color: rgba(255, 59, 48, 0.08);
- border: 1px solid rgba(255, 59, 48, 0.2);
- border-radius: var(--radius-sm);
- padding: var(--space-md);
- font-size: 0.875rem;
- color: var(--error);
- margin-bottom: var(--space-lg);
+  background-color: rgba(255, 59, 48, 0.08);
+  border: 1px solid rgba(255, 59, 48, 0.2);
+  border-radius: var(--radius-sm);
+  padding: var(--space-md);
+  font-size: 0.875rem;
+  color: var(--error);
+  margin-bottom: var(--space-lg);
 }
-
 
 .my-routines-page-empty {
- text-align: center;
- padding: var(--space-2xl);
- color: var(--text-secondary);
- display: flex;
- flex-direction: column;
- align-items: center;
- gap: var(--space-md);
+  text-align: center;
+  padding: var(--space-2xl);
+  color: var(--text-secondary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
 }
-
 
 .my-routines-page-empty-icon {
- font-size: 3rem;
+  font-size: 3rem;
 }
-
 
 .my-routines-page-empty p {
- font-size: 1rem;
+  font-size: 1rem;
 }
-
 
 .my-routines-page-empty-btn {
- background-color: var(--brand-black);
- color: var(--brand-white);
- border-radius: var(--radius-full);
- padding: 10px var(--space-xl);
- font-size: 0.875rem;
- font-weight: 600;
- transition: var(--transition);
+  background-color: var(--brand-black);
+  color: var(--brand-white);
+  border-radius: var(--radius-full);
+  padding: 10px var(--space-xl);
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: var(--transition);
 }
-
 
 .my-routines-page-empty-btn:hover {
- background-color: #1a1a1a;
- transform: translateY(-1px);
+  background-color: #1a1a1a;
+  transform: translateY(-1px);
 }
-
 
 .my-routines-skeleton {
- background-color: var(--bg-card);
- border-radius: var(--radius-lg);
- padding: var(--space-xl);
- border: 1px solid var(--border);
+  background-color: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  border: 1px solid var(--border);
 }
-
 
 .my-routines-skeleton-title {
- height: 40px;
- width: 260px;
- background: linear-gradient(90deg, var(--bg-input) 25%, #e8e8e6 50%, var(--bg-input) 75%);
- background-size: 200% 100%;
- animation: shimmer 1.4s infinite;
- border-radius: var(--radius-sm);
- margin-bottom: var(--space-lg);
+  height: 40px;
+  width: 260px;
+  background: linear-gradient(90deg, var(--bg-input) 25%, #e8e8e6 50%, var(--bg-input) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-lg);
 }
-
 
 .my-routines-skeleton-days {
- display: flex;
- gap: var(--space-sm);
+  display: flex;
+  gap: var(--space-sm);
 }
-
 
 .my-routines-skeleton-day {
- height: 180px;
- flex: 1;
- background: linear-gradient(90deg, var(--bg-input) 25%, #e8e8e6 50%, var(--bg-input) 75%);
- background-size: 200% 100%;
- animation: shimmer 1.4s infinite;
- border-radius: var(--radius-lg);
+  height: 180px;
+  flex: 1;
+  background: linear-gradient(90deg, var(--bg-input) 25%, #e8e8e6 50%, var(--bg-input) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+  border-radius: var(--radius-lg);
 }
 
-
-.my-routines__skeleton-day:nth-child(2) { animation-delay: 0.1s; }
-.my-routines-skeleton-day:nth-child(2) { animation-delay: 0.1s; }
-.my-routines-skeleton-day:nth-child(3) { animation-delay: 0.2s; }
-.my-routines-skeleton-day:nth-child(4) { animation-delay: 0.3s; }
-.my-routines-skeleton-day:nth-child(5) { animation-delay: 0.4s; }
-
-
-@keyframes shimmer {
- 0%   { background-position: 200% 0; }
- 100% { background-position: -200% 0; }
+.my-routines__skeleton-day:nth-child(2) {
+  animation-delay: 0.1s;
 }
 
+.my-routines-skeleton-day:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.my-routines-skeleton-day:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.my-routines-skeleton-day:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+.my-routines-skeleton-day:nth-child(5) {
+  animation-delay: 0.4s;
+}
 
 @media (max-width: 768px) {
- .my-routines-page {
-   padding: var(--space-xl) var(--space-md);
- }
+  .my-routines-page {
+    padding: var(--space-xl) var(--space-md);
+  }
 
+  .my-routines-page-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
- .my-routines-page-header {
-   flex-direction: column;
-   align-items: flex-start;
- }
+  .my-routines-page-create-btn {
+    width: 100%;
+    text-align: center;
+  }
 
+  .my-routines-skeleton {
+    padding: var(--space-lg);
+  }
 
- .my-routines-page-create-btn {
-   width: 100%;
-   text-align: center;
- }
+  .my-routines-skeleton-title {
+    height: 58px;
+    width: 70%;
+    min-width: 130px;
+    margin-bottom: var(--space-md);
+  }
+
+  .my-routines-skeleton-days {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-sm);
+  }
+
+  .my-routines-skeleton-day {
+    min-width: 100px;
+    min-height: 120px;
+    padding: var(--space-md);
+  }
+
 }
