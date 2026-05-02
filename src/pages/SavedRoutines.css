@@ -125,7 +125,26 @@
         padding: var(--space-xl) var(--space-md);
     }
 
+    .saved-skeleton {
+        padding: var(--space-lg);
+    }
+
+    .saved-skeleton-title {
+        height: 58px;
+        width: 70%;
+        min-width: 130px;
+        margin-bottom: var(--space-md);
+    }
+
+    .saved-skeleton-days {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--space-sm);
+    }
+
     .saved-skeleton-day {
-        height: 140px;
+        min-width: 110px;
+        min-height: 120px;
+        padding: var(--space-md);
     }
 }
