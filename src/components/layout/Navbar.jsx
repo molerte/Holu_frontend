@@ -16,6 +16,8 @@ const Navbar = () => {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
+
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
   const menuOpenRef = useRef(false);
@@ -43,10 +45,26 @@ const Navbar = () => {
     return () => document.removeEventListener("click", handleClickOutside);
   }, []);
 
+  useEffect(() => {
+    if (showLogoutConfirm) {
+      document.body.style.overflow = "hidden";   
+    } else {
+      document.body.style.overflow = "auto";    
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";    
+    };
+  }, [showLogoutConfirm]);
+
+
+
   const handleLogout = () => {
+    setShowLogoutConfirm(false);
     logout();
     navigate('/login');
   };
+
 
   const isActive = (path) => location.pathname === path;
 
@@ -87,9 +105,13 @@ const Navbar = () => {
             <Link to="/myroutines" className="navbar-link" onClick={(closeMenu)}>
               My Routines
             </Link>
-            <button className="navbar-link" onClick={handleLogout}>
+            <button
+              className="navbar-link"
+              onClick={() => setShowLogoutConfirm(true)}
+            >
               Logout
             </button>
+
             <span className="navbar-username">{username ? username[0] : ''}</span>
           </>
         ) : (
@@ -103,6 +125,31 @@ const Navbar = () => {
           </div>
         )}
       </div>
+      {showLogoutConfirm && (
+        <div className="logout-modal-overlay">
+          <div className="logout-modal">
+            <h3>Are you sure you want to log out?</h3>
+
+            <div className="logout-modal-buttons">
+              <button
+                className="logout-cancel"
+                onClick={() => setShowLogoutConfirm(false)}
+              >
+                Cancel
+              </button>
+
+              <button
+                className="logout-confirm"
+                onClick={handleLogout}
+              >
+                Logout
+
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
     </nav>
   );
 };
