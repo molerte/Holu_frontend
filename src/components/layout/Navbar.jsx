@@ -22,26 +22,26 @@ const Navbar = () => {
 
   const closeMenu = () => setMenuOpen(false);
 
-useEffect(() => {
-  menuOpenRef.current = menuOpen;
-}, [menuOpen]);
+  useEffect(() => {
+    menuOpenRef.current = menuOpen;
+  }, [menuOpen]);
 
   useEffect(() => {
-  const handleClickOutside = (e) => {
-    if (
-      menuOpenRef.current &&
-      menuRef.current &&
-      !menuRef.current.contains(e.target) &&
-      buttonRef.current &&
-      !buttonRef.current.contains(e.target)
-    ) {
-      setMenuOpen(false);
-    }
-  };
+    const handleClickOutside = (e) => {
+      if (
+        menuOpenRef.current &&
+        menuRef.current &&
+        !menuRef.current.contains(e.target) &&
+        buttonRef.current &&
+        !buttonRef.current.contains(e.target)
+      ) {
+        setMenuOpen(false);
+      }
+    };
 
-  document.addEventListener("click", handleClickOutside);
-  return () => document.removeEventListener("click", handleClickOutside);
-}, []);
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, []);
 
   const handleLogout = () => {
     logout();
@@ -52,10 +52,14 @@ useEffect(() => {
 
   return (
     <nav className="navbar">
-      <Link to="/" className="navbar-logo">
-
+      <Link
+        to={isAuthenticated ? "/routines" : "/"}
+        className="navbar-logo"
+        onClick={closeMenu}
+      >
         Holu<span>.</span>
       </Link>
+
 
       <button
         className="navbar-hamburger"
