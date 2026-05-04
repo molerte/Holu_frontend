@@ -60,7 +60,7 @@
 
 .routine-card-draft-badge {
   display: inline-block;
-  background: linear-gradient(25deg,rgb(247, 226, 178) 0%, rgb(215, 172, 54) 100%);
+  background: linear-gradient(25deg, rgb(247, 226, 178) 0%, rgb(215, 172, 54) 100%);
   color: #443600;
   font-size: 0.65rem;
   font-weight: 700;
@@ -227,8 +227,19 @@
     padding: var(--space-lg) var(--space-md);
   }
 
+  .routine-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-md);
+  }
+
   .routine-card-title {
     font-size: 1.8rem;
+    word-break: break-word;
+  }
+
+  .routine-card-actions {
+    align-self: flex-start;
   }
 
   .routine-card-footer {
