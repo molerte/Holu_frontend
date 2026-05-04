@@ -128,40 +128,43 @@ const RoutineCard = memo(({ routine, isOwner = false, onDelete, onUpdated, onUns
 
   return (
     <article className="routine-card">
+
       <div className="routine-card-header">
         <div className="routine-card-title-block">
-          <h2 className="routine-card-title">
-            {currentRoutine.title || 'My Routine'}
-          </h2>
+          <h2 className="routine-card-title">{currentRoutine.title}</h2>
+
+          {isOwner && (
+            <div className="routine-card-actions">
+              <button
+                className="routine-card-edit-btn"
+                onClick={() => setRoutineModalOpen(true)}
+                title="Edit title, description and tags"
+              >
+                <BsPencilSquare />
+              </button>
+
+              <button
+                className="routine-card-delete"
+                onClick={() => onDelete(currentRoutine.id)}
+                title="Delete routine"
+              >
+                <BsTrash3 />
+              </button>
+            </div>
+          )}
+
           {!isOwner && (
             <p className="routine-card-creator">
               by <span>{currentRoutine.ownerUsername}</span>
             </p>
           )}
+
           {isOwner && !currentRoutine.published && (
             <span className="routine-card-draft-badge">Draft</span>
           )}
         </div>
-
-        {isOwner && (
-          <div className="routine-card-actions">
-            <button
-              className="routine-card-edit-btn"
-              onClick={() => setRoutineModalOpen(true)}
-              title="Edit title, description and tags"
-            >
-              <BsPencilSquare />
-            </button>
-            <button
-              className="routine-card-delete"
-              onClick={() => onDelete(currentRoutine.id)}
-              title="Delete routine"
-            >
-              <BsTrash3 />
-            </button>
-          </div>
-        )}
       </div>
+
 
       <DayCardGrid
         days={days}
