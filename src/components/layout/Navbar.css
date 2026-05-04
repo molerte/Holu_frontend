@@ -131,13 +131,18 @@
   cursor: pointer;
 }
 
+.navbar-hamburger svg {
+  pointer-events: none;
+}
+
 @media (max-width: 640px) {
   .navbar-links {
     position: absolute;
     top: 64px;
+    left: 0;
     right: 0;
     background: var(--brand-black);
-    width: 200px;
+    width: 100%;
     flex-direction: column;
     padding: 1rem;
     gap: 1rem;
