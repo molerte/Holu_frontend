@@ -1,12 +1,12 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { useState, useEffect, useRef } from 'react';
-import { FaBars, FaTimes } from "react-icons/fa";
 import './Navbar.css';
 
 const Navbar = () => {
   const { isAuthenticated, username, logout } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
 
@@ -19,6 +19,10 @@ const Navbar = () => {
   useEffect(() => {
     menuOpenRef.current = menuOpen;
   }, [menuOpen]);
+
+  useEffect(() => {
+    closeMenu();
+  }, [location.pathname]);
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -60,7 +64,7 @@ const Navbar = () => {
   const handleLogout = () => {
     setShowLogoutConfirm(false);
     logout();
-    navigate('/login');
+    navigate('/');
   };
 
   const handleCancelLogout = () => {
@@ -70,59 +74,87 @@ const Navbar = () => {
   const isActive = (path) => location.pathname === path;
 
   return (
-    <nav className="navbar">
-      <Link
-        to={isAuthenticated ? '/routines' : '/'}
-        className="navbar-logo"
-        onClick={closeMenu}
-      >
-        Holu<span>.</span>
-      </Link>
+    <>
+      <nav className={`navbar ${menuOpen ? 'navbar--menu-open' : ''}`}>
 
-      <button
-        className="navbar-hamburger"
-        ref={buttonRef}
-        onClick={() => setMenuOpen(!menuOpen)}
-      >
-        {menuOpen ? <FaTimes /> : <FaBars />}
-      </button>
-
-      <div ref={menuRef} className={`navbar-links ${menuOpen ? 'open' : ''}`}>
-        <Link to="/routines" className="navbar-link" onClick={closeMenu}>
-          Routines
+        <Link
+          to={isAuthenticated ? '/routines' : '/'}
+          className="navbar-logo"
+          onClick={closeMenu}
+        >
+          Holu<span>.</span>
         </Link>
 
-        {isAuthenticated ? (
-          <>
-            <Link to="/saved" className="navbar-link" onClick={closeMenu}>
-              Saved
-            </Link>
-            <Link to="/myroutines" className="navbar-link" onClick={closeMenu}>
-              My Routines
-            </Link>
-            <button
-              className="navbar-link"
-              onClick={() => { setShowLogoutConfirm(true); closeMenu(); }}
-            >
-              Logout
-            </button>
-            <span className="navbar-username">{username ? username[0].toUpperCase() : ''}</span>
-          </>
-        ) : (
-          <div className="navbar-auth-actions">
-            <Link to="/login" className="navbar-link navbar-link--login" onClick={closeMenu}>
-              Login
-            </Link>
-            <Link to="/register-account" className="navbar-link navbar-link--create" onClick={closeMenu}>
-              Sign Up
-            </Link>
-          </div>
-        )}
-      </div>
+        <button
+          className={`navbar-hamburger ${menuOpen ? 'navbar-hamburger--open' : ''}`}
+          ref={buttonRef}
+          onClick={() => setMenuOpen((prev) => !prev)}
+          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={menuOpen}
+        >
+          <span className="navbar-hamburger-bar" />
+          <span className="navbar-hamburger-bar" />
+          <span className="navbar-hamburger-bar" />
+        </button>
+
+        <div ref={menuRef} className={`navbar-links ${menuOpen ? 'open' : ''}`}>
+          <Link
+            to="/routines"
+            className={`navbar-link ${isActive('/routines') ? 'navbar-link--active' : ''}`}
+            onClick={closeMenu}
+          >
+            Routines
+          </Link>
+
+          {isAuthenticated ? (
+            <>
+              <Link
+                to="/saved"
+                className={`navbar-link ${isActive('/saved') ? 'navbar-link--active' : ''}`}
+                onClick={closeMenu}
+              >
+                Saved
+              </Link>
+              <Link
+                to="/myroutines"
+                className={`navbar-link ${isActive('/myroutines') ? 'navbar-link--active' : ''}`}
+                onClick={closeMenu}
+              >
+                My Routines
+              </Link>
+              <button
+                className="navbar-link navbar-logout"
+                onClick={() => { setShowLogoutConfirm(true); closeMenu(); }}
+              >
+                Logout
+              </button>
+              <span className="navbar-username" title={username}>
+                {username ? username[0].toUpperCase() : ''}
+              </span>
+            </>
+          ) : (
+            <div className="navbar-auth-actions">
+              <Link
+                to="/login"
+                className="navbar-link navbar-link--login"
+                onClick={closeMenu}
+              >
+                Login
+              </Link>
+              <Link
+                to="/register-account"
+                className="navbar-link navbar-link--create"
+                onClick={closeMenu}
+              >
+                Sign Up
+              </Link>
+            </div>
+          )}
+        </div>
+      </nav>
 
       {showLogoutConfirm && (
         <>
-
           <div className="logout-blur" aria-hidden="true" />
           <div
             className="logout-modal-overlay"
@@ -150,7 +182,7 @@ const Navbar = () => {
           </div>
         </>
       )}
-    </nav>
+    </>
   );
 };
 

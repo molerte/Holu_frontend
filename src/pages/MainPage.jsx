@@ -18,8 +18,8 @@ import './MainPage.css';
                   - Jason */
 
 /* Credits - 
-    Wireframing Prototype: Jason Garcia (Figma & Previous Projects)
-    Assets: Jason Garcia (Photoshop)
+    Wireframing Design: Jason Garcia
+    Assets/Images: Jason Garcia (Photoshop)
     Coding: Zuri Fleurinord, Jeremiah Webb */
 
 const FeatureSection = ({ title, description, image, reverse = false, index = 0 }) => (

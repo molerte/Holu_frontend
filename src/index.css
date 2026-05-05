@@ -21,7 +21,7 @@
 
   --bg-page: linear-gradient(25deg, rgb(251, 245, 233) 0%, rgb(247, 241, 250) 100%);
   --bg-auth: linear-gradient(25deg, rgb(247, 241, 250) 0%, rgb(251, 245, 233) 100%);
-  --bg-home: linear-gradient(25deg, rgb(246, 242, 231) 0%, rgb(246, 233, 251) 40%, rgb(238, 223, 248) 100%);
+  --bg-home: linear-gradient(25deg, rgb(246, 242, 231) 0%, rgb(246, 233, 251) 70%, rgb(238, 223, 248) 100%);
   --bg-tags: linear-gradient(25deg, rgb(209, 240, 200) 0%, rgb(182, 218, 148) 100%);
   --bg-card: #ffffff;
   --bg-input: #F0F0EE;
