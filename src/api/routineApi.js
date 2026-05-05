@@ -1,5 +1,7 @@
 import client from './client';
 
+// This file handles all routine-related API calls
+
 export const getAllRoutines = (token) =>
   client('/api/routines', { token });
 

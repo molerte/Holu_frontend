@@ -50,9 +50,12 @@
   flex-shrink: 0;
 }
 
+.my-routines-page-create-btn span {
+  color: var(--brand-yellow);
+}
+
 .my-routines-page-create-btn:hover {
-  background-color: #1a1a1a;
-  transform: translateY(-1px);
+  background-color: #252525;
   box-shadow: var(--shadow-md);
 }
 
