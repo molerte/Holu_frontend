@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import discoverImg from '../assets/images/Discover_routine_home.jpg';
-import buildImg from '../assets/images/Create_routine_home.jpg';
-import saveImg from '../assets/images/Save_routine_home.jpg';
+import discoverImg from '../assets/images/discover-routine-home.png';
+import buildImg from '../assets/images/build-routine-home.png';
+import saveImg from '../assets/images/save-routine-home.png';
 import './MainPage.css';
 
 /* Welcome to the homepage of Holu. 
@@ -86,7 +86,7 @@ function MainPage() {
       <section className="hero">
         <div className="hero-bg" aria-hidden="true" />
         <div className="hero-content">
-          <p className="hero-uppertext">Build Your Perfect Workout Plan</p>
+          <p className="hero-uppertext">Build Your Perfect Workout Routine</p>
           <h1 className="hero-heading">Achieve Your Fitness Goals <br />
             <span className="hero-heading-accent">With Holu</span>
           </h1>
