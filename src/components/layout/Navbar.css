@@ -20,6 +20,18 @@
   }
 }
 
+@keyframes hamburgerFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
 .navbar {
   position: sticky;
@@ -209,7 +221,7 @@
 .logout-confirm {
   flex: 1;
   padding: 11px;
-  background: #e34229;
+  background: var(--brand-black);
   color: white;
   border: none;
   border-radius: 10px;
@@ -221,7 +233,7 @@
 }
 
 .logout-confirm:hover {
-  background: #b3250c;
+  background-color: #3a3a3a;
 }
 
 @media (max-width: 640px) {
@@ -241,6 +253,15 @@
     gap: 1rem;
     display: none;
     z-index: 99;
+    animation: hamburgerFadeIn 0.2s ease forwards;
+  }
+
+  .navbar-links::after {
+    animation: name duration timing-function delay iteration-count direction fill-mode;
+  }
+
+  .navbar-username {
+    display: none;
   }
 
   .navbar-links.open {

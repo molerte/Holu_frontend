@@ -1,5 +1,6 @@
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080';
 
+// Handles JSON requests to the API
 const client = async (endpoint, { method = 'GET', body, token } = {}) => {
   const headers = {
     'Content-Type': 'application/json',
@@ -30,6 +31,7 @@ const client = async (endpoint, { method = 'GET', body, token } = {}) => {
     };
   }
 
+  // Handles 204 "No content" responses/empty responses 
   if (res.status === 204) return null;
 
   const text = await res.text();

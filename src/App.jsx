@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { AuthProvider } from './context/AuthContext';
+import { AuthProvider, useAuth } from './context/AuthContext';
 import Navbar from './components/layout/Navbar';
 import ProtectedRoute from './components/layout/ProtectedRoute';
 import ScrollToTop from './components/layout/ScrollToTop';
@@ -12,6 +12,11 @@ import Routines from "./pages/Routines";
 import './index.css';
 import './components/common/Common.css';
 
+const HomeRoute = () => {
+  const { isAuthenticated } = useAuth();
+  return isAuthenticated ? <Navigate to="/routines" replace /> : <MainPage />;
+}
+
 const App = () => {
   return (
     <AuthProvider>
@@ -19,7 +24,7 @@ const App = () => {
         <ScrollToTop />
         <Navbar />
         <Routes>
-          <Route path="/" element={<MainPage />} />
+          <Route path="/" element={<HomeRoute />} />
           <Route path="/routines" element={<Routines />} />
           <Route path="/register-account" element={<Register />} />
           <Route path="/login" element={<Login />} />

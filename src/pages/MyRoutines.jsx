@@ -21,7 +21,7 @@ const RoutineCardSkeleton = () => (
 );
 
 
-const MyRoutinesPage = () => {
+const MyRoutines = () => {
  const { token } = useAuth();
  const { routines, loading, error, remove, refetch } = useMyRoutines();
  const [showCreate, setShowCreate] = useState(false);
@@ -36,24 +36,15 @@ const MyRoutinesPage = () => {
 
    try {
      const routine = await createRoutine({ title, description, tags }, token);
-     console.log('[MyRoutinesPage] routine created:', routine.id);
 
 
      for (const day of workoutDays) {
        await addDay(routine.id, day, token);
-       console.log('[MyRoutinesPage] day added:', day.dayOfWeek);
      }
-
-
      setShowCreate(false);
-
-
      await refetch();
-     console.log('[MyRoutinesPage] refetch complete');
-
-
    } catch (err) {
-     console.error('[MyRoutinesPage] handleCreate error:', err);
+     console.error('[MyRoutines] handleCreate error:', err);
      setCreateError(err.message || 'Failed to create routine.');
    } finally {
      setCreating(false);
@@ -66,10 +57,10 @@ const MyRoutinesPage = () => {
      try {
        await remove(id);
      } catch (err) {
-       console.error('[MyRoutinesPage] handleDelete error:', err);
+       console.error('[MyRoutines] handleDelete error:', err);
      }
    }
- };
+ }
 
 
  const renderContent = () => {
@@ -136,7 +127,7 @@ const MyRoutinesPage = () => {
            setShowCreate(true);
          }}
        >
-         + Create Routine
+         <span>+</span> Create Routine
        </button>
      </div>
 
@@ -160,7 +151,7 @@ const MyRoutinesPage = () => {
 };
 
 
-export default MyRoutinesPage;
+export default MyRoutines;
 
 
 

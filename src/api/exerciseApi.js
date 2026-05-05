@@ -1,5 +1,7 @@
 import client from './client';
 
+// This file handles all exercise-related API calls
+
 export const getExercisesByDay = (routineId, dayId, token) =>
   client(`/api/routines/${routineId}/days/${dayId}/exercises`, { token });
 

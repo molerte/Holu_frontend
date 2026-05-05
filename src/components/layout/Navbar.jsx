@@ -67,7 +67,7 @@ const Navbar = () => {
     setShowLogoutConfirm(false);
   };
 
-  /*const isActive = (path) => location.pathname === path;*/
+  const isActive = (path) => location.pathname === path;
 
   return (
     <nav className="navbar">
