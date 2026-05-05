@@ -11,7 +11,7 @@
 @keyframes logoutSlideUp {
   from {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(10px);
   }
 
   to {
@@ -19,19 +19,6 @@
     transform: translateY(0);
   }
 }
-
-@keyframes hamburgerFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 
 .navbar {
   position: sticky;
@@ -44,6 +31,26 @@
   height: 64px;
   background-color: var(--brand-black);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.navbar::after {
+  content: '';
+  position: fixed;
+  inset: 64px 0 0 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 98;
+}
+
+.navbar--menu-open::after {
+  opacity: 1;
+  pointer-events: all;
 }
 
 .navbar-logo {
@@ -52,29 +59,54 @@
   color: var(--brand-white);
   letter-spacing: 0.2px;
   font-weight: 800;
+  z-index: 101;
 }
 
 .navbar-logo span {
   color: var(--brand-yellow);
 }
 
-.navbar-username {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, rgb(90, 30, 95), rgb(173, 84, 52));
-  color: var(--brand-white);
-  display: flex;
-  align-items: center;
+.navbar-hamburger {
+  display: none;
+  flex-direction: column;
   justify-content: center;
-  font-weight: 700;
-  font-size: 1rem;
-  transition: 0.5s ease;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  z-index: 101;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
 }
 
-.navbar-username:hover {
-  filter: hue-rotate(45deg);
-  transition: 0.5s ease;
+.navbar-hamburger:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.navbar-hamburger-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: white;
+  border-radius: 2px;
+  transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1),
+    opacity 0.25s ease,
+    width 0.25s ease;
+  transform-origin: center;
+}
+
+.navbar-hamburger--open .navbar-hamburger-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.navbar-hamburger--open .navbar-hamburger-bar:nth-child(2) {
+  opacity: 0;
+  width: 0;
+}
+
+.navbar-hamburger--open .navbar-hamburger-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
 }
 
 .navbar-links {
@@ -93,7 +125,7 @@
   font-size: 0.9rem;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.75);
-  transition: var(--transition);
+  transition: color 0.2s ease;
   letter-spacing: 0.3px;
 }
 
@@ -103,21 +135,22 @@
 
 .navbar-link--active {
   color: var(--brand-white);
-  font-weight: 700;
 }
 
 .navbar-link--login {
-  border: 1px solid var(--brand-white);
+  border: 1px solid rgba(255, 255, 255, 0.5);
   color: var(--brand-white);
   padding: var(--space-sm) var(--space-md);
   border-radius: var(--radius-full);
   font-weight: 600;
   font-size: 0.85rem;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .navbar-link--login:hover {
   background-color: var(--brand-white);
   color: var(--brand-black);
+  border-color: var(--brand-white);
 }
 
 .navbar-link--create {
@@ -125,8 +158,8 @@
   color: var(--brand-black);
   padding: var(--space-sm) var(--space-md);
   border-radius: var(--radius-full);
-  font-weight: 600;
   font-size: 0.85rem;
+  transition: background-color 0.2s ease, transform 0.15s ease;
 }
 
 .navbar-link--create:hover {
@@ -134,17 +167,35 @@
   color: var(--brand-black);
 }
 
-.navbar-hamburger {
-  display: none;
-  background: none;
-  border: none;
-  color: white;
-  font-size: 1.8rem;
-  cursor: pointer;
+.navbar-logout {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 0.2s ease;
 }
 
-.navbar-hamburger svg {
-  pointer-events: none;
+.navbar-logout:hover {
+  color: var(--brand-white);
+}
+
+.navbar-username {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgb(90, 30, 95), rgb(173, 84, 52));
+  color: var(--brand-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: default;
+  transition: filter 0.4s ease, transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.navbar-username:hover {
+  filter: hue-rotate(45deg);
 }
 
 .logout-blur {
@@ -178,7 +229,6 @@
   text-align: center;
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.25);
   animation: logoutSlideUp 0.2s ease forwards;
-  pointer-events: all;
 }
 
 .logout-modal-title {
@@ -241,47 +291,70 @@
     padding: 0 var(--space-md);
   }
 
+  .navbar-hamburger {
+    display: flex;
+  }
+
   .navbar-links {
     position: absolute;
     top: 64px;
     left: 0;
     right: 0;
     background: var(--brand-black);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     width: 100%;
     flex-direction: column;
-    padding: 1rem;
-    gap: 1rem;
-    display: none;
+    align-items: flex-start;
+    padding: 0 var(--space-md);
+    gap: 0;
     z-index: 99;
-    animation: hamburgerFadeIn 0.2s ease forwards;
-  }
-
-  .navbar-links::after {
-    animation: name duration timing-function delay iteration-count direction fill-mode;
-  }
-
-  .navbar-username {
-    display: none;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.35s cubic-bezier(0.23, 1, 0.32, 1),
+      opacity 0.25s ease,
+      padding 0.3s ease;
   }
 
   .navbar-links.open {
-    display: flex;
+    max-height: 500px;
+    opacity: 1;
+    padding: var(--space-md);
+    gap: var(--space-md);
   }
 
-  .navbar-hamburger {
-    display: block;
+  .navbar-links .navbar-link,
+  .navbar-links .navbar-auth-actions,
+  .navbar-links .navbar-username {
+    animation: fadeInSlide 0.3s ease forwards;
+  }
+
+  .navbar-links .navbar-link {
+    width: 100%;
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 1rem;
+  }
+
+  .navbar-links .navbar-link:last-of-type {
+    border-bottom: none;
   }
 
   .navbar-auth-actions {
     flex-direction: column;
     width: 100%;
-    gap: 6px;
+    gap: var(--space-sm);
   }
 
   .navbar-link--login,
   .navbar-link--create {
     width: 100%;
     text-align: center;
+    padding: 12px var(--space-md);
+  }
+
+  .navbar-username {
+    display: none;
   }
 
   .logout-modal-buttons {
