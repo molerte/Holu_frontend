@@ -67,7 +67,7 @@ const Navbar = () => {
     setShowLogoutConfirm(false);
   };
 
-  const isActive = (path) => location.pathname === path;
+  /*const isActive = (path) => location.pathname === path;*/
 
   return (
     <nav className="navbar">
@@ -94,11 +94,7 @@ const Navbar = () => {
 
         {isAuthenticated ? (
           <>
-            <Link
-              to="/saved"
-              className={`navbar-link ${isActive('/saved') ? 'navbar-link--active' : ''}`}
-              onClick={closeMenu}
-            >
+            <Link to="/saved" className="navbar-link" onClick={closeMenu}>
               Saved
             </Link>
             <Link to="/myroutines" className="navbar-link" onClick={closeMenu}>
