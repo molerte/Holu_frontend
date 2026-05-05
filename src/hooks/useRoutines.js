@@ -2,6 +2,11 @@ import { useState, useEffect, useCallback } from 'react';
 import { getAllRoutines, getMyRoutines, deleteRoutine } from '../api/routineApi';
 import { useAuth } from '../context/AuthContext';
 
+// This custom hook provides logic for fetching and managing routines. It has two main hooks:
+// 1. useRoutines: Fetches all routines available in the system.
+// 2. useMyRoutines: Fetches routines created by the currently authenticated user.
+// Both hooks handle loading and error states, and provide a function to delete a routine.
+
 export const useRoutines = () => {
   const { token } = useAuth();
   const [routines, setRoutines] = useState([]);

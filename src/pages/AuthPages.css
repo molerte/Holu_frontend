@@ -1,3 +1,10 @@
+/* Okay so apparently both register.css and login.css are the same layout
+So I have made it to combined both of them and make it one called AuthPages.css
+I priortize file organizing, so doing this makes it easier to maintain and 
+adjust.
+
+                          - Jason*/
+
 @keyframes auth-slide-right {
   from {
     filter: blur(4px);
@@ -39,8 +46,8 @@
 }
 
 .auth-card-logo:hover {
-    color: #c4c93a;
-    transition: 0.3s ease;
+  color: #c4c93a;
+  transition: 0.3s ease;
 }
 
 .auth-card-title {

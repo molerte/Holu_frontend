@@ -5,6 +5,8 @@ import RoutineCard from '../components/routine/RoutineCard';
 import { BsFillBookmarkFill } from "react-icons/bs";
 import './SavedRoutines.css';
 
+/* SavedRoutines page shows all saved routine by the user */
+
 const RoutineCardSkeleton = () => (
     <div className="saved-skeleton">
         <div className="saved-skeleton-title" />

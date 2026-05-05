@@ -7,6 +7,11 @@ import { BsEyeSlash } from "react-icons/bs";
 import { LuSquareActivity } from "react-icons/lu";
 import "./AuthPages.css";
 
+/* This page handles user login such as setForm and handleSubmit
+   in order to authenticate the user and store the token in context
+   for future authenticated API calls.
+   Also... this page makes the login page work */
+
 const Login = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
