@@ -1,6 +1,9 @@
 import { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { register as apiRegister } from '../api/authApi';
 
+// This file address authentication state management and logic
+// This includes token storage along with authentication function (login-logout-register)
+
 const AuthContext = createContext(null);
 
 const decodeToken = (token) => {
@@ -13,12 +16,15 @@ const decodeToken = (token) => {
   }
 };
 
+// Returns the number of ms until the token expires from backend
 const getTokenExpiryMs = (token) => {
   const decoded = decodeToken(token);
   if (!decoded || typeof decoded.exp !== 'number') return 0;
   return decoded.exp * 1000 - Date.now();
 };
 
+// AuthProvider manages authentication state 
+// provides login, logout, and register
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(() => {
     const storedToken = localStorage.getItem('token');
@@ -46,6 +52,8 @@ export const AuthProvider = ({ children }) => {
     window.location.href = '/login';
   }, []);
 
+  // Callback when a user logs in. Accepts token string `bearer ...` 
+  // Also accepts username, id, and payload data
   const login = useCallback((payloadOrToken, fallbackUsername) => {
     const payload = typeof payloadOrToken === 'object' && payloadOrToken !== null
       ? payloadOrToken

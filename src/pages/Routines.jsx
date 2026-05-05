@@ -5,6 +5,14 @@ import RoutineCard from '../components/routine/RoutineCard';
 import SearchBar from '../components/search/SearchBar';
 import './Routines.css';
 
+/* Welcome to the Routines page! This page is where users can explore all the routines created by the community.
+   Users can also search for specific routines using the search bar at the top. 
+   The page also handles loading and error states to provide a smooth user experience. 
+   Each routine is displayed using the RoutineCard component, which shows the 
+   routine's title, description, tags, and workout days. Users can click on a routine 
+   to view more details or interact with it (like, save, etc.) depending on their authentication status. */
+
+// Skeleton to make loading less boring
 const RoutineCardSkeleton = () => (
   <div className="feed-skeleton">
     <div className="feed-skeleton-title" />

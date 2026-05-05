@@ -4,6 +4,10 @@ import {
 } from '../api/exerciseApi';
 import { useAuth } from '../context/AuthContext';
 
+// This custom hook handles all exercise-related logic for a specific routine 
+// and day. It provides the current list of exercises, loading and error states, 
+// and functions to add, update, and remove exercises.
+
 export const useExercises = (routineId, dayId) => {
   const { token } = useAuth();
   const [exercises, setExercises] = useState([]);

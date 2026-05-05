@@ -1,6 +1,11 @@
 import { useState, useEffect, useCallback } from 'react';
 import { searchRoutines } from '../api/routineApi';
 
+// This custom hook provides logic for searching routines based on a 
+// query string. It manages the search query, results, loading state, 
+// and any errors that may occur during the search process. The search 
+// is debounced to prevent excessive API calls while the user is typing. 
+
 export const useSearch = (delay = 400) => {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);

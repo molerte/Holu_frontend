@@ -3,10 +3,24 @@ import { useNavigate } from 'react-router-dom';
 import discoverImg from '../assets/images/Discover_routine_home.jpg';
 import buildImg from '../assets/images/Create_routine_home.jpg';
 import saveImg from '../assets/images/Save_routine_home.jpg';
-
-
 import './MainPage.css';
 
+/* Welcome to the homepage of Holu. 
+  Guest users can only view this page (navBar.jsx, app.jsx handles that)
+  Inspired by my previous projects and also Dribbble designs
+  I wanted to make this homepage more engaging and show all the cool features
+  the this app has to offer. I also spent time how I can set this up. 
+  So my idea is to seperate them by sections. So I started with a hero (intro),
+  feature that display texts about each feature (I want to keep it simple)
+  Lastly a CTA (call to action) to encourage users to sign up once they made it to the end.
+  I also fiddle around with color and font combinations to fit the theme 
+  I also like to thank Zuri and Jeremiah to make this magic happen for our project! 
+                  - Jason */
+
+/* Credits - 
+    Wireframing Prototype: Jason Garcia (Figma & Previous Projects)
+    Assets: Jason Garcia (Photoshop)
+    Coding: Zuri Fleurinord, Jeremiah Webb */
 
 const FeatureSection = ({ title, description, image, reverse = false, index = 0 }) => (
   <div
@@ -23,12 +37,10 @@ const FeatureSection = ({ title, description, image, reverse = false, index = 0 
   </div>
 );
 
-
-{/* Credits - 
-    Wireframing Prototype: Jason Garcia (Figma & Previous Projects)
-    Assets: Jason Garcia (Photoshop)
-    Coding: Zuri Fleurinord */}
-
+// Instead of making a seperate component for each section, I decided
+// to put them here so I can easily adjust it without scrolling up and down
+// Such as changing the description or image. Which I constantly do when I feel 
+// like it. I also think this makes the DOM cleaner
 const FEATURES = [
   {
     title: 'Discover Routines',

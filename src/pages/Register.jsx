@@ -6,6 +6,8 @@ import { BsEyeSlash } from "react-icons/bs";
 import { LuSquareActivity } from "react-icons/lu";
 import "./AuthPages.css";
 
+/* Register page which is same as login but with more fields */
+
 const Register = () => {
   const navigate = useNavigate();
 
