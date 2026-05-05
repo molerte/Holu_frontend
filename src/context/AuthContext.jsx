@@ -1,16 +1,52 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { register as apiRegister } from '../api/authApi';
 
 const AuthContext = createContext(null);
 
+const decodeToken = (token) => {
+  if (!token) return null;
+  try {
+    const [, payload] = token.split('.');
+    return JSON.parse(atob(payload));
+  } catch {
+    return null;
+  }
+};
+
+const getTokenExpiryMs = (token) => {
+  const decoded = decodeToken(token);
+  if (!decoded || typeof decoded.exp !== 'number') return 0;
+  return decoded.exp * 1000 - Date.now();
+};
+
 export const AuthProvider = ({ children }) => {
-  const [token, setToken] = useState(() => localStorage.getItem('token'));
+  const [token, setToken] = useState(() => {
+    const storedToken = localStorage.getItem('token');
+    if (!storedToken) return null;
+    if (getTokenExpiryMs(storedToken) <= 0) {
+      localStorage.removeItem('token');
+      localStorage.removeItem('username');
+      localStorage.removeItem('userId');
+      return null;
+    }
+    return storedToken;
+  });
   const [username, setUsername] = useState(() => localStorage.getItem('username'));
   const [userId, setUserId] = useState(() => localStorage.getItem('userId'));
 
   const isAuthenticated = !!token;
 
-  const login = (payloadOrToken, fallbackUsername) => {
+  const logout = useCallback(() => {
+    setToken(null);
+    setUsername(null);
+    setUserId(null);
+    localStorage.removeItem('token');
+    localStorage.removeItem('username');
+    localStorage.removeItem('userId');
+    window.location.href = '/login';
+  }, []);
+
+  const login = useCallback((payloadOrToken, fallbackUsername) => {
     const payload = typeof payloadOrToken === 'object' && payloadOrToken !== null
       ? payloadOrToken
       : { token: payloadOrToken, username: fallbackUsername };
@@ -31,20 +67,36 @@ export const AuthProvider = ({ children }) => {
 
     if (nextUserId != null) localStorage.setItem('userId', String(nextUserId));
     else localStorage.removeItem('userId');
-  };
+  }, []);
 
   const register = async (credentials) => {
     return apiRegister(credentials);
   };
 
-  const logout = () => {
-    setToken(null);
-    setUsername(null);
-    setUserId(null);
-    localStorage.removeItem('token');
-    localStorage.removeItem('username');
-    localStorage.removeItem('userId');
-  };
+  useEffect(() => {
+    if (!token) return;
+
+    const expiresIn = getTokenExpiryMs(token);
+    if (expiresIn <= 0) {
+      logout();
+      return;
+    }
+
+    const timeoutId = setTimeout(() => {
+      logout();
+    }, expiresIn);
+
+    return () => clearTimeout(timeoutId);
+  }, [token, logout]);
+
+  useEffect(() => {
+    const handleUnauthorized = () => {
+      logout();
+    };
+
+    window.addEventListener('auth:unauthorized', handleUnauthorized);
+    return () => window.removeEventListener('auth:unauthorized', handleUnauthorized);
+  }, [logout]);
 
   return (
     <AuthContext.Provider value={{ token, username, userId, isAuthenticated, login, register, logout }}>
