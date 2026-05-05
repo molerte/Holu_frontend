@@ -14,6 +14,15 @@ const client = async (endpoint, { method = 'GET', body, token } = {}) => {
 
   if (!res.ok) {
     const data = await res.json().catch(() => ({}));
+
+    if (res.status === 401 && token) {
+      window.dispatchEvent(new Event('auth:unauthorized'));
+      throw {
+        status: 401,
+        message: data.message || 'Unauthorized. Please log in again.',
+      };
+    }
+
     throw {
       status: res.status,
       message: data.message || `HTTP ${res.status}`,
