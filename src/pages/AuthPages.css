@@ -1,0 +1,198 @@
+/* Okay so apparently both register.css and login.css are the same layout
+So I have made it to combined both of them and make it one called AuthPages.css
+I priortize file organizing, so doing this makes it easier to maintain and 
+adjust.
+                          - Jason*/
+
+@keyframes auth-slide-right {
+  from {
+    filter: blur(4px);
+    opacity: 0;
+  }
+
+  to {
+    filter: none;
+    opacity: 1;
+  }
+}
+
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xl);
+  background: var(--bg-auth);
+}
+
+.auth-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 40px 36px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  animation: auth-slide-right 0.7s ease;
+}
+
+.auth-card-logo {
+  text-align: center;
+  color: #444f2b;
+  transition: color 0.3s ease;
+}
+
+.auth-card-logo:hover {
+  color: #c4c93a;
+  transition: 0.3s ease;
+}
+
+.auth-card-title {
+  font-family: var(--font-display);
+  font-weight: var(--font-display-weight-exercise);
+  font-size: 1.6rem;
+  color: var(--text-primary);
+  text-align: center;
+  line-height: 1.2;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.auth-form-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #3d3d5c;
+}
+
+.auth-form-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  font-weight: 400;
+  font-family: var(--font-body);
+  color: var(--text-primary);
+  background: #ffffff;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+}
+
+.auth-form-input::placeholder {
+  color: #9b9b9b;
+}
+
+.auth-form-input:focus {
+  border-color: #4655c4;
+  box-shadow: 0 0 0 3px rgba(70, 85, 196, 0.1);
+}
+
+.auth-form-input--error {
+  border-color: var(--error) !important;
+  box-shadow: 0 0 0 3px rgba(255, 59, 48, 0.08) !important;
+}
+
+.auth-form-field--error {
+  font-size: 0.78rem;
+  color: var(--error);
+  font-weight: 500;
+}
+
+.auth-form-error {
+  background-color: rgba(255, 59, 48, 0.08);
+  border: 1px solid rgba(255, 59, 48, 0.2);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.85rem;
+  color: var(--error);
+  font-weight: 500;
+  text-align: center;
+}
+
+.auth-form-submit {
+  width: 100%;
+  padding: 13px;
+  background-color: #000000;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  margin-top: var(--space-sm);
+  font-family: var(--font-body);
+}
+
+.auth-form-submit:hover:not(:disabled) {
+  background-color: #404040;
+}
+
+.auth-form-submit:active:not(:disabled) {
+  transform: scale(0.99);
+}
+
+.auth-form-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.auth-form-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.auth-form-input-wrapper .auth-form-input {
+  padding-right: 44px;
+}
+
+.auth-form-password-toggle {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+  padding: 4px;
+  color: var(--text-muted);
+  transition: opacity 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-form-password-toggle:hover {
+  opacity: 0.7;
+}
+
+.auth-card-footer {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.auth-card-link {
+  color: #5b5b5b;
+  text-decoration: underline;
+  font-weight: 600;
+  transition: opacity 0.2s ease;
+}
+
+.auth-card-link:hover {
+  opacity: 0.75;
+}
+
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 32px 24px;
+    border-radius: 16px;
+  }
+}

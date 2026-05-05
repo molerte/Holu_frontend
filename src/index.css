@@ -1,3 +1,11 @@
+/* I want to make the web-app consistent and organized, I decide to make pre-set
+  colors, fonts, spacing, and other design to implement across all css files
+  This also makes it easier to maintain and adjust the design in the future,
+  Instead of going through each file to see what exact color is needed/change (I dealt
+  with this too many times) I can just change the variable here and it will
+  affect all color that use that variable. Honestly this saves so much time. 
+                                            - Jason */
+
 :root {
   --color-back: linear-gradient(135deg, #6B48FF, #9B6BFF);
   --color-chest: linear-gradient(135deg, #FF6B35, #FF9B6B);
@@ -11,7 +19,10 @@
   --brand-black: #000000;
   --brand-white: #FAFAFA;
 
-  --bg-page: #f3f3f385;
+  --bg-page: linear-gradient(25deg, rgb(251, 245, 233) 0%, rgb(247, 241, 250) 100%);
+  --bg-auth: linear-gradient(25deg, rgb(247, 241, 250) 0%, rgb(251, 245, 233) 100%);
+  --bg-home: linear-gradient(25deg, rgb(246, 242, 231) 0%, rgb(246, 233, 251) 70%, rgb(238, 223, 248) 100%);
+  --bg-tags: linear-gradient(25deg, rgb(209, 240, 200) 0%, rgb(182, 218, 148) 100%);
   --bg-card: #ffffff;
   --bg-input: #F0F0EE;
   --text-primary: #0A0A0A;
@@ -60,7 +71,7 @@ html {
 
 body {
   font-family: var(--font-body);
-  background-color: var(--bg-page);
+  background: var(--bg-page);
   color: var(--text-primary);
   line-height: 1.6;
   min-height: 100vh;

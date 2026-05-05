@@ -124,7 +124,6 @@
   cursor: not-allowed;
 }
 
-/* ── Success message ── */
 .exercise-row-success {
   display: flex;
   align-items: center;
@@ -162,5 +161,16 @@
 .exercise-row-error-icon {
   font-size: 0.75rem;
   flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  
+  .exercise-row-main {
+    gap: var(--space-xs);
+  }
+
+  .exercise-row-sets-reps {
+    gap: 1px;
+  }
 }
 

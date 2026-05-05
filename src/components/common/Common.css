@@ -224,17 +224,18 @@
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  background-color: var(--bg-input);
+  background: var(--bg-tags);
   border-radius: var(--radius-full);
+  border: 1px solid rgba(162, 214, 114, 0.308);
   padding: 4px var(--space-sm);
   font-size: 0.8rem;
-  color: var(--text-secondary);
+  color: rgb(74, 115, 35);
   font-weight: 500;
 }
 
 .tag-remove {
   font-size: 0.65rem;
-  color: var(--text-muted);
+  color: rgb(93, 141, 48);
   transition: color 0.2s ease;
   line-height: 1;
 }

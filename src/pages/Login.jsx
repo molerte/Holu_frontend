@@ -1,95 +1,112 @@
-import React, { useState } from "react";
-import { API_BASE_URL } from "../api/api";
-import "./Login.css";
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { login as loginApi } from '../api/authApi';
+import { useAuth } from '../context/AuthContext';
+import { BsEye } from "react-icons/bs";
+import { BsEyeSlash } from "react-icons/bs";
+import { LuSquareActivity } from "react-icons/lu";
+import "./AuthPages.css";
 
-function Login() {
-  const [formData, setFormData] = useState({
-    username: "",
-    password: "",
-  });
+/* This page handles user login such as setForm and handleSubmit
+   in order to authenticate the user and store the token in context
+   for future authenticated API calls.
+   Also... this page makes the login page work */
 
-  const isFormValid = formData.username !== "" && formData.password !== "";
+const Login = () => {
+  const { login } = useAuth();
+  const navigate = useNavigate();
+
+  const [form, setForm] = useState({ username: '', password: '' });
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setForm({ ...form, [e.target.name]: e.target.value });
+    setError(null);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setError(null);
 
     try {
-      const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-
-      if (!response.ok) {
-        alert("Invalid username or password");
-        return;
-      }
-
-      const data = await response.json(); 
-
-      // Store token
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("userId", data.userId);
-      localStorage.setItem("username", data.username);
-         localStorage.setItem("name", data.name);
-
-      alert("Login successful!");
-
-      window.location.href = "/myroutines";
-    } catch (error) {
-      console.error(error);
-      alert("Server error");
+      const data = await loginApi(form);
+      login(data)
+      navigate('/routines');
+    } catch (err) {
+      setError(err.message || 'Invalid username or password. Please try again.');
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="signin-wrapper">
-      <div className="signin-card">
-       <a href="/" className="login-back-btn">&lt; Back</a>
+    <div className="auth-container">
+      <div className="auth-card">
+        <div className="auth-card-logo">
+          <LuSquareActivity size={48} />
+        </div>
 
+        <h1 className="auth-card-title">Welcome Back</h1>
+        <form className="auth-form" onSubmit={handleSubmit}>
+          <div className="auth-form-group">
+            <label className="auth-form-label">Username</label>
+            <input
+              className="auth-form-input"
+              type="text"
+              name="username"
+              placeholder="Enter your username"
+              value={form.username}
+              onChange={handleChange}
+              required
+              autoFocus
+            />
+          </div>
 
-        <h1 className="signin-title">LOGIN</h1>
+          <div className="auth-form-group">
+            <label className="auth-form-label">Password</label>
+            <div className="auth-form-input-wrapper">
+              <input
+                className="auth-form-input"
+                type={showPassword ? "text" : "password"}
+                name="password"
+                placeholder="••••••••"
+                value={form.password}
+                onChange={handleChange}
+                required
+              />
+              <button
+                type="button"
+                className="auth-form-password-toggle"
+                onClick={() => setShowPassword(!showPassword)}
+                tabIndex={-1}
+                title={showPassword ? "Hide password" : "Show password"}
+              >
+                {showPassword ? <BsEyeSlash /> : <BsEye />}
+              </button>
+            </div>
+          </div>
 
-        <form onSubmit={handleSubmit}>
-          <label className="signin-label">User Name:</label>
-          <input
-            className="signin-input"
-            type="text"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-            placeholder="Enter username"
-          />
+          {error && <div className="auth-form-error">{error}</div>}
 
-          <label className="signin-label">Password:</label>
-          <input
-            className="signin-input"
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            placeholder="Enter password"
-          />
-
-          <button 
-            type="submit" 
-            className="signin-btn" 
-            disabled={!isFormValid}
+          <button
+            className="auth-form-submit"
+            type="submit"
+            disabled={loading}
           >
-            Login
+            {loading ? 'Logging in...' : 'Login'}
           </button>
-
-          <a href="/register-account" className="Createaccount-btn">
-            Create new account
-          </a>
         </form>
+
+        <p className="auth-card-footer">
+          Don't have an account?{' '}
+          <Link to="/register-account" className="auth-card-link">Sign up here</Link>
+        </p>
       </div>
     </div>
   );
-}
+};
 
 export default Login;

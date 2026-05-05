@@ -2,6 +2,12 @@ import { useState, useEffect } from 'react';
 import { getDaysByRoutine, addDay, updateDay, deleteDay } from '../api/workoutDayApi';
 import { useAuth } from '../context/AuthContext';
 
+// This custom hook provides logic for managing workout days within a 
+// specific routine. It retrieves the workout days for a given routine, 
+// and provides functions to add, update, and delete workout days.
+// The hook also manages loading and error states to ensure a smooth user 
+// experience when interacting with workout days.
+
 export const useWorkoutDays = (routineId) => {
   const { token } = useAuth();
   const [days, setDays] = useState([]);

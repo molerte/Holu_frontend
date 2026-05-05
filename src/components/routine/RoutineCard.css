@@ -60,7 +60,7 @@
 
 .routine-card-draft-badge {
   display: inline-block;
-  background: linear-gradient(25deg,rgb(247, 226, 178) 0%, rgb(215, 172, 54) 100%);
+  background: linear-gradient(25deg, rgb(247, 226, 178) 0%, rgb(215, 172, 54) 100%);
   color: #443600;
   font-size: 0.65rem;
   font-weight: 700;
@@ -120,6 +120,12 @@
   border-top: 1px solid var(--border);
 }
 
+.routine-card-description-title {
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-sm);
+}
+
 .routine-card-publish-success {
   background-color: rgba(52, 199, 89, 0.1);
   border: 1px solid rgba(52, 199, 89, 0.35);
@@ -160,7 +166,11 @@
 
 .routine-card-tag {
   font-size: 0.8rem;
-  color: var(--text-secondary);
+  background: var(--bg-tags);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  color: rgb(74, 115, 35) !important;
+  border: 1px solid rgba(162, 214, 114, 0.308) !important;
   font-weight: 500;
 }
 
@@ -217,12 +227,27 @@
     padding: var(--space-lg) var(--space-md);
   }
 
+  .routine-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-md);
+  }
+
   .routine-card-title {
     font-size: 1.8rem;
+    word-break: break-word;
+  }
+
+  .routine-card-actions {
+    align-self: flex-start;
   }
 
   .routine-card-footer {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .routine-card-tags {
+    justify-content: center;
   }
 }

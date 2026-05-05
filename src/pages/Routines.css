@@ -8,10 +8,25 @@
     }
 }
 
+@keyframes slide-right {
+    from {
+        transform: translateX(1%);
+        filter: blur(4px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        filter: none;
+        opacity: 1;
+    }
+}
+
 .feed-page {
     max-width: 1100px;
     margin: 0 auto;
     padding: var(--space-2xl) var(--space-xl);
+    animation: slide-right 0.7s ease;
 }
 
 .feed-page-header {
@@ -260,5 +275,28 @@
 
     .day-chip {
         min-width: 64px;
+    }
+
+    .feed-skeleton {
+        padding: var(--space-lg);
+    }
+
+    .feed-skeleton-title {
+        height: 58px;
+        width: 70%;
+        min-width: 130px;
+        margin-bottom: var(--space-md);
+    }
+
+    .feed-skeleton-days {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--space-sm);
+    }
+
+    .feed-skeleton-day {
+        min-width: 110px;
+        min-height: 120px;
+        padding: var(--space-md);
     }
 }

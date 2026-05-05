@@ -1,147 +1,200 @@
-/* ---------------------- Page Layout ---------------------- */
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
 
-.routine-title {
-  font-family: var(--font-display);
-    font-size: clamp(3rem, 6vw, 5rem);
-    line-height: 0.95;
-    letter-spacing: 1px;
-    color: var(--text-primary);
+  100% {
+    background-position: -200% 0;
+  }
 }
 
-.routine-wrapper {
-  height: 100vh;
-  width: 100%;
-  background-color: rgba(255, 255, 255, 0.7);
+.my-routines-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: var(--space-2xl) var(--space-xl);
+  animation: slide-right 0.7s ease;
+}
+
+.my-routines-page-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: var(--space-2xl);
+  gap: var(--space-lg);
+}
+
+.my-routines-page-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  letter-spacing: 1px;
+  line-height: 1;
+  color: var(--text-primary);
+}
+
+.my-routines-page-sub {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-top: var(--space-xs);
+}
+
+.my-routines-page-create-btn {
+  background-color: var(--brand-black);
+  color: var(--brand-white);
+  border-radius: var(--radius-full);
+  padding: 12px var(--space-xl);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  transition: var(--transition);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.my-routines-page-create-btn span {
+  color: var(--brand-yellow);
+}
+
+.my-routines-page-create-btn:hover {
+  background-color: #252525;
+  box-shadow: var(--shadow-md);
+}
+
+.my-routines-page-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+}
+
+.my-routines-page-error {
+  background-color: rgba(255, 59, 48, 0.08);
+  border: 1px solid rgba(255, 59, 48, 0.2);
+  border-radius: var(--radius-sm);
+  padding: var(--space-md);
+  font-size: 0.875rem;
+  color: var(--error);
+  margin-bottom: var(--space-lg);
+}
+
+.my-routines-page-empty {
+  text-align: center;
+  padding: var(--space-2xl);
+  color: var(--text-secondary);
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 40px;
+  gap: var(--space-md);
 }
 
-.rountine-subtitle {
-    font-size: 1rem;
-    color: var(--text-secondary);
-    margin-top: var(--space-md);
-    max-width: 320px;
+.my-routines-page-empty-icon {
+  font-size: 3rem;
 }
 
-/* ---------------------- Routine Cards ---------------------- */
-
-.myroutine-routine-grid {
-  display: grid;
-  gap: 20px;
-  width: 95%;
-  grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
+.my-routines-page-empty p {
+  font-size: 1rem;
 }
 
-.myroutine-routine-card {
-  background: white;
-  height: 220px;
-  width: 200px;
-  padding: 35px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  text-align: left;
-  cursor: pointer;
-  transition: 0.2s ease;
+.my-routines-page-empty-btn {
+  background-color: var(--brand-black);
+  color: var(--brand-white);
+  border-radius: var(--radius-full);
+  padding: 10px var(--space-xl);
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: var(--transition);
 }
 
-/* ---------------------- Buttons ---------------------- */
+.my-routines-page-empty-btn:hover {
+  background-color: #1a1a1a;
+  transform: translateY(-1px);
+}
 
-.routine-actions {
-  margin-top: 50px;
+.my-routines-skeleton {
+  background-color: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  border: 1px solid var(--border);
+}
+
+.my-routines-skeleton-title {
+  height: 40px;
+  width: 260px;
+  background: linear-gradient(90deg, var(--bg-input) 25%, #e8e8e6 50%, var(--bg-input) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.my-routines-skeleton-days {
   display: flex;
-  gap: 20px;
-  justify-content: center;
+  gap: var(--space-sm);
 }
 
-.edit-btn
-{
-   padding: 14px 32px;
-  background: rgb(44, 1, 255);
-  color: white;
-  border: none;
-  border-radius: 10px;
-  font-size: 17px;
-  font-weight: 700;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
-  transition: 0.2s ease;
-
+.my-routines-skeleton-day {
+  height: 180px;
+  flex: 1;
+  background: linear-gradient(90deg, var(--bg-input) 25%, #e8e8e6 50%, var(--bg-input) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+  border-radius: var(--radius-lg);
 }
 
-
-.publish-btn {
-  padding: 14px 32px;
-  background: rgb(255, 0, 13);
-  color: white;
-  border: none;
-  border-radius: 10px;
-  font-size: 17px;
-  font-weight: 700;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
-  transition: 0.2s ease;
+.my-routines__skeleton-day:nth-child(2) {
+  animation-delay: 0.1s;
 }
 
-.edit-btn:hover,
-.publish-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+.my-routines-skeleton-day:nth-child(2) {
+  animation-delay: 0.1s;
 }
 
-/* ---------------------- Modal System ---------------------- */
-
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  
-  z-index: 1000;
-  pointer-events: auto;
+.my-routines-skeleton-day:nth-child(3) {
+  animation-delay: 0.2s;
 }
 
-.modal-content {
-  background: white;
-  padding: 25px;
-  border-radius: 12px;
-  width: 320px;
-  max-height: 80vh;
-  overflow-y: auto;
-
-  position: relative;
-  z-index: 1001;
-  pointer-events: auto;
+.my-routines-skeleton-day:nth-child(4) {
+  animation-delay: 0.3s;
 }
 
-/* ---------------------- Modal Options ---------------------- */
-
-.routine-option {
-  background: #f2f2f2;
-  padding: 12px;
-  margin-bottom: 10px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.2s ease;
+.my-routines-skeleton-day:nth-child(5) {
+  animation-delay: 0.4s;
 }
 
-.routine-option:hover {
-  background: #e0e0e0;
-}
+@media (max-width: 768px) {
+  .my-routines-page {
+    padding: var(--space-xl) var(--space-md);
+  }
 
-.close-btn {
-  margin-top: 15px;
-  padding: 10px 20px;
-  background: black;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
+  .my-routines-page-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .my-routines-page-create-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .my-routines-skeleton {
+    padding: var(--space-lg);
+  }
+
+  .my-routines-skeleton-title {
+    height: 58px;
+    width: 70%;
+    min-width: 130px;
+    margin-bottom: var(--space-md);
+  }
+
+  .my-routines-skeleton-days {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-sm);
+  }
+
+  .my-routines-skeleton-day {
+    min-width: 100px;
+    min-height: 120px;
+    padding: var(--space-md);
+  }
+
 }

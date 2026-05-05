@@ -1,8 +1,7 @@
 .day-card-grid {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: var(--space-sm);
-  flex-wrap: wrap;
-  align-items: stretch;
 }
 
 .day-card {
@@ -10,7 +9,6 @@
   padding: var(--space-md);
   min-height: 200px;
   flex: 1;
-  min-width: 190px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -19,9 +17,16 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+.day-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.223));
+  pointer-events: none;
+}
+
 .day-card--editable,
 .day-card--clickable {
-   cursor: pointer;
   cursor: pointer;
   transition: 0.5s ease;
 }
@@ -141,7 +146,7 @@
   border-radius: var(--radius-lg);
   min-height: 200px;
   flex: 0 0 auto;
-  width: 90px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -183,19 +188,29 @@
   letter-spacing: 0.8px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 640px) {
+
+  .day-card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .day-card {
-    min-width: 90px;
+    min-width: 120px;
     min-height: 160px;
-    padding: var(--space-sm);
+    padding: var(--space-md);
   }
 
   .day-card-muscle {
-    font-size: 1.2rem;
+    font-size: 1rem;
+  }
+
+  .day-card-exercise {
+    font-size: 0.7rem;
   }
 
   .day-card-add {
     min-height: 160px;
-    width: 70px;
+    width: 100%;
   }
+
 }
