@@ -64,7 +64,7 @@ const Navbar = () => {
   const handleLogout = () => {
     setShowLogoutConfirm(false);
     logout();
-    navigate('/');
+    navigate('/login');
   };
 
   const handleCancelLogout = () => {
