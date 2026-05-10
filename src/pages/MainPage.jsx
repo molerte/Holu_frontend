@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import discoverImg from '../assets/images/discover-routine-home.png';
 import buildImg from '../assets/images/build-routine-home.png';
 import saveImg from '../assets/images/save-routine-home.png';
+import { FiArrowUpRight } from "react-icons/fi";
 import { FaGithub, FaLinkedin, FaYoutube } from 'react-icons/fa';
 import './MainPage.css';
 
@@ -143,8 +144,8 @@ function MainPage() {
 
         <footer className="footer reveal">
           <div className="footer-inner">
+            <hr />
             <div className="footer-logo">Holu.</div>
-            <hr></hr>
             <div className="footer-meta">
               <p className="footer-copyright">
                 © {new Date().getFullYear()} Holu Fitness. All rights reserved.
@@ -156,7 +157,7 @@ function MainPage() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <FaGithub />
+                GitHub<FiArrowUpRight />
               </a>
             </div>
           </div>
