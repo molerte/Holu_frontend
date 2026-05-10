@@ -29,10 +29,20 @@
   justify-content: space-between;
   padding: 0 var(--space-xl);
   height: 64px;
-  background-color: var(--brand-black);
+  background-color: rgba(0, 0, 0, 0.788);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.301);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.navbar--visible {
+  transform: translateY(0);
+}
+
+.navbar--hidden {
+  transform: translateY(-100%);
 }
 
 .navbar::after {
@@ -300,7 +310,7 @@
     top: 64px;
     left: 0;
     right: 0;
-    background: var(--brand-black);
+    background: rgba(0, 0, 0, 0.939);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     width: 100%;
     flex-direction: column;

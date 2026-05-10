@@ -9,6 +9,8 @@ const Navbar = () => {
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const lastScrollY = useRef(0);
 
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
@@ -38,6 +40,25 @@ const Navbar = () => {
     };
     document.addEventListener('click', handleClickOutside);
     return () => document.removeEventListener('click', handleClickOutside);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY < 10) {
+        setIsVisible(true);
+      } else if (currentScrollY < lastScrollY.current) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+        setMenuOpen(false);
+      }
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
@@ -75,7 +96,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className={`navbar ${menuOpen ? 'navbar--menu-open' : ''}`}>
+      <nav className={`navbar ${menuOpen ? 'navbar--menu-open' : ''} ${isVisible ? 'navbar--visible' : 'navbar--hidden'}`}>
 
         <Link
           to={isAuthenticated ? '/routines' : '/'}
