@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import discoverImg from '../assets/images/discover-routine-home.png';
 import buildImg from '../assets/images/build-routine-home.png';
 import saveImg from '../assets/images/save-routine-home.png';
+import { FaGithub, FaLinkedin, FaYoutube } from 'react-icons/fa';
 import './MainPage.css';
 
 /* Welcome to the homepage of Holu. 
@@ -77,6 +78,7 @@ function MainPage() {
       { threshold: 0.15 }
     );
 
+
     document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
     return () => observer.disconnect();
   }, []);
@@ -111,7 +113,6 @@ function MainPage() {
         </div>
       </section>
 
-
       <section className="features">
         <div className="features-inner">
           {FEATURES.map((feature, i) => (
@@ -124,9 +125,8 @@ function MainPage() {
         </div>
       </section>
 
-
-      <section className="cta reveal">
-        <div className="cta-inner">
+      <section className="cta">
+        <div className="cta-inner reveal">
           <h2 className="cta-title">Ready to Transform Your Fitness Journey?</h2>
           <p className="cta-description">
             Join Holu today and start crafting your personalized workout plans.
@@ -139,10 +139,31 @@ function MainPage() {
             Join Now
           </button>
         </div>
+      
+
+        <footer className="footer reveal">
+          <div className="footer-inner">
+            <div className="footer-logo">Holu.</div>
+            <hr></hr>
+            <div className="footer-meta">
+              <p className="footer-copyright">
+                © {new Date().getFullYear()} Holu Fitness. All rights reserved.
+              </p>
+              <a
+                className="footer-social"
+                href="https://github.com/molerte/Holu_frontend"
+                aria-label="GitHub"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaGithub />
+              </a>
+            </div>
+          </div>
+        </footer>
       </section>
     </div>
   );
 };
-
 
 export default MainPage;

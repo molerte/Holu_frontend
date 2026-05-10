@@ -17,7 +17,7 @@ const RoutineCardSkeleton = () => (
   <div className="feed-skeleton">
     <div className="feed-skeleton-title" />
     <div className="feed-skeleton-days">
-      {[...Array(5)].map((_, i) => (
+      {[...Array(4)].map((_, i) => (
         <div key={i} className="feed-skeleton-day" />
       ))}
     </div>
