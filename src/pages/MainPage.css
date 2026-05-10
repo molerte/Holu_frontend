@@ -136,7 +136,7 @@
   margin-top: var(--space-sm);
 }
 
-.btn {
+.hero .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -331,6 +331,7 @@
   border: none;
   border-top: 1px solid rgba(192, 180, 72, 0.486);
   margin: 0;
+  box-shadow: 1px 1px 2px rgba(165, 131, 38, 0.428);
 }
 
 .footer-meta {
@@ -360,8 +361,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.4rem;
-  color: var(--brand-black);
+  font-size: 0.9rem;
+  color: var(--text-secondary);
 }
 
 .footer-social:hover {
