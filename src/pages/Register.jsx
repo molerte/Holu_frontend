@@ -4,6 +4,7 @@ import { register as registerApi } from '../api/authApi';
 import { BsEye } from "react-icons/bs";
 import { BsEyeSlash } from "react-icons/bs";
 import { LuSquareActivity } from "react-icons/lu";
+import { RiArrowGoBackLine } from "react-icons/ri";
 import "./AuthPages.css";
 
 /* Register page which is same as login but with more fields */
@@ -51,9 +52,22 @@ const Register = () => {
   return (
     <div className="auth-container">
       <div className="auth-card">
-        <div className="auth-card-logo">
-          <LuSquareActivity size={48} />
-        </div>
+
+        <button 
+          className="auth-card-close"
+          onClick={() => navigate(-1)}
+          title="Go back"
+          type="button"
+        >
+          ✕
+        </button>
+
+        <Link
+          to={'/'}
+          className="auth-card-logo"
+        >
+          Holu<span>.</span>
+        </Link>
 
         <h1 className="auth-card-title">Create Account</h1>
         <form className="auth-form" onSubmit={handleSubmit}>

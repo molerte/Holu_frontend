@@ -86,45 +86,48 @@ function MainPage() {
 
   return (
     <div className="main-page">
-      <section className="hero">
+      <div className="hero-features">
         <div className="hero-bg" aria-hidden="true" />
-        <div className="hero-content">
-          <p className="hero-uppertext">Build Your Perfect Workout Routine</p>
-          <h1 className="hero-heading">Achieve Your Fitness Goals <br />
-            <span className="hero-heading-accent">With Holu</span>
-          </h1>
-          <p className="hero-subheading">
-            Create, customize, and share workout routines tailored to your goals.
-            Whether you're bulking up, slimming down, or just staying active, Holu has you covered.
-          </p>
-          <div className="hero-actions">
-            <button
-              className="btn btn-explore btn--large"
-              onClick={() => navigate('/routines')}
-            >
-              Explore
-            </button>
-            <button
-              className="btn btn-register btn--large"
-              onClick={() => navigate('/register-account')}
-            >
-              Get Started
-            </button>
-          </div>
-        </div>
-      </section>
 
-      <section className="features">
-        <div className="features-inner">
-          {FEATURES.map((feature, i) => (
-            <FeatureSection
-              key={feature.title}
-              {...feature}
-              index={i}
-            />
-          ))}
-        </div>
-      </section>
+        <section className="hero">
+          <div className="hero-content">
+            <p className="hero-uppertext">Build Your Perfect Workout Routine</p>
+            <h1 className="hero-heading">Achieve Your Fitness Goals <br />
+              <span className="hero-heading-accent">With Holu</span>
+            </h1>
+            <p className="hero-subheading">
+              Create, customize, and share workout routines tailored to your goals.
+              Whether you're bulking up, slimming down, or just staying active, Holu has you covered.
+            </p>
+            <div className="hero-actions">
+              <button
+                className="btn btn-explore btn--large"
+                onClick={() => navigate('/routines')}
+              >
+                Explore
+              </button>
+              <button
+                className="btn btn-register btn--large"
+                onClick={() => navigate('/register-account')}
+              >
+                Get Started
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section className="features">
+          <div className="features-inner">
+            {FEATURES.map((feature, i) => (
+              <FeatureSection
+                key={feature.title}
+                {...feature}
+                index={i}
+              />
+            ))}
+          </div>
+        </section>
+      </div>
 
       <section className="cta">
         <div className="cta-inner reveal">

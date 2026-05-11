@@ -22,7 +22,10 @@ adjust.
   align-items: center;
   justify-content: center;
   padding: var(--space-xl);
-  background: var(--bg-auth);
+  
+  background-size: 100% 100%;
+  background-position: 0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px;
+  background-image: radial-gradient(18% 28% at 24% 50%, #F6FBFFFF 7%, #073AFF00 100%),radial-gradient(18% 28% at 18% 71%, #FFFFFF59 6%, #073AFF00 100%),radial-gradient(70% 53% at 36% 76%, #E6EBFAFF 0%, #073AFF00 100%),radial-gradient(42% 53% at 15% 94%, #EEF6FEFF 7%, #073AFF00 100%),radial-gradient(42% 53% at 34% 72%, #FFFFFFFF 7%, #073AFF00 100%),radial-gradient(18% 28% at 35% 87%, #FFFFFFFF 7%, #073AFF00 100%),radial-gradient(31% 43% at 7% 98%, #EAF5FFFF 24%, #073AFF00 100%),radial-gradient(21% 37% at 72% 23%, #FAFFF89C 24%, #073AFF00 100%),radial-gradient(35% 56% at 91% 74%, #EFF5FFF5 9%, #073AFF00 100%),radial-gradient(74% 86% at 67% 38%, #FEFEE7F5 24%, #073AFF00 100%),linear-gradient(125deg, #FFFFDDFF 1%, #AFB2F3FF 100%);
 }
 
 .auth-card {
@@ -31,31 +34,60 @@ adjust.
   padding: 40px 36px;
   width: 100%;
   max-width: 400px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: inset 0 6px 18px rgba(247, 245, 222, 0.498), 
+              0 4px 12px rgba(0, 0, 0, 0.107);
   display: flex;
   flex-direction: column;
   gap: var(--space-lg);
   animation: auth-slide-right 0.7s ease;
+  position: relative;
+}
+
+.auth-card-close {
+  position: absolute;
+  top: var(--space-md, 16px);
+  right: var(--space-md, 16px);
+  width: 32px;
+  height: 32px;
+  color: var(--text-muted, #999);
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+}
+
+.auth-card-close:hover {
+  color: var(--text-primary, #111);
 }
 
 .auth-card-logo {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: var(--font-display-weight);
+  color: var(--text-primary);
+  letter-spacing: 0.5px;
   text-align: center;
-  color: #444f2b;
-  transition: color 0.3s ease;
+}
+
+.auth-card-logo span {
+  color: var(--brand-yellow);
 }
 
 .auth-card-logo:hover {
-  color: #c4c93a;
+  color: #444444;
   transition: 0.3s ease;
 }
 
 .auth-card-title {
   font-family: var(--font-display);
-  font-weight: var(--font-display-weight-exercise);
-  font-size: 1.6rem;
+  font-weight: 600;
+  font-size: 1.3rem;
   color: var(--text-primary);
   text-align: center;
-  line-height: 1.2;
+  line-height: 0.9;
 }
 
 .auth-form {
@@ -197,4 +229,5 @@ adjust.
     padding: 32px 24px;
     border-radius: 16px;
   }
+  
 }
