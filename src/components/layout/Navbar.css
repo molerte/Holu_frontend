@@ -34,7 +34,7 @@
   box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.301);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .navbar--visible {
@@ -237,7 +237,7 @@
   width: 100%;
   max-width: 360px;
   text-align: center;
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.25);
+  box-shadow: inset 0 4px 12px rgba(77, 77, 77, 0.23) !important;
   animation: logoutSlideUp 0.2s ease forwards;
 }
 
@@ -271,6 +271,7 @@
   font-size: 0.9rem;
   font-family: var(--font-body);
   cursor: pointer;
+  box-shadow: inset 0 4px 12px rgba(77, 77, 77, 0.12) !important;
   transition: background-color 0.2s ease;
 }
 
@@ -289,6 +290,7 @@
   font-size: 0.9rem;
   font-family: var(--font-body);
   cursor: pointer;
+  box-shadow: inset 0 4px 12px rgba(255, 255, 255, 0.344) !important;
   transition: background-color 0.2s ease, transform 0.1s ease;
 }
 

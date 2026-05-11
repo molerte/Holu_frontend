@@ -12,6 +12,9 @@ const Navbar = () => {
   const [isVisible, setIsVisible] = useState(true);
   const lastScrollY = useRef(0);
 
+  const hideOnRoutes = ["/login", "/register-account"];
+  const shouldHide = hideOnRoutes.includes(location.pathname);
+
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
   const menuOpenRef = useRef(false);
@@ -93,6 +96,7 @@ const Navbar = () => {
   };
 
   const isActive = (path) => location.pathname === path;
+  if (shouldHide) return null;
 
   return (
     <>

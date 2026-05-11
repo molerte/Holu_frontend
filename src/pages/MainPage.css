@@ -1,6 +1,6 @@
 @keyframes colorPulse {
   50% {
-    filter: saturate(2.5) hue-rotate(30deg);
+    filter: saturate(3) hue-rotate(30deg);
   }
 }
 
@@ -36,6 +36,12 @@
   animation: fadeIn 0.8s ease forwards;
 }
 
+.hero-features {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(32px);
@@ -65,8 +71,8 @@
   inset: -50%;
   width: 200%;
   height: 200%;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 1056 1056' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  opacity: 0.35;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 1256 1256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.5' numOctaves='0.9' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.25;
   animation: noiseShift 1s steps(2) infinite;
   pointer-events: none;
   z-index: 0;
@@ -78,7 +84,7 @@
 }
 
 .hero-bg {
-  position: fixed;
+  position: absolute;
   inset: 0;
   z-index: 0;
   animation: colorPulse 10s ease-in-out infinite;
@@ -166,8 +172,8 @@
 .hero .btn-register {
   background: linear-gradient(145deg, rgb(238, 249, 22) 0%, rgb(207, 201, 49) 100%);
   color: var(--brand-black);
-  border: 1px solid rgba(242, 242, 227, 0.405);
-  box-shadow: inset 0 4px 12px rgba(245, 244, 228, 0.747) !important;
+  border: 1px solid rgba(242, 242, 227, 0.453);
+  box-shadow: inset 0 4px 12px rgba(245, 244, 228, 0.823) !important;
   transition: transform 0.3s ease, filter 0.3s ease;
 }
 
@@ -182,6 +188,7 @@
 
 .features {
   position: relative;
+  z-index: 1;
   padding: var(--space-2xl) var(--space-xl);
   overflow: hidden;
 }
@@ -194,8 +201,8 @@
   backdrop-filter: opacity(0.5) blur(9px);
   background: linear-gradient(#ffffffa8 1px, transparent 1px), linear-gradient(to right, hsla(0, 0%, 100%, 0.687) 1px, #f4f7ff2d 1px);
   background-size: 60px 60px;
-  -webkit-mask-image: radial-gradient(circle, black 50%, transparent 80%);
-  mask-image: radial-gradient(circle, black 50%, transparent 80%);
+  -webkit-mask-image: radial-gradient(circle, black 60%, transparent 80%);
+  mask-image: radial-gradient(circle, black 60%, transparent 80%);
 }
 
 .features-inner {
@@ -232,7 +239,7 @@
 
 .feature-desc {
   font-size: 1rem;
-  color: var(--brand-white);
+  color: var(--brand-black);
   line-height: 1.7;
   max-width: 460px;
 }
