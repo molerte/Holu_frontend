@@ -18,6 +18,10 @@ const Navbar = () => {
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
   const menuOpenRef = useRef(false);
+  const modalOpenRef = useRef(false);
+  const isVisibleRef = useRef(true);
+  const ignoringScrollRef = useRef(false);
+  const visibilityBeforeModal = useRef(true);
 
   const closeMenu = () => setMenuOpen(false);
 
@@ -28,6 +32,10 @@ const Navbar = () => {
   useEffect(() => {
     closeMenu();
   }, [location.pathname]);
+
+  useEffect(() => {
+    isVisibleRef.current = isVisible;
+  },)
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -46,7 +54,33 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
+    const observer = new MutationObserver(() => {
+      const isModalOpen = document.body.style.position === 'fixed';
+
+      if (isModalOpen && !modalOpenRef.current) {
+        visibilityBeforeModal.current = isVisibleRef.current;
+        modalOpenRef.current = true;
+      } else if (!isModalOpen && modalOpenRef.current) {
+        modalOpenRef.current = false;
+        ignoringScrollRef.current = true;
+
+        setTimeout(() => {
+          ignoringScrollRef.current = false;
+          setIsVisible(visibilityBeforeModal.current);
+        });
+      }
+    });
+    observer.observe(document.body, {
+      attributes: true,
+      attributeFilter: ['style']
+    }, 10);
+    return () => observer.disconnect();
+  }, [isVisible]);
+
+  useEffect(() => {
     const handleScroll = () => {
+
+      if (modalOpenRef.current || ignoringScrollRef.current) return;
       const currentScrollY = window.scrollY;
 
       if (currentScrollY < 10) {
