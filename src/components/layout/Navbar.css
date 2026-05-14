@@ -29,10 +29,26 @@
   justify-content: space-between;
   padding: 0 var(--space-xl);
   height: 64px;
-  background-color: var(--brand-black);
+  background-color: rgba(0, 0, 0, 0.837);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(12px);
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.178);
+  backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(12px);
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.navbar--visible {
+  transform: translateY(0);
+}
+
+.navbar--hidden {
+  transform: translateY(-100%);
 }
 
 .navbar::after {
@@ -227,7 +243,7 @@
   width: 100%;
   max-width: 360px;
   text-align: center;
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.25);
+  box-shadow: inset 0 4px 12px rgba(77, 77, 77, 0.23) !important;
   animation: logoutSlideUp 0.2s ease forwards;
 }
 
@@ -261,6 +277,7 @@
   font-size: 0.9rem;
   font-family: var(--font-body);
   cursor: pointer;
+  box-shadow: inset 0 4px 12px rgba(77, 77, 77, 0.12) !important;
   transition: background-color 0.2s ease;
 }
 
@@ -279,6 +296,7 @@
   font-size: 0.9rem;
   font-family: var(--font-body);
   cursor: pointer;
+  box-shadow: inset 0 4px 12px rgba(255, 255, 255, 0.344) !important;
   transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
@@ -289,10 +307,22 @@
 @media (max-width: 640px) {
   .navbar {
     padding: 0 var(--space-md);
+    justify-content: flex-start;
+    gap: var(--space-sm);
   }
 
   .navbar-hamburger {
     display: flex;
+  }
+
+  .navbar-logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .navbar-left {
+    gap: 12px;
   }
 
   .navbar-links {
@@ -300,7 +330,7 @@
     top: 64px;
     left: 0;
     right: 0;
-    background: var(--brand-black);
+    background: rgba(0, 0, 0, 0.964);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     width: 100%;
     flex-direction: column;
@@ -332,7 +362,6 @@
   .navbar-links .navbar-link {
     width: 100%;
     padding: var(--space-sm) 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     font-size: 1rem;
   }
 
@@ -349,10 +378,13 @@
   .navbar-link--login,
   .navbar-link--create {
     width: 100%;
-    text-align: center;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 500;
     padding: 12px var(--space-md);
+    background: none;
+    border: none;
   }
-
+  
   .navbar-username {
     display: none;
   }

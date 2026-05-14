@@ -9,10 +9,19 @@ const Navbar = () => {
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const lastScrollY = useRef(0);
+
+  const hideOnRoutes = ["/login", "/register-account"];
+  const shouldHide = hideOnRoutes.includes(location.pathname);
 
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
   const menuOpenRef = useRef(false);
+  const modalOpenRef = useRef(false);
+  const isVisibleRef = useRef(true);
+  const ignoringScrollRef = useRef(false);
+  const visibilityBeforeModal = useRef(true);
 
   const closeMenu = () => setMenuOpen(false);
 
@@ -23,6 +32,10 @@ const Navbar = () => {
   useEffect(() => {
     closeMenu();
   }, [location.pathname]);
+
+  useEffect(() => {
+    isVisibleRef.current = isVisible;
+  },)
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -38,6 +51,51 @@ const Navbar = () => {
     };
     document.addEventListener('click', handleClickOutside);
     return () => document.removeEventListener('click', handleClickOutside);
+  }, []);
+
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      const isModalOpen = document.body.style.position === 'fixed';
+
+      if (isModalOpen && !modalOpenRef.current) {
+        visibilityBeforeModal.current = isVisibleRef.current;
+        modalOpenRef.current = true;
+      } else if (!isModalOpen && modalOpenRef.current) {
+        modalOpenRef.current = false;
+        ignoringScrollRef.current = true;
+
+        setTimeout(() => {
+          ignoringScrollRef.current = false;
+          setIsVisible(visibilityBeforeModal.current);
+        });
+      }
+    });
+    observer.observe(document.body, {
+      attributes: true,
+      attributeFilter: ['style']
+    }, 10);
+    return () => observer.disconnect();
+  }, [isVisible]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+
+      if (modalOpenRef.current || ignoringScrollRef.current) return;
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY < 10) {
+        setIsVisible(true);
+      } else if (currentScrollY < lastScrollY.current) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+        setMenuOpen(false);
+      }
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
@@ -72,31 +130,33 @@ const Navbar = () => {
   };
 
   const isActive = (path) => location.pathname === path;
+  if (shouldHide) return null;
 
   return (
     <>
-      <nav className={`navbar ${menuOpen ? 'navbar--menu-open' : ''}`}>
+      <nav className={`navbar ${menuOpen ? 'navbar--menu-open' : ''} ${isVisible ? 'navbar--visible' : 'navbar--hidden'}`}>
+        <div className="navbar-left">
+          <button
+            className={`navbar-hamburger ${menuOpen ? 'navbar-hamburger--open' : ''}`}
+            ref={buttonRef}
+            onClick={() => setMenuOpen((prev) => !prev)}
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={menuOpen}
+          >
+            <span className="navbar-hamburger-bar" />
+            <span className="navbar-hamburger-bar" />
+            <span className="navbar-hamburger-bar" />
+          </button>
 
-        <Link
-          to={isAuthenticated ? '/routines' : '/'}
-          className="navbar-logo"
-          onClick={closeMenu}
-        >
-          Holu<span>.</span>
-        </Link>
-
-        <button
-          className={`navbar-hamburger ${menuOpen ? 'navbar-hamburger--open' : ''}`}
-          ref={buttonRef}
-          onClick={() => setMenuOpen((prev) => !prev)}
-          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-          aria-expanded={menuOpen}
-        >
-          <span className="navbar-hamburger-bar" />
-          <span className="navbar-hamburger-bar" />
-          <span className="navbar-hamburger-bar" />
-        </button>
-
+          <Link
+            to={isAuthenticated ? '/routines' : '/'}
+            className="navbar-logo"
+            onClick={closeMenu}
+          >
+            Holu<span>.</span>
+          </Link>
+        </div>
+        
         <div ref={menuRef} className={`navbar-links ${menuOpen ? 'open' : ''}`}>
           <Link
             to="/routines"

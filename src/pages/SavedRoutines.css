@@ -96,7 +96,7 @@
 }
 
 .saved-skeleton-day {
-    height: 180px;
+    min-height: 200px;
     flex: 1;
     background: linear-gradient(90deg, var(--bg-input) 25%, #e8e8e6 50%, var(--bg-input) 75%);
     background-size: 200% 100%;
@@ -143,8 +143,8 @@
     }
 
     .saved-skeleton-day {
-        min-width: 110px;
-        min-height: 120px;
+        min-width: 100px;
+        min-height: 160px;
         padding: var(--space-md);
     }
 }

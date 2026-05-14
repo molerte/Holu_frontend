@@ -14,6 +14,8 @@
   justify-content: space-between;
   position: relative;
   overflow: hidden;
+  box-shadow: inset 0 4px 12px rgba(255, 255, 255, 0.397);
+  border: 1px solid var(--border);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -35,6 +37,7 @@
 .day-card--clickable:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-lg);
+  box-shadow: inset 0 4px 12px rgba(255, 255, 255, 0.681);
   /*filter: sepia(0.8) grayscale(0.2);*/
   transition: 0.5s ease;
 }

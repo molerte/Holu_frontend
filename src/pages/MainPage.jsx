@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import discoverImg from '../assets/images/discover-routine-home.png';
 import buildImg from '../assets/images/build-routine-home.png';
 import saveImg from '../assets/images/save-routine-home.png';
+import { FiArrowUpRight } from "react-icons/fi";
+import { FaGithub, FaLinkedin, FaYoutube } from 'react-icons/fa';
 import './MainPage.css';
 
 /* Welcome to the homepage of Holu. 
@@ -77,56 +79,58 @@ function MainPage() {
       { threshold: 0.15 }
     );
 
+
     document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
     return () => observer.disconnect();
   }, []);
 
   return (
     <div className="main-page">
-      <section className="hero">
+      <div className="hero-features">
         <div className="hero-bg" aria-hidden="true" />
-        <div className="hero-content">
-          <p className="hero-uppertext">Build Your Perfect Workout Routine</p>
-          <h1 className="hero-heading">Achieve Your Fitness Goals <br />
-            <span className="hero-heading-accent">With Holu</span>
-          </h1>
-          <p className="hero-subheading">
-            Create, customize, and share workout routines tailored to your goals.
-            Whether you're bulking up, slimming down, or just staying active, Holu has you covered.
-          </p>
-          <div className="hero-actions">
-            <button
-              className="btn btn-explore btn--large"
-              onClick={() => navigate('/routines')}
-            >
-              Explore
-            </button>
-            <button
-              className="btn btn-register btn--large"
-              onClick={() => navigate('/register-account')}
-            >
-              Get Started
-            </button>
+
+        <section className="hero">
+          <div className="hero-content">
+            <p className="hero-uppertext">Build Your Perfect Workout Routine</p>
+            <h1 className="hero-heading">Achieve Your Fitness Goals <br />
+              <span className="hero-heading-accent">With Holu</span>
+            </h1>
+            <p className="hero-subheading">
+              Create, customize, and share workout routines tailored to your goals.
+              Whether you're bulking up, slimming down, or just staying active, Holu has you covered.
+            </p>
+            <div className="hero-actions">
+              <button
+                className="btn btn-explore btn--large"
+                onClick={() => navigate('/routines')}
+              >
+                Explore
+              </button>
+              <button
+                className="btn btn-register btn--large"
+                onClick={() => navigate('/register-account')}
+              >
+                Get Started
+              </button>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
+        <section className="features">
+          <div className="features-inner">
+            {FEATURES.map((feature, i) => (
+              <FeatureSection
+                key={feature.title}
+                {...feature}
+                index={i}
+              />
+            ))}
+          </div>
+        </section>
+      </div>
 
-      <section className="features">
-        <div className="features-inner">
-          {FEATURES.map((feature, i) => (
-            <FeatureSection
-              key={feature.title}
-              {...feature}
-              index={i}
-            />
-          ))}
-        </div>
-      </section>
-
-
-      <section className="cta reveal">
-        <div className="cta-inner">
+      <section className="cta">
+        <div className="cta-inner reveal">
           <h2 className="cta-title">Ready to Transform Your Fitness Journey?</h2>
           <p className="cta-description">
             Join Holu today and start crafting your personalized workout plans.
@@ -139,10 +143,31 @@ function MainPage() {
             Join Now
           </button>
         </div>
+      
+
+        <footer className="footer reveal">
+          <div className="footer-inner">
+            <hr />
+            <div className="footer-logo">Holu.</div>
+            <div className="footer-meta">
+              <p className="footer-copyright">
+                © {new Date().getFullYear()} Holu Fitness. All rights reserved.
+              </p>
+              <a
+                className="footer-social"
+                href="https://github.com/molerte/Holu_frontend"
+                aria-label="GitHub"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GitHub<FiArrowUpRight />
+              </a>
+            </div>
+          </div>
+        </footer>
       </section>
     </div>
   );
 };
-
 
 export default MainPage;
