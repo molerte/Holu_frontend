@@ -29,12 +29,12 @@
   justify-content: space-between;
   padding: 0 var(--space-xl);
   height: 64px;
-  background-color: rgba(0, 0, 0, 0.788);
+  background-color: rgba(0, 0, 0, 0.837);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.301);
-  backdrop-filter: blur(12px);
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.178);
+  backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(12px);
-  transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .navbar--visible {
@@ -312,7 +312,7 @@
     top: 64px;
     left: 0;
     right: 0;
-    background: rgba(0, 0, 0, 0.939);
+    background: rgba(0, 0, 0, 0.964);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     width: 100%;
     flex-direction: column;
@@ -344,7 +344,6 @@
   .navbar-links .navbar-link {
     width: 100%;
     padding: var(--space-sm) 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     font-size: 1rem;
   }
 
@@ -361,9 +360,13 @@
   .navbar-link--login,
   .navbar-link--create {
     width: 100%;
-    text-align: center;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 500;
     padding: 12px var(--space-md);
+    background: none;
+    border: none;
   }
+  
 
   .navbar-username {
     display: none;
