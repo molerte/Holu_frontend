@@ -135,27 +135,28 @@ const Navbar = () => {
   return (
     <>
       <nav className={`navbar ${menuOpen ? 'navbar--menu-open' : ''} ${isVisible ? 'navbar--visible' : 'navbar--hidden'}`}>
+        <div className="navbar-left">
+          <button
+            className={`navbar-hamburger ${menuOpen ? 'navbar-hamburger--open' : ''}`}
+            ref={buttonRef}
+            onClick={() => setMenuOpen((prev) => !prev)}
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={menuOpen}
+          >
+            <span className="navbar-hamburger-bar" />
+            <span className="navbar-hamburger-bar" />
+            <span className="navbar-hamburger-bar" />
+          </button>
 
-        <Link
-          to={isAuthenticated ? '/routines' : '/'}
-          className="navbar-logo"
-          onClick={closeMenu}
-        >
-          Holu<span>.</span>
-        </Link>
-
-        <button
-          className={`navbar-hamburger ${menuOpen ? 'navbar-hamburger--open' : ''}`}
-          ref={buttonRef}
-          onClick={() => setMenuOpen((prev) => !prev)}
-          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-          aria-expanded={menuOpen}
-        >
-          <span className="navbar-hamburger-bar" />
-          <span className="navbar-hamburger-bar" />
-          <span className="navbar-hamburger-bar" />
-        </button>
-
+          <Link
+            to={isAuthenticated ? '/routines' : '/'}
+            className="navbar-logo"
+            onClick={closeMenu}
+          >
+            Holu<span>.</span>
+          </Link>
+        </div>
+        
         <div ref={menuRef} className={`navbar-links ${menuOpen ? 'open' : ''}`}>
           <Link
             to="/routines"
